@@ -1,1074 +1,723 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- =========================================================
+ADD THIS INSIDE <head>
+========================================================= -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<title>K&J Chesti Builders & Contractors</title>
-<link rel="icon" type="image/png" href="favicon.png">
-</head>
-<!-- GOOGLE FONT -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://unpkg.com/scrollreveal"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<!-- =========================================================
+ADD THIS CSS INSIDE YOUR EXISTING <style>
+========================================================= -->
 
 <style>
 
-/* =========================================================
-GLOBAL
-========================================================= */
+/* ===============================
+LUXURY TYPOGRAPHY
+=============================== */
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+.section-title h2,
+.hero h1,
+.about-content h2,
+.testimonial-title,
+.gallery-title,
+.footer-logo h2{
+font-family:'Cinzel',serif;
 }
 
-html{
-scroll-behavior:smooth;
-}
+/* ===============================
+CUSTOM CURSOR
+=============================== */
 
-body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-color:white;
-overflow-x:hidden;
-}
-
-/* =========================================================
-BACKGROUND EFFECTS
-========================================================= */
-
-body::before{
-content:'';
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-background:
-radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 25%),
-radial-gradient(circle at bottom right, rgba(212,175,55,0.10), transparent 30%);
-z-index:-2;
-}
-
-.hero-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop') center/cover;
-opacity:0.12;
-z-index:-3;
-}
-
-/* =========================================================
-NAVBAR
-========================================================= */
-
-.navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:18px 7%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-backdrop-filter:blur(20px);
-background:rgba(0,0,0,0.35);
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.logo-area{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.logo{
-width:60px;
-height:60px;
-border-radius:50%;
-object-fit:cover;
+.cursor{
+width:22px;
+height:22px;
 border:2px solid #d4af37;
-box-shadow:0 0 25px rgba(212,175,55,0.5);
-background:white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:99999;
+transition:transform .08s linear;
+box-shadow:
+0 0 15px rgba(212,175,55,0.7),
+0 0 35px rgba(212,175,55,0.4);
+backdrop-filter:blur(2px);
 }
 
-.logo-text h2{
-font-size:22px;
-font-weight:700;
-color:#d4af37;
-}
-
-.logo-text p{
-font-size:11px;
-letter-spacing:2px;
-color:#cbd5e1;
-}
-
-.nav-links{
-display:flex;
-gap:30px;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-transition:0.4s;
-position:relative;
-}
-
-.nav-links a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
+.cursor-dot{
+width:6px;
+height:6px;
 background:#d4af37;
-transition:0.4s;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:99999;
 }
 
-.nav-links a:hover{
-color:#d4af37;
-}
+/* ===============================
+ABOUT SECTION
+=============================== */
 
-.nav-links a:hover::after{
-width:100%;
-}
-
-/* =========================================================
-HERO SECTION
-========================================================= */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:140px 7% 80px;
-position:relative;
-overflow:hidden;
-}
-
-.hero-content{
-max-width:760px;
-z-index:2;
-animation:fadeUp 1.5s ease;
-}
-
-.hero-tag{
-display:inline-block;
-padding:12px 22px;
-border-radius:40px;
-background:rgba(212,175,55,0.12);
-border:1px solid rgba(212,175,55,0.3);
-color:#d4af37;
-font-size:13px;
-letter-spacing:1px;
-margin-bottom:25px;
-}
-
-.hero h1{
-font-size:82px;
-font-weight:900;
-line-height:1.05;
-margin-bottom:25px;
-background:linear-gradient(to right,#ffffff,#d4af37);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 10px 40px rgba(0,0,0,0.5);
-}
-
-.hero p{
-font-size:18px;
-line-height:1.9;
-color:#d1d5db;
-margin-bottom:35px;
-max-width:650px;
-}
-
-.hero-buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:16px 35px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-transition:0.5s;
-display:inline-flex;
-align-items:center;
-gap:10px;
-font-size:15px;
-}
-
-.btn-gold{
-background:linear-gradient(135deg,#d4af37,#f7d774);
-color:black;
-box-shadow:0 10px 35px rgba(212,175,55,0.35);
-}
-
-.btn-gold:hover{
-transform:translateY(-6px) scale(1.03);
-}
-
-.btn-dark{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-color:white;
-}
-
-.btn-dark:hover{
-background:rgba(255,255,255,0.1);
-transform:translateY(-5px);
-}
-
-/* =========================================================
-3D FLOATING EFFECT
-========================================================= */
-
-.hero-3d{
-position:absolute;
-right:0;
-top:120px;
-width:700px;
-opacity:0.20;
-animation:float 6s ease-in-out infinite;
-filter:drop-shadow(0 0 40px rgba(212,175,55,0.35));
-}
-
-@keyframes float{
-0%,100%{
-transform:translateY(0px) rotate(0deg);
-}
-50%{
-transform:translateY(-25px) rotate(2deg);
-}
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0px);
-}
-}
-
-/* =========================================================
-STATS
-========================================================= */
-
-.stats{
-padding:60px 7%;
+.about-section{
+padding:120px 7%;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
 }
 
-.stat-card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,0.08);
-padding:40px;
-border-radius:30px;
-transition:0.5s;
+.about-image{
+position:relative;
+perspective:1000px;
 }
 
-.stat-card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
+.about-image img{
+width:100%;
+border-radius:35px;
+box-shadow:0 30px 70px rgba(0,0,0,0.5);
+transition:1s;
+transform-style:preserve-3d;
 }
 
-.stat-card h2{
-font-size:55px;
+.about-image:hover img{
+transform:rotateY(-8deg) rotateX(4deg) scale(1.03);
+}
+
+.about-content span{
 color:#d4af37;
-margin-bottom:10px;
+letter-spacing:2px;
+font-size:14px;
 }
 
-.stat-card p{
-color:#cbd5e1;
+.about-content h2{
+font-size:58px;
+margin:20px 0;
+line-height:1.2;
 }
 
-/* =========================================================
-SECTION
-========================================================= */
+.about-content p{
+color:#d1d5db;
+line-height:2;
+margin-bottom:20px;
+font-size:16px;
+}
 
-.section{
+/* ===============================
+REAL GALLERY
+=============================== */
+
+.gallery-section{
 padding:120px 7%;
 }
 
-.section-title{
+.gallery-title{
 text-align:center;
+font-size:58px;
 margin-bottom:70px;
 }
 
-.section-title span{
-color:#d4af37;
-letter-spacing:2px;
-font-size:13px;
+.gallery-grid{
+columns:3 300px;
+column-gap:20px;
 }
 
-.section-title h2{
-font-size:58px;
-margin-top:10px;
-}
-
-/* =========================================================
-SERVICES
-========================================================= */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-gap:28px;
-}
-
-.service-card{
-background:rgba(255,255,255,0.05);
-padding:40px 35px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
+.gallery-grid img{
+width:100%;
+margin-bottom:20px;
+border-radius:25px;
 transition:0.5s;
-position:relative;
-overflow:hidden;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(0,0,0,0.3);
 }
 
-.service-card::before{
-content:'';
-position:absolute;
-top:-60px;
-right:-60px;
-width:180px;
-height:180px;
-background:rgba(212,175,55,0.08);
-border-radius:50%;
+.gallery-grid img:hover{
+transform:scale(1.03);
 }
 
-.service-card:hover{
-transform:translateY(-12px);
-border-color:#d4af37;
+/* ===============================
+TESTIMONIALS
+=============================== */
+
+.testimonial-section{
+padding:120px 7%;
 }
 
-.service-icon{
-font-size:45px;
-color:#d4af37;
-margin-bottom:22px;
+.testimonial-title{
+text-align:center;
+font-size:58px;
+margin-bottom:70px;
 }
 
-.service-card h3{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.service-card p{
-color:#d1d5db;
-line-height:1.8;
-}
-
-/* =========================================================
-PROJECTS
-========================================================= */
-
-.projects-grid{
+.testimonial-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
 }
 
-.project-card{
-height:430px;
-border-radius:30px;
-overflow:hidden;
-position:relative;
-transition:0.5s;
-}
-
-.project-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:0.7s;
-}
-
-.project-card:hover img{
-transform:scale(1.12);
-}
-
-.project-overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:35px;
-background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);
-}
-
-.project-overlay h3{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.project-overlay p{
-color:#d1d5db;
-}
-
-/* =========================================================
-TEAM
-========================================================= */
-
-.team-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
-}
-
-.team-card{
+.testimonial-card{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-padding:35px;
+padding:40px;
 border-radius:30px;
-text-align:center;
+border:1px solid rgba(255,255,255,0.08);
 transition:0.5s;
+backdrop-filter:blur(15px);
 }
 
-.team-card:hover{
-transform:translateY(-12px);
+.testimonial-card:hover{
+transform:translateY(-10px);
 border-color:#d4af37;
 }
 
-.team-card img{
-width:140px;
-height:140px;
-object-fit:cover;
-border-radius:50%;
-border:3px solid #d4af37;
+.stars{
+color:#d4af37;
 margin-bottom:20px;
+font-size:20px;
 }
 
-.team-card h3{
-font-size:26px;
-margin-bottom:10px;
-}
-
-.team-card p{
+.testimonial-card p{
+line-height:1.9;
 color:#d1d5db;
-line-height:1.7;
-margin-bottom:10px;
-}
-
-.team-card span{
-color:#d4af37;
-font-weight:600;
-}
-
-/* =========================================================
-LOCATION
-========================================================= */
-
-.location-box{
-background:rgba(255,255,255,0.05);
-padding:60px;
-border-radius:35px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.location-box i{
-font-size:60px;
-color:#d4af37;
 margin-bottom:25px;
 }
 
-.location-box h3{
-font-size:38px;
-margin-bottom:15px;
+.client{
+display:flex;
+align-items:center;
+gap:15px;
 }
 
-.location-box p{
-color:#d1d5db;
-font-size:18px;
+.client img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
 }
 
-/* =========================================================
-CONTACT
-========================================================= */
+.client h4{
+margin-bottom:4px;
+}
 
-.contact-grid{
+/* ===============================
+GOOGLE MAP
+=============================== */
+
+.map-section{
+padding:120px 7%;
+}
+
+.map-container{
+overflow:hidden;
+border-radius:35px;
+box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+
+.map-container iframe{
+width:100%;
+height:500px;
+border:none;
+}
+
+/* ===============================
+PREMIUM FOOTER
+=============================== */
+
+.premium-footer{
+padding:90px 7% 40px;
+background:rgba(255,255,255,0.03);
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-grid{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:35px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-bottom:50px;
 }
 
-.contact-box{
-background:rgba(255,255,255,0.05);
-padding:45px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.contact-box h3{
-font-size:38px;
+.footer-logo h2{
+font-size:34px;
+color:#d4af37;
 margin-bottom:20px;
 }
 
-.contact-box p{
+.footer-logo p{
+color:#cbd5e1;
+line-height:1.9;
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3{
+margin-bottom:25px;
+font-size:24px;
+}
+
+.footer-links a{
+display:block;
+margin-bottom:12px;
 color:#d1d5db;
-line-height:1.8;
+text-decoration:none;
+transition:0.4s;
+}
+
+.footer-links a:hover{
+color:#d4af37;
+padding-left:5px;
+}
+
+.footer-contact p{
 margin-bottom:15px;
+color:#d1d5db;
 }
 
-form{
+.social-icons{
 display:flex;
-flex-direction:column;
-gap:18px;
+gap:15px;
+margin-top:20px;
 }
 
-input,textarea{
-padding:16px;
-border:none;
-outline:none;
-border-radius:14px;
-background:#111827;
-color:white;
-font-family:'Poppins',sans-serif;
-}
-
-textarea{
-height:140px;
-resize:none;
-}
-
-/* =========================================================
-FOOTER
-========================================================= */
-
-footer{
-padding:35px 7%;
-border-top:1px solid rgba(255,255,255,0.08);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:20px;
-}
-
-footer p{
-color:#94a3b8;
-}
-
-/* =========================================================
-WHATSAPP
-========================================================= */
-
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-width:70px;
-height:70px;
-border-radius:50%;
+.social-icons a{
+width:50px;
+height:50px;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#25D366;
-color:white;
-font-size:30px;
+border-radius:50%;
+background:rgba(255,255,255,0.05);
+color:#d4af37;
+font-size:20px;
 text-decoration:none;
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-z-index:999;
+transition:0.5s;
 }
 
-/* =========================================================
+.social-icons a:hover{
+transform:translateY(-8px);
+background:#d4af37;
+color:black;
+}
+
+.footer-bottom{
+text-align:center;
+padding-top:30px;
+border-top:1px solid rgba(255,255,255,0.08);
+color:#94a3b8;
+}
+
+/* ===============================
+3D INTERACTIONS
+=============================== */
+
+.service-card,
+.project-card,
+.team-card,
+.stat-card,
+.testimonial-card{
+transform-style:preserve-3d;
+transition:transform 0.5s;
+}
+
+.service-card:hover,
+.project-card:hover,
+.team-card:hover,
+.stat-card:hover,
+.testimonial-card:hover{
+transform:
+perspective(1000px)
+rotateX(5deg)
+rotateY(-5deg)
+translateY(-10px);
+}
+
+/* ===============================
 RESPONSIVE
-========================================================= */
+=============================== */
 
 @media(max-width:1000px){
 
-.hero h1{
-font-size:58px;
-}
-
-.hero-3d{
-display:none;
-}
-
-.contact-grid{
+.about-section{
 grid-template-columns:1fr;
 }
 
-.nav-links{
-display:none;
-}
-
-}
-
-@media(max-width:600px){
-
-.hero{
-padding-top:120px;
-}
-
-.hero h1{
+.gallery-title,
+.testimonial-title,
+.about-content h2{
 font-size:42px;
-}
-
-.section-title h2{
-font-size:38px;
 }
 
 }
 
 </style>
-</head>
 
-<body>
+<!-- =========================================================
+ADD THIS AFTER <body>
+========================================================= -->
 
-<div class="hero-bg"></div>
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
 
-<!-- =====================================================
-NAVBAR
-===================================================== -->
+<!-- =========================================================
+ABOUT SECTION
+PASTE BEFORE PROJECTS SECTION
+========================================================= -->
 
-<nav class="navbar">
+<section class="about-section">
 
-<div class="logo-area">
+<div class="about-image">
 
-<img src="logo.png" class="logo">
+<img src="project1.jpg">
 
-<div class="logo-text">
+</div>
+
+<div class="about-content">
+
+<span>ABOUT K&J CHESTI</span>
+
+<h2>
+Building Pakistan’s Luxury Future
+</h2>
+
+<p>
+K&J Chesti Builders & Contractors is a premium construction
+company delivering luxury homes, commercial developments,
+hotels and high-end architectural projects with world-class
+craftsmanship and modern innovation.
+</p>
+
+<p>
+From DHA Lahore luxury residences to large commercial
+developments, we focus on quality, elegance and timeless
+construction excellence.
+</p>
+
+<a href="#contact" class="btn btn-gold">
+Start Your Project
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+REAL GALLERY SECTION
+PASTE AFTER PROJECTS SECTION
+========================================================= -->
+
+<section class="gallery-section">
+
+<h2 class="gallery-title">
+Luxury Project Gallery
+</h2>
+
+<div class="gallery-grid">
+
+<img src="project1.jpg">
+<img src="project2.jpg">
+<img src="project3.jpg">
+<img src="project4.jpg">
+<img src="project5.jpg">
+<img src="project6.jpg">
+<img src="project7.jpg">
+<img src="project8.jpg">
+
+</div>
+
+</section>
+
+<!-- =========================================================
+TESTIMONIAL SECTION
+PASTE AFTER TEAM SECTION
+========================================================= -->
+
+<section class="testimonial-section">
+
+<h2 class="testimonial-title">
+Client Testimonials
+</h2>
+
+<div class="testimonial-grid">
+
+<div class="testimonial-card">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+“K&J Chesti transformed our vision into reality with
+outstanding construction quality and luxury finishing.”
+</p>
+
+<div class="client">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+<div>
+<h4>DHA Client</h4>
+<span>Lahore</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="testimonial-card">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+“Professional team, timely delivery and premium design
+execution. Highly recommended for luxury projects.”
+</p>
+
+<div class="client">
+
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+<div>
+<h4>Commercial Investor</h4>
+<span>DHA Phase 8</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="testimonial-card">
+
+<div class="stars">
+★★★★★
+</div>
+
+<p>
+“One of the finest construction companies we have worked
+with. Exceptional interior and architectural quality.”
+</p>
+
+<div class="client">
+
+<img src="https://randomuser.me/api/portraits/men/75.jpg">
+
+<div>
+<h4>Hotel Owner</h4>
+<span>Lahore Cantt</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+GOOGLE MAP
+PASTE BEFORE FOOTER
+========================================================= -->
+
+<section class="map-section">
+
+<div class="section-title">
+<span>OUR LOCATION</span>
+<h2>Visit Our Office</h2>
+</div>
+
+<div class="map-container">
+
+<iframe
+src="https://maps.google.com/maps?q=DHA%20Phase%208%20Lahore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+PREMIUM FOOTER
+REPLACE OLD FOOTER WITH THIS
+========================================================= -->
+
+<footer class="premium-footer">
+
+<div class="footer-grid">
+
+<div class="footer-logo">
+
 <h2>K&J Chesti</h2>
-<p>BUILDERS & CONTRACTORS</p>
-</div>
+
+<p>
+Luxury construction company delivering premium homes,
+commercial buildings, hotels and modern architectural
+solutions across Pakistan.
+</p>
 
 </div>
 
-<div class="nav-links">
+<div class="footer-links">
+
+<h3>Quick Links</h3>
+
 <a href="#services">Services</a>
 <a href="#projects">Projects</a>
 <a href="#team">Team</a>
-<a href="#location">Location</a>
 <a href="#contact">Contact</a>
-</div>
-
-</nav>
-
-<!-- =====================================================
-HERO
-===================================================== -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="hero-tag">
-LUXURY CONSTRUCTION COMPANY IN PAKISTAN
-</div>
-
-<h1>
-Creating Landmark Luxury Spaces With Perfection
-</h1>
-
-<p>
-K&J Chesti Builders & Contractors delivers elite construction,
-luxury residential villas, hotels, commercial projects,
-renovations and premium interiors with timeless elegance,
-modern innovation and unmatched quality standards.
-</p>
-
-<div class="hero-buttons">
-
-<a href="https://wa.me/923299922200" class="btn btn-gold">
-<i class="fa-brands fa-whatsapp"></i>
-Get Free Consultation
-</a>
-
-<a href="#projects" class="btn btn-dark">
-View Projects
-</a>
 
 </div>
 
-</div>
+<div class="footer-contact">
 
-<img src="logo.png" class="hero-3d">
+<h3>Contact Info</h3>
 
-</section>
-
-<!-- =====================================================
-STATS
-===================================================== -->
-
-<section class="stats">
-
-<div class="stat-card">
-<h2 class="counter" data-target="25">0</h2>
-<p>Years Experience</p>
-</div>
-
-<div class="stat-card">
-<h2 class="counter" data-target="150">0</h2>
-<p>Projects Completed</p>
-</div>
-
-<div class="stat-card">
-<h2 class="counter" data-target="180">0</h2>
-<p>Happy Clients</p>
-</div>
-
-<div class="stat-card">
-<h2 class="counter" data-target="12">0</h2>
-<p>Luxury Commercial Projects</p>
-</div>
-
-</section>
-
-<!-- =====================================================
-SERVICES
-===================================================== -->
-
-<section id="services" class="section">
-
-<div class="section-title">
-<span>OUR SERVICES</span>
-<h2>Luxury Construction Solutions</h2>
-</div>
-
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-building"></i>
-</div>
-<h3>Commercial Construction</h3>
-<p>High-end offices, plazas, hotels and commercial projects with luxury standards.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-house"></i>
-</div>
-<h3>Luxury Villas</h3>
-<p>Modern houses and premium residential developments with elegant architecture.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-paint-roller"></i>
-</div>
-<h3>Interior Design</h3>
-<p>Luxury interior solutions with premium aesthetics and elegant finishes.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-</div>
-<h3>Renovation</h3>
-<p>Transforming ordinary spaces into modern premium environments.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-PROJECTS
-===================================================== -->
-
-<section id="projects" class="section">
-
-<div class="section-title">
-<span>OUR PORTFOLIO</span>
-<h2>Signature Projects</h2>
-</div>
-
-<div class="projects-grid">
-
-<div class="project-card">
-<img src="project1.jpg">
-<div class="project-overlay">
-<h3>L33 DHA Phase 8</h3>
-<p>Luxury Residential Construction</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project2.jpg">
-<div class="project-overlay">
-<h3>Shalamar Town Houses</h3>
-<p>Premium Town House Development</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project3.jpg">
-<div class="project-overlay">
-<h3>Falettis Express Hotel</h3>
-<p>Luxury Hospitality Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project4.jpg">
-<div class="project-overlay">
-<h3>House 138A Eden City</h3>
-<p>Modern Luxury House</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project5.jpg">
-<div class="project-overlay">
-<h3>House 123V DHA Phase 8</h3>
-<p>Contemporary Residential Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project6.jpg">
-<div class="project-overlay">
-<h3>Subh-e-Noor Initiative</h3>
-<p>Community Development Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project7.jpg">
-<div class="project-overlay">
-<h3>Barkat Market Renovation</h3>
-<p>Commercial Renovation Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project8.jpg">
-<div class="project-overlay">
-<h3>Golding Road Hotel</h3>
-<p>Luxury Hotel Construction (Ongoing)</p>
-</div>
-</div>
-
-</div>
-
-</section>
-<!-- =====================================================
-TEAM
-===================================================== -->
-
-<section id="team" class="section">
-
-<div class="section-title">
-<span>OUR TEAM</span>
-<h2>Meet Our Leadership</h2>
-</div>
-
-<div class="team-grid">
-
-<div class="team-card">
-<img src="ceo.jpg">
-<h3>Khurram Majeed</h3>
-<p>Payment & Procurement Manager / CEO</p>
-<span>0322-2334488</span>
-</div>
-
-<div class="team-card">
-<img src="usman.jpg">
-<h3>Usman Saboor</h3>
-<p>Cost & Project Management Manager</p>
-<span>0323-8400999</span>
-</div>
-
-<div class="team-card">
-<img src="abubakar.jpg">
-<h3>Abubakar Khan</h3>
-<p>Design & Innovation Manager</p>
-<span>0323-4540454</span>
-</div>
-
-<div class="team-card">
-<img src="zia.jpg">
-<h3>Zia Shah</h3>
-<p>Real Estate Agent (Residential & Commercial)</p>
-<span>0322-6962272</span>
-</div>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-LOCATION
-===================================================== -->
-
-<section id="location" class="section">
-
-<div class="section-title">
-<span>OUR OFFICE</span>
-<h2>Company Location</h2>
-</div>
-
-<div class="location-box">
-
-<i class="fa-solid fa-location-dot"></i>
-
-<h3>K&J Chesti Builders & Contractors</h3>
-
-<p>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-CONTACT
-===================================================== -->
-
-<section id="contact" class="section">
-
-<div class="section-title">
-<span>CONTACT US</span>
-<h2>Let’s Build Your Dream Project</h2>
-</div>
-
-<div class="contact-grid">
-
-<div class="contact-box">
-
-<h3>Get In Touch</h3>
-
-<p>
-We specialize in luxury homes, commercial buildings,
-hotels, interiors and premium real estate solutions.
-</p>
-
-  <p>
-<i class="fa-solid fa-envelope"></i>
-
-<a href="mailto:"kjchestibuilders@gmail.com" style="color:#d4af37;text-decoration:none;">
-kjchestibuilders@gmail.com
-</a>
-</p>
-  
 <p>
 <i class="fa-solid fa-phone"></i>
 0322-2334488
 </p>
 
 <p>
-<i class="fa-solid fa-phone"></i>
-0329-9922200
+<i class="fa-solid fa-envelope"></i>
+kjchestibuilders@gmail.com
 </p>
 
 <p>
 <i class="fa-solid fa-location-dot"></i>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
+L33 2ND FLOOR DHA PHASE 8 LAHORE CANT
 </p>
 
 </div>
 
-<div class="contact-box">
+<div class="footer-social">
 
-<form>
+<h3>Follow Us</h3>
 
-<input type="text" placeholder="Your Name">
+<div class="social-icons">
 
-<input type="email" placeholder="Your Email">
+<a href="#">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
 
-<textarea placeholder="Tell us about your project"></textarea>
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
 
-<button class="btn btn-gold">
-Send Message
-</button>
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
 
-</form>
+<a href="#">
+<i class="fa-brands fa-tiktok"></i>
+</a>
 
 </div>
 
 </div>
 
-</section>
+</div>
 
-<!-- =====================================================
-FOOTER
-===================================================== -->
+<div class="footer-bottom">
 
-<footer>
+© 2026 K&J Chesti Builders & Contractors — All Rights Reserved
 
-<p>
-© 2026 K&J Chesti Builders & Contractors
-</p>
-
-<p>
-Luxury Construction • Real Estate • Interior Design
-</p>
+</div>
 
 </footer>
 
-<!-- =====================================================
-WHATSAPP
-===================================================== -->
-
-<a href="https://wa.me/923299922200" class="whatsapp">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<!-- =====================================================
-COUNTER
-===================================================== -->
+<!-- =========================================================
+ADD THIS BEFORE </body>
+========================================================= -->
 
 <script>
 
-const counters=document.querySelectorAll('.counter');
+/* ===============================
+SCROLL REVEAL
+=============================== */
 
-counters.forEach(counter=>{
+ScrollReveal({
 
-const updateCounter=()=>{
+distance:'80px',
+duration:1800,
+delay:200,
+reset:false
 
-const target=+counter.getAttribute('data-target');
-const count=+counter.innerText;
+});
 
-const increment=target/80;
+ScrollReveal().reveal('.hero-content',{
+origin:'left'
+});
 
-if(count<target){
+ScrollReveal().reveal('.hero-3d',{
+origin:'right'
+});
 
-counter.innerText=Math.ceil(count+increment);
+ScrollReveal().reveal('.service-card,.project-card,.team-card,.testimonial-card,.stat-card',{
+origin:'bottom',
+interval:200
+});
 
-setTimeout(updateCounter,30);
+ScrollReveal().reveal('.about-image',{
+origin:'left'
+});
 
-}else{
+ScrollReveal().reveal('.about-content',{
+origin:'right'
+});
 
-counter.innerText=target;
+/* ===============================
+CUSTOM CURSOR
+=============================== */
 
-}
+const cursor=document.querySelector('.cursor');
+const dot=document.querySelector('.cursor-dot');
 
-};
+document.addEventListener('mousemove',(e)=>{
 
-updateCounter();
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+
+dot.style.left=e.clientX+'px';
+dot.style.top=e.clientY+'px';
+
+});
+
+/* ===============================
+3D INTERACTION
+=============================== */
+
+const cards=document.querySelectorAll(
+'.service-card,.project-card,.team-card,.testimonial-card'
+);
+
+cards.forEach(card=>{
+
+card.addEventListener('mousemove',(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const rotateY=((x/rect.width)-0.5)*12;
+const rotateX=((y/rect.height)-0.5)*-12;
+
+card.style.transform=
+`perspective(1000px)
+rotateY(${rotateY}deg)
+rotateX(${rotateX}deg)
+translateY(-10px)`;
+
+});
+
+card.addEventListener('mouseleave',()=>{
+
+card.style.transform=
+'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+
+});
 
 });
 
 </script>
-
-</body>
-</html>
-```
