@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>K&J Chesti Builders</title>
+  <title>K&J Chesti Builders and Contractors</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,8 +24,8 @@
   </header>
 
   <section class="stats">
-    <div><h2>10+</h2><p>Years Experience</p></div>
-    <div><h2>250+</h2><p>Projects Completed</p></div>
+    <div><h2>25+</h2><p>Years Experience</p></div>
+    <div><h2>150+</h2><p>Projects Completed</p></div>
     <div><h2>150+</h2><p>Happy Clients</p></div>
   </section>
 
@@ -38,12 +38,70 @@
       <div class="card"><h3>Approvals</h3><p>DHA and authority approval assistance.</p></div>
     </div>
   </section>
+</section><section class="section" id="services">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">Construction</div>
+<div class="card">Architecture</div>
+<div class="card">Real Estate</div>
+<div class="card">Renovation</div>
+<div class="card">Project Management</div>
+</div>
+</section><section class="section" id="projects">
+<h2>Projects</h2>
+<div class="grid">
+<div class="card">L33 DHA Phase 8</div>
+<div class="card">Shalamar Town Houses</div>
+<div class="card">Falettis Express Hotel</div>
+<div class="card">House 138A Eden City</div>
+<div class="card">House 123V DHA Phase 8</div>
+<div class="card">Subh-e-Noor Initiative</div>
+<div class="card">Barkat Market Renovation</div>
+<div class="card">Golding Road Hotel (Ongoing)</div>
+</div>
+</section><section class="section gallery" id="gallery">
+<h2>Gallery</h2>
+<div class="grid">
+<div class="item"><img src="project1.jpg"><p>Shalamar Town Houses</p></div>
+<div class="item"><img src="project2.jpg"><p>Barkat Market Renovation</p></div>
+<div class="item"><img src="project3.jpg"><p>L33 Commercial</p></div>
+<div class="item"><img src="project4.jpg"></div>
+<div class="item"><img src="project5.jpg"><p>House 138A Eden City</p></div>
+<div class="item"><img src="project6.jpg"><p>House 123V DHA Phase 8</p></div>
+<div class="item"><img src="project7.jpg"><p>Subh-e-Noor Initiative</p></div>
+</div>
+</section><section class="section" id="team">
+<h2>Team</h2>
+<div class="grid">
+<div class="card">CEO Khurram Majeed<br>0322-2334488</div>
+<div class="card">Usman Saboor<br>0323-8400999</div>
+<div class="card">Abubakar Khan<br>0323-4540454</div>
+<div class="card">Zia Shah<br>0322-6962272</div>
+</div>
+</section><section class="section" id="contact">
+<h2>Contact</h2>
+<form>
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button>Send</button>
+</form>
+</section><a href="https://wa.me/923222334488?text=Hello%20I%20need%20construction%20service" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
 
-  <section id="projects" class="section alt">
-    <h2>Featured Projects</h2>
-    <p>Luxury homes, commercial buildings and renovation projects delivered with excellence.</p>
-  </section>
+<footer>
+<p>© 2026 K&J Builders & Contractors</p>
+</footer><script>
+window.onload=function(){document.getElementById('loader').style.display='none';}
 
+let images=["project1.jpg","project2.jpg","project3.jpg","project4.jpg"];
+let i=0;
+setInterval(function(){
+ i++;
+ if(i>=images.length){i=0;}
+ document.getElementById("slide").src=images[i];
+},3000);
+</script></body>
+</html>
   <section class="section testimonials">
     <h2>What Clients Say</h2>
     <blockquote>“Outstanding workmanship and timely delivery.”</blockquote>
