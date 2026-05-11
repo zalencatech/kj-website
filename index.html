@@ -1,210 +1,550 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>K&J Chesti Builders & Contractors</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
 <style>
 
-/* ================= BASE ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial, sans-serif;
-background:#0b1220;
-color:white;
+/* ================= GLOBAL ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
 scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
 overflow-x:hidden;
 }
 
-/* ================= GLASS NAV ================= */
-.nav{
+/* ================= BACKGROUND EFFECT ================= */
+
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+radial-gradient(circle at top left, rgba(255,215,0,0.08), transparent 25%),
+radial-gradient(circle at bottom right, rgba(255,215,0,0.06), transparent 25%);
+z-index:-1;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
 position:fixed;
 top:0;
+left:0;
 width:100%;
+padding:18px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 30px;
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(255,255,255,0.1);
 z-index:1000;
+backdrop-filter:blur(18px);
+background:rgba(10,10,15,0.55);
+border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
-.nav b{
-color:#fbbf24;
-font-size:18px;
+.logo-area{
+display:flex;
+align-items:center;
+gap:14px;
 }
 
-.nav a{
-color:white;
-margin:0 12px;
+.logo{
+width:58px;
+height:58px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #d4af37;
+box-shadow:0 0 25px rgba(212,175,55,0.4);
+}
+
+.logo-text h2{
+font-size:20px;
+color:#d4af37;
+font-weight:700;
+}
+
+.logo-text p{
+font-size:11px;
+letter-spacing:2px;
+color:#cbd5e1;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
 text-decoration:none;
-transition:0.3s;
+color:white;
 font-size:14px;
+font-weight:500;
+transition:0.4s;
+position:relative;
 }
 
-.nav a:hover{
-color:#fbbf24;
+.nav-links a::after{
+content:'';
+position:absolute;
+bottom:-6px;
+left:0;
+width:0%;
+height:2px;
+background:#d4af37;
+transition:0.4s;
+}
+
+.nav-links a:hover{
+color:#d4af37;
+}
+
+.nav-links a:hover::after{
+width:100%;
 }
 
 /* ================= HERO ================= */
+
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
-justify-content:center;
-text-align:center;
+padding:140px 7% 80px;
 position:relative;
-background:url("hero.jpg") center/cover;
-}
-
-.hero::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.65);
 }
 
 .hero-content{
-position:relative;
-z-index:1;
-animation:fadeIn 2s ease;
+width:100%;
+max-width:760px;
+z-index:2;
+}
+
+.tag{
+display:inline-block;
+padding:10px 20px;
+border:1px solid rgba(212,175,55,0.3);
+border-radius:40px;
+background:rgba(212,175,55,0.08);
+color:#d4af37;
+font-size:13px;
+margin-bottom:25px;
+letter-spacing:1px;
 }
 
 .hero h1{
-font-size:50px;
-color:#fbbf24;
-margin-bottom:10px;
+font-size:78px;
+line-height:1.1;
+font-weight:800;
+margin-bottom:20px;
+background:linear-gradient(to right,#fff,#d4af37);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
 font-size:18px;
+line-height:1.8;
 color:#d1d5db;
+max-width:650px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
 }
 
 .btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 28px;
-background:#fbbf24;
-color:black;
-border-radius:10px;
+padding:16px 34px;
+border-radius:50px;
+font-weight:600;
 text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* ================= STATS ================= */
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-background:#111827;
-padding:60px 20px;
-text-align:center;
-}
-
-.stats h2{
-font-size:45px;
-color:#fbbf24;
-}
-
-/* ================= SECTION ================= */
-.section{
-padding:80px 20px;
-text-align:center;
-}
-
-.section h2{
-font-size:34px;
-color:#fbbf24;
-margin-bottom:30px;
-}
-
-/* ================= GRID ================= */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-padding:20px;
-border-radius:16px;
 transition:0.4s;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.card:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,0.08);
-}
-
-/* ================= IMAGES ================= */
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-border-radius:12px;
-margin-bottom:10px;
-border:2px solid #fbbf24;
-}
-
-/* ================= FORM ================= */
-form{
-max-width:500px;
-margin:auto;
-display:flex;
-flex-direction:column;
+display:inline-flex;
+align-items:center;
 gap:10px;
 }
 
-input,textarea{
-padding:12px;
-border:none;
-border-radius:8px;
-outline:none;
+.btn-gold{
+background:linear-gradient(135deg,#d4af37,#f5d76e);
+color:black;
+box-shadow:0 10px 30px rgba(212,175,55,0.35);
 }
 
-textarea{height:120px}
+.btn-gold:hover{
+transform:translateY(-5px);
+}
+
+.btn-dark{
+border:1px solid rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.04);
+color:white;
+}
+
+.btn-dark:hover{
+background:rgba(255,255,255,0.08);
+}
+
+/* ================= HERO IMAGE ================= */
+
+.hero-image{
+position:absolute;
+right:-100px;
+top:120px;
+width:700px;
+opacity:0.13;
+pointer-events:none;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+padding:40px 7% 90px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.stat-box{
+padding:35px;
+border-radius:28px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(10px);
+transition:0.4s;
+}
+
+.stat-box:hover{
+transform:translateY(-8px);
+border-color:rgba(212,175,55,0.4);
+}
+
+.stat-box h2{
+font-size:50px;
+color:#d4af37;
+margin-bottom:10px;
+}
+
+.stat-box p{
+color:#cbd5e1;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+padding:110px 7%;
+}
+
+.section-title{
+margin-bottom:70px;
+text-align:center;
+}
+
+.section-title span{
+color:#d4af37;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+.section-title h2{
+font-size:52px;
+margin-top:12px;
+}
+
+/* ================= SERVICES ================= */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+}
+
+.service-card{
+padding:40px 30px;
+border-radius:28px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+transition:0.5s;
+position:relative;
+overflow:hidden;
+}
+
+.service-card::before{
+content:'';
+position:absolute;
+width:180px;
+height:180px;
+background:rgba(212,175,55,0.08);
+border-radius:50%;
+top:-80px;
+right:-80px;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+border-color:#d4af37;
+}
+
+.service-icon{
+font-size:42px;
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.service-card h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.service-card p{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+}
+
+.project-card{
+position:relative;
+overflow:hidden;
+border-radius:28px;
+height:420px;
+}
+
+.project-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.6s;
+}
+
+.project-overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:35px;
+background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+}
+
+.project-overlay h3{
+font-size:26px;
+margin-bottom:8px;
+}
+
+.project-overlay p{
+color:#d1d5db;
+}
+
+.project-card:hover img{
+transform:scale(1.1);
+}
+
+/* ================= TEAM ================= */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:28px;
+}
+
+.team-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+padding:30px;
+border-radius:28px;
+text-align:center;
+transition:0.5s;
+}
+
+.team-card:hover{
+transform:translateY(-10px);
+border-color:#d4af37;
+}
+
+.team-card img{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+border:3px solid #d4af37;
+}
+
+.team-card h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.team-card p{
+color:#cbd5e1;
+line-height:1.6;
+margin-bottom:10px;
+}
+
+.team-card span{
+color:#d4af37;
+font-weight:600;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-wrapper{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.contact-info{
+padding:45px;
+border-radius:30px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+}
+
+.contact-info h3{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.contact-info p{
+color:#d1d5db;
+line-height:1.8;
+margin-bottom:18px;
+}
+
+.contact-form{
+padding:45px;
+border-radius:30px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+}
+
+.contact-form form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:16px;
+border:none;
+outline:none;
+border-radius:14px;
+background:#111827;
+color:white;
+font-family:'Poppins',sans-serif;
+}
+
+.contact-form textarea{
+height:140px;
+resize:none;
+}
 
 /* ================= FOOTER ================= */
+
 footer{
-background:#0f172a;
-padding:20px;
-text-align:center;
-border-top:1px solid rgba(255,255,255,0.1);
-margin-top:40px;
+padding:40px 7%;
+border-top:1px solid rgba(255,255,255,0.06);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+}
+
+footer p{
+color:#94a3b8;
 }
 
 /* ================= WHATSAPP ================= */
+
 .whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
+width:65px;
+height:65px;
+display:flex;
+align-items:center;
+justify-content:center;
 background:#25D366;
 color:white;
-padding:15px;
+font-size:28px;
 border-radius:50%;
-font-size:22px;
 text-decoration:none;
-box-shadow:0 10px 20px rgba(0,0,0,0.3);
+box-shadow:0 15px 35px rgba(0,0,0,0.35);
+z-index:999;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:991px){
+
+.hero h1{
+font-size:54px;
+}
+
+.hero-image{
+display:none;
+}
+
+.contact-wrapper{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+padding-top:120px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.section-title h2{
+font-size:36px;
+}
+
 }
 
 </style>
@@ -212,155 +552,339 @@ to{opacity:1;transform:translateY(0)}
 
 <body>
 
-<!-- NAV -->
-<div class="nav">
-<b>K&J Chesti Builders</b>
-<div>
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo-area">
+
+<img src="logo.png" class="logo">
+
+<div class="logo-text">
+<h2>K&J Chesti</h2>
+<p>BUILDERS & CONTRACTORS</p>
+</div>
+
+</div>
+
+<div class="nav-links">
 <a href="#services">Services</a>
 <a href="#projects">Projects</a>
-<a href="#gallery">Gallery</a>
 <a href="#team">Team</a>
 <a href="#contact">Contact</a>
 </div>
-</div>
+
+</nav>
 
 <!-- HERO -->
+
 <section class="hero">
+
 <div class="hero-content">
-<h1>Luxury Construction Excellence</h1>
-<p>Building Dreams with Precision, Quality & Trust Across Pakistan</p>
-<a class="btn" href="https://wa.me/923299922200">Get Free Quote</a>
+
+<div class="tag">
+PREMIUM CONSTRUCTION COMPANY IN PAKISTAN
 </div>
+
+<h1>
+Crafting Luxury Spaces With Timeless Excellence
+</h1>
+
+<p>
+K&J Chesti Builders & Contractors delivers elite residential,
+commercial, hotel, renovation and real estate projects with unmatched
+quality, modern innovation and premium finishing standards.
+</p>
+
+<div class="hero-buttons">
+
+<a href="https://wa.me/923299922200" class="btn btn-gold">
+<i class="fa-brands fa-whatsapp"></i>
+Get Free Consultation
+</a>
+
+<a href="#projects" class="btn btn-dark">
+View Our Projects
+</a>
+
+</div>
+
+</div>
+
+<img src="logo.png" class="hero-image">
+
 </section>
 
 <!-- STATS -->
+
 <section class="stats">
-<div><h2 class="counter" data="25">0</h2><p>Years Experience</p></div>
-<div><h2 class="counter" data="150">0</h2><p>Projects Completed</p></div>
-<div><h2 class="counter" data="150">0</h2><p>Happy Clients</p></div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="25">0</h2>
+<p>Years Experience</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="150">0</h2>
+<p>Completed Projects</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="180">0</h2>
+<p>Happy Clients</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="12">0</h2>
+<p>Luxury Commercial Projects</p>
+</div>
+
 </section>
 
 <!-- SERVICES -->
+
 <section id="services" class="section">
-<h2>Our Services</h2>
 
-<div class="grid">
-<div class="card">🏗 Construction</div>
-<div class="card">🏠 Home Building</div>
-<div class="card">🧱 Renovation</div>
-<div class="card">🎨 Interior Design</div>
-<div class="card">📑 Approvals</div>
-<div class="card">🏢 Real Estate</div>
-<div class="card">📊 Project Management</div>
+<div class="section-title">
+<span>WHAT WE DO</span>
+<h2>Luxury Construction Services</h2>
 </div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<div class="service-icon">
+<i class="fa-solid fa-building"></i>
+</div>
+<h3>Commercial Construction</h3>
+<p>
+High-end plazas, hotels, offices and luxury business developments.
+</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<i class="fa-solid fa-house"></i>
+</div>
+<h3>Luxury Homes</h3>
+<p>
+Modern villas and elite residential houses with premium architecture.
+</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<i class="fa-solid fa-paint-roller"></i>
+</div>
+<h3>Interior Design</h3>
+<p>
+Elegant interiors with modern aesthetics and luxury finishing.
+</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+</div>
+<h3>Renovation</h3>
+<p>
+Transforming outdated spaces into premium modern environments.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- PROJECTS (YOUR DATA) -->
+<!-- PROJECTS -->
+
 <section id="projects" class="section">
-<h2>Our Projects</h2>
 
-<div class="grid">
-<div class="card">L33 DHA Phase 8</div>
-<div class="card">Shalamar Town Houses</div>
-<div class="card">Falettis Express Hotel</div>
-<div class="card">House 138A Eden City</div>
-<div class="card">House 123V DHA Phase 8</div>
-<div class="card">Subh-e-Noor Initiative</div>
-<div class="card">Barkat Market Renovation</div>
-<div class="card">Golding Road Hotel (Ongoing)</div>
+<div class="section-title">
+<span>OUR PORTFOLIO</span>
+<h2>Signature Projects</h2>
 </div>
-</section>
 
-<!-- GALLERY -->
-<section id="gallery" class="section">
-<h2>Gallery</h2>
+<div class="projects-grid">
 
-<div class="grid">
-<div class="card"><img src="project1.jpg"></div>
-<div class="card"><img src="project2.jpg"></div>
-<div class="card"><img src="project3.jpg"></div>
-<div class="card"><img src="project5.jpg"></div>
-<div class="card"><img src="project6.jpg"></div>
-<div class="card"><img src="project7.jpg"></div>
+<div class="project-card">
+<img src="project1.jpg">
+<div class="project-overlay">
+<h3>DHA Phase 8 Residence</h3>
+<p>Luxury Modern Residential Project</p>
 </div>
+</div>
+
+<div class="project-card">
+<img src="project2.jpg">
+<div class="project-overlay">
+<h3>Falettis Express Hotel</h3>
+<p>Premium Hospitality Construction</p>
+</div>
+</div>
+
+<div class="project-card">
+<img src="project3.jpg">
+<div class="project-overlay">
+<h3>Subh-e-Noor Initiative</h3>
+<p>Community Development Project</p>
+</div>
+</div>
+
+</div>
+
 </section>
 
 <!-- TEAM -->
+
 <section id="team" class="section">
-<h2>Our Team</h2>
 
-<div class="grid">
+<div class="section-title">
+<span>OUR LEADERSHIP</span>
+<h2>Meet Our Team</h2>
+</div>
 
-<div class="card">
+<div class="team-grid">
+
+<div class="team-card">
 <img src="ceo.jpg">
 <h3>Khurram Majeed</h3>
-<p>Payment and Procurement Manger & CEO</p>
+<p>CEO & Procurement Manager</p>
 <span>0322-2334488</span>
 </div>
 
-<div class="card">
+<div class="team-card">
 <img src="usman.jpg">
 <h3>Usman Saboor</h3>
-<p>Cost and Management Project Manager</p>
+<p>Cost & Project Management</p>
 <span>0323-8400999</span>
 </div>
 
-<div class="card">
+<div class="team-card">
 <img src="abubakar.jpg">
 <h3>Abubakar Khan</h3>
 <p>Design & Innovation Manager</p>
 <span>0323-4540454</span>
 </div>
 
-<div class="card">
-<img src="zia.jpg">
-<h3>Zia Shah</h3>
-<p>Real Estate Agent (Residential,Commercial SALE & PURCHASE)</p>
-<span>0322-6962272</span>
 </div>
 
-</div>
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact" class="section">
-<h2>Contact Us</h2>
+
+<div class="section-title">
+<span>CONTACT US</span>
+<h2>Let’s Build Something Extraordinary</h2>
+</div>
+
+<div class="contact-wrapper">
+
+<div class="contact-info">
+
+<h3>Get In Touch</h3>
+
+<p>
+We deliver premium construction solutions with luxury standards,
+modern architecture and trusted project execution.
+</p>
+
+<p>
+<i class="fa-solid fa-phone"></i>
+0322-2334488
+</p>
+
+<p>
+<i class="fa-solid fa-phone"></i>
+0329-9922200
+</p>
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+DHA Phase 8 Lahore, Pakistan
+</p>
+
+</div>
+
+<div class="contact-form">
 
 <form>
-<input placeholder="Your Name">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button class="btn">Send Message</button>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea placeholder="Tell us about your project"></textarea>
+
+<button class="btn btn-gold">
+Send Message
+</button>
+
 </form>
 
-<p style="margin-top:20px">
-📞 0322-2334488 | 0329-9922200
-</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-© 2026 K&J Chesti Builders & Contractors | All Rights Reserved
+
+<p>
+© 2026 K&J Chesti Builders & Contractors. All Rights Reserved.
+</p>
+
+<p>
+Luxury Construction & Real Estate Solutions
+</p>
+
 </footer>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/923299922200">💬</a>
+
+<a href="https://wa.me/923299922200" class="whatsapp">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <!-- COUNTER -->
+
 <script>
-let counters=document.querySelectorAll(".counter");
 
-counters.forEach(c=>{
-let target=+c.getAttribute("data");
-let count=0;
+const counters=document.querySelectorAll('.counter');
 
-let interval=setInterval(()=>{
-count++;
-c.innerText=count;
-if(count>=target) clearInterval(interval);
-},20);
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.getAttribute('data-target');
+const count=+counter.innerText;
+
+const speed=target/80;
+
+if(count<target){
+
+counter.innerText=Math.ceil(count+speed);
+
+setTimeout(update,30);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+}
+
+update();
+
 });
+
 </script>
 
 </body>
 </html>
+```
