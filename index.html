@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>K&J Chesti Builders & Contractors</title>
+
 <link rel="icon" type="image/png" href="favicon.png">
-</head>
+
 <!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,7 +80,7 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-padding:18px 5%;
+padding:10px 5%;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -89,7 +90,6 @@ background:rgba(0,0,0,0.35);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* LEFT LOGO */
 .nav-left{
 width:220px;
 display:flex;
@@ -97,8 +97,8 @@ align-items:center;
 }
 
 .logo{
-width:60px;
-height:60px;
+width:85px;
+height:85px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid #d4af37;
@@ -106,7 +106,6 @@ box-shadow:0 0 25px rgba(212,175,55,0.5);
 background:white;
 }
 
-/* CENTER TEXT */
 .nav-center{
 position:absolute;
 left:50%;
@@ -115,7 +114,7 @@ text-align:center;
 }
 
 .nav-center h2{
-font-size:28px;
+font-size:30px;
 font-weight:700;
 color:#d4af37;
 line-height:1.2;
@@ -129,7 +128,6 @@ color:white;
 margin-top:4px;
 }
 
-/* RIGHT MENU */
 .nav-links{
 display:flex;
 gap:30px;
@@ -164,92 +162,53 @@ color:#d4af37;
 width:100%;
 }
 
-/* MOBILE */
-@media(max-width:1000px){
-
-.nav-center h2{
-font-size:18px;
-}
-
-.nav-center p{
-font-size:10px;
-letter-spacing:2px;
-}
-
-.nav-links{
-display:none;
-}
-
-.logo{
-width:50px;
-height:50px;
-}
-
-}
-
-@media(max-width:600px){
-
-.nav-center h2{
-font-size:14px;
-}
-
-.nav-center p{
-font-size:8px;
-}
-
-}
 /* =========================================================
 HERO SECTION
 ========================================================= */
 
 .hero{
-min-height:100vh;
+min-height:92vh;
 display:flex;
 align-items:center;
-padding:140px 7% 80px;
+justify-content:center;
+text-align:center;
+padding:70px 7% 30px;
 position:relative;
 overflow:hidden;
 }
 
 .hero-content{
-max-width:760px;
+max-width:950px;
+margin:auto;
 z-index:2;
 animation:fadeUp 1.5s ease;
 }
 
 .hero-tag{
 display:inline-block;
-padding:12px 22px;
-border-radius:40px;
+padding:16px 34px;
+border-radius:50px;
 background:rgba(212,175,55,0.12);
 border:1px solid rgba(212,175,55,0.3);
 color:#d4af37;
-font-size:13px;
-letter-spacing:1px;
-margin-bottom:25px;
-}
-
-.hero h1{
-font-size:82px;
-font-weight:900;
-line-height:1.05;
-margin-bottom:25px;
-background:linear-gradient(to right,#ffffff,#d4af37);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 10px 40px rgba(0,0,0,0.5);
+font-size:22px;
+font-weight:700;
+letter-spacing:2px;
+margin-bottom:20px;
+text-transform:uppercase;
 }
 
 .hero p{
-font-size:18px;
+font-size:20px;
 line-height:1.9;
 color:#d1d5db;
-margin-bottom:35px;
-max-width:650px;
+margin:0 auto 28px;
+max-width:850px;
 }
 
 .hero-buttons{
 display:flex;
+justify-content:center;
 gap:20px;
 flex-wrap:wrap;
 }
@@ -296,7 +255,7 @@ position:absolute;
 right:0;
 top:120px;
 width:700px;
-opacity:0.20;
+opacity:0.15;
 animation:float 6s ease-in-out infinite;
 filter:drop-shadow(0 0 40px rgba(212,175,55,0.35));
 }
@@ -322,51 +281,16 @@ transform:translateY(0px);
 }
 
 /* =========================================================
-STATS
-========================================================= */
-
-.stats{
-padding:60px 7%;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
-}
-
-.stat-card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,0.08);
-padding:40px;
-border-radius:30px;
-transition:0.5s;
-}
-
-.stat-card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
-}
-
-.stat-card h2{
-font-size:55px;
-color:#d4af37;
-margin-bottom:10px;
-}
-
-.stat-card p{
-color:#cbd5e1;
-}
-
-/* =========================================================
 SECTION
 ========================================================= */
 
 .section{
-padding:120px 7%;
+padding:80px 7%;
 }
 
 .section-title{
 text-align:center;
-margin-bottom:70px;
+margin-bottom:45px;
 }
 
 .section-title span{
@@ -376,7 +300,7 @@ font-size:13px;
 }
 
 .section-title h2{
-font-size:58px;
+font-size:52px;
 margin-top:10px;
 }
 
@@ -387,12 +311,12 @@ SERVICES
 .services-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-gap:28px;
+gap:22px;
 }
 
 .service-card{
 background:rgba(255,255,255,0.05);
-padding:40px 35px;
+padding:35px 30px;
 border-radius:30px;
 border:1px solid rgba(255,255,255,0.08);
 transition:0.5s;
@@ -439,11 +363,11 @@ PROJECTS
 .projects-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
+gap:22px;
 }
 
 .project-card{
-height:430px;
+height:390px;
 border-radius:30px;
 overflow:hidden;
 position:relative;
@@ -486,13 +410,13 @@ TEAM
 .team-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
+gap:22px;
 }
 
 .team-card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
-padding:35px;
+padding:28px;
 border-radius:30px;
 text-align:center;
 transition:0.5s;
@@ -534,7 +458,7 @@ LOCATION
 
 .location-box{
 background:rgba(255,255,255,0.05);
-padding:60px;
+padding:40px;
 border-radius:35px;
 text-align:center;
 border:1px solid rgba(255,255,255,0.08);
@@ -576,12 +500,12 @@ CONTACT
 .contact-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:35px;
+gap:25px;
 }
 
 .contact-box{
 background:rgba(255,255,255,0.05);
-padding:45px;
+padding:35px;
 border-radius:30px;
 border:1px solid rgba(255,255,255,0.08);
 }
@@ -623,7 +547,7 @@ FOOTER
 ========================================================= */
 
 footer{
-padding:35px 7%;
+padding:22px 7%;
 border-top:1px solid rgba(255,255,255,0.08);
 display:flex;
 justify-content:space-between;
@@ -663,8 +587,30 @@ RESPONSIVE
 
 @media(max-width:1000px){
 
-.hero h1{
-font-size:58px;
+.nav-links{
+display:none;
+}
+
+.logo{
+width:65px;
+height:65px;
+}
+
+.nav-center h2{
+font-size:18px;
+}
+
+.hero{
+padding-top:90px;
+}
+
+.hero-tag{
+font-size:16px;
+padding:14px 24px;
+}
+
+.hero p{
+font-size:17px;
 }
 
 .hero-3d{
@@ -675,24 +621,45 @@ display:none;
 grid-template-columns:1fr;
 }
 
-.nav-links{
-display:none;
-}
-
 }
 
 @media(max-width:600px){
 
 .hero{
-padding-top:120px;
+padding-top:85px;
+min-height:85vh;
 }
 
-.hero h1{
-font-size:42px;
+.hero-tag{
+font-size:13px;
+letter-spacing:1px;
+padding:12px 18px;
+}
+
+.hero p{
+font-size:15px;
+line-height:1.7;
+}
+
+.section{
+padding:65px 5%;
 }
 
 .section-title h2{
-font-size:38px;
+font-size:34px;
+}
+
+.logo{
+width:58px;
+height:58px;
+}
+
+.nav-center h2{
+font-size:14px;
+}
+
+.nav-center p{
+font-size:8px;
 }
 
 }
@@ -704,24 +671,19 @@ font-size:38px;
 
 <div class="hero-bg"></div>
 
-<!-- =====================================================
-NAVBAR
-===================================================== -->
+<!-- NAVBAR -->
 
 <nav class="navbar">
 
-<!-- LEFT LOGO -->
 <div class="nav-left">
 <img src="logo.png" class="logo">
 </div>
 
-<!-- CENTER COMPANY NAME -->
 <div class="nav-center">
 <h2>K&J Chesti Builders & Contractors</h2>
 <p>INTERNATIONAL</p>
 </div>
 
-<!-- RIGHT MENU -->
 <div class="nav-links">
 <a href="#services">Services</a>
 <a href="#projects">Projects</a>
@@ -732,17 +694,16 @@ NAVBAR
 
 </nav>
 
-<!-- =====================================================
-HERO
-===================================================== -->
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-content">
 
 <div class="hero-tag">
-RELIABLE CONSTRUCTION COMPANY IN LAHORE
+Reliable Construction Company In Lahore
 </div>
+
 <p>
 K&J Chesti Builders & Contractors delivers elite construction,
 luxury residential villas, hotels, commercial projects,
@@ -768,364 +729,6 @@ View Projects
 <img src="logo.png" class="hero-3d">
 
 </section>
-
-<!-- =====================================================
-SERVICES
-===================================================== -->
-
-<section id="services" class="section">
-
-<div class="section-title">
-<span>OUR SERVICES</span>
-<h2>Reliable Construction Solutions</h2>
-</div>
-
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-building"></i>
-</div>
-<h3>Commercial Construction</h3>
-<p>High-end offices, plazas, hotels and commercial projects with luxury standards.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-house"></i>
-</div>
-<h3>Luxury Villas</h3>
-<p>Modern houses and premium residential developments with elegant architecture.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-paint-roller"></i>
-</div>
-<h3>International Projects</h3>
-<p>Luxury interior solutions with premium aesthetics and elegant finishes.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-</div>
-<h3>Interior Design & Renovation</h3>
-<p>Transforming ordinary spaces into modern premium environments.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-PROJECTS
-===================================================== -->
-
-<section id="projects" class="section">
-
-<div class="section-title">
-<span>OUR PORTFOLIO</span>
-<h2>Signature Projects in Lahore</h2>
-</div>
-
-<div class="projects-grid">
-
- 
-<div class="project-card">
-<img src="project4.jpg">
-<div class="project-overlay">
-<h3>Modern house Eden City</h3>
-<p>Modern Luxury House</p>
-</div>
-</div> 
-
-<div class="project-card">
-<img src="project5.jpg">
-<div class="project-overlay">
-<h3>Spanish House DHA Phase 8</h3>
-<p>Contemporary Residential Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project2.jpg">
-<div class="project-overlay">
-<h3>Shalamar Town Houses</h3>
-<p>Premium Town House Development</p>
-</div>
-</div>
-  
-<div class="project-card">
-<img src="project1.jpg">
-<div class="project-overlay">
-<h3>L33 DHA Phase 8</h3>
-<p>Luxury commercial Construction</p>
-</div>
-</div>
-  
-<div class="project-card">
-<img src="project3.jpg">
-<div class="project-overlay">
-<h3>Falettis Express Hotel</h3>
-<p>Luxury Hospitality Project</p>
-</div>
-</div>
-
-<div class="project-card">
-<img src="project7.jpg">
-<div class="project-overlay">
-<h3>Barkat Market Renovation</h3>
-<p>Commercial Renovation Project</p>
-</div>
-</div>  
-
-<div class="project-card">
-<img src="project8.jpg">
-<div class="project-overlay">
-<h3>Golding Road Luxury Apartments</h3>
-<p>Luxury Apartments Construction (Ongoing)</p>
-</div>
-</div>
-   
-<div class="project-card">
-<img src="project6.jpg">
-<div class="project-overlay">
-<h3>Subh-e-Noor Social Initiative</h3>
-<p>Community Development Project</p>
-</div>
-</div>
-
-</div>
-
-</section>
-<!-- =====================================================
-TEAM
-===================================================== -->
-
-<section id="team" class="section">
-
-<div class="section-title">
-<span>OUR TEAM</span>
-<h2>Meet Our Leadership</h2>
-</div>
-
-<div class="team-grid">
-
-<div class="team-card">
-<img src="ceo.jpg">
-<h3>Khurram Majeed</h3>
-<p>Payment & Procurement Manager / CEO</p>
-<span>0322-2334488</span>
-</div>
-
-<div class="team-card">
-<img src="usman.jpg">
-<h3>Usman Saboor</h3>
-<p>Cost & Project Management Manager</p>
-<span>0323-8400999</span>
-</div>
-
-<div class="team-card">
-<img src="abubakar.jpg">
-<h3>Abubakar Khan</h3>
-<p>Design & Innovation Manager</p>
-<span>0323-4540454</span>
-</div>
-
-<div class="team-card">
-<img src="zia.jpg">
-<h3>Zia Shah</h3>
-<p>Real Estate Agent (Residential & Commercial)</p>
-<span>0322-6962272</span>
-</div>
-
-<div class="team-card">
-<img src="raza.jpg">
-<h3>Muhammad Raza Advocate</h3>
-<p>Legal & Account Manager</p>
-<span>0322-5121222</span>
-</div>
-
-  <div class="team-card">
-<img src="arslan.jpg">
-<h3>Muhammad Arslan</h3>
-<p>Architect</p>
-<span>0320-4319470</span>
-</div>
-  
-</div>
-
-</section>
-
-<!-- =====================================================
-LOCATION
-===================================================== -->
-<section id="location" class="section">
-
-<div class="section-title">
-<span>OUR OFFICE</span>
-<h2>Company Location</h2>
-</div>
-
-<div class="location-box">
-
-<i class="fa-solid fa-location-dot"></i>
-
-<h3>K&J Chesti Builders & Contractors</h3>
-
-<p>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-<!-- GOOGLE MAP -->
-<div class="map-container">
-
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4070.1879657240615!2d74.4373508261268!3d31.512641197522914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190f17430ab2f3%3A0x3999aa76713a392!2sBlock%20L%20Air%20Avenue%2C%20Lahore%2C%20Pakistan!5e1!3m2!1sen!2s!4v1778572817459!5m2!1sen!2s"
-width="100%"
-height="450"
-style="border:0;"
-allowfullscreen=""
-loading="lazy"
-referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-CONTACT
-===================================================== -->
-
-<section id="contact" class="section">
-
-<div class="section-title">
-<span>CONTACT US</span>
-<h2>Let’s Build Your Dream Project</h2>
-</div>
-
-<div class="contact-grid">
-
-<div class="contact-box">
-
-<h3>Get In Touch</h3>
-
-<p>
-We specialize in luxury homes, commercial buildings,
-hotels, interiors and premium real estate solutions.
-</p>
-
-  <p>
-<i class="fa-solid fa-envelope"></i>
-
-<a href="mailto:"kjchestibuilders@gmail.com" style="color:#d4af37;text-decoration:none;">
-kjchestibuilders@gmail.com
-</a>
-</p>
-  
-<p>
-<i class="fa-solid fa-phone"></i>
-0322-2334488
-</p>
-
-<p>
-<i class="fa-solid fa-phone"></i>
-0329-9922200
-</p>
-
-<p>
-<i class="fa-solid fa-location-dot"></i>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-</div>
-
-<div class="contact-box">
-
-<form>
-
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Your Email">
-
-<textarea placeholder="Tell us about your project"></textarea>
-
-<button class="btn btn-gold">
-Send Message
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- =====================================================
-FOOTER
-===================================================== -->
-
-<footer>
-
-<p>
-© 2026 K&J Chesti Builders & Contractors
-</p>
-
-<p>
-Luxury Construction • Real Estate • Interior Design
-</p>
-
-</footer>
-
-<!-- =====================================================
-WHATSAPP
-===================================================== -->
-
-<a href="https://wa.me/923299922200" class="whatsapp">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<!-- =====================================================
-COUNTER
-===================================================== -->
-
-<script>
-
-const counters=document.querySelectorAll('.counter');
-
-counters.forEach(counter=>{
-
-const updateCounter=()=>{
-
-const target=+counter.getAttribute('data-target');
-const count=+counter.innerText;
-
-const increment=target/80;
-
-if(count<target){
-
-counter.innerText=Math.ceil(count+increment);
-
-setTimeout(updateCounter,30);
-
-}else{
-
-counter.innerText=target;
-
-}
-
-};
-
-updateCounter();
-
-});
-
-</script>
 
 </body>
 </html>
