@@ -1,9 +1,7 @@
-```html id="kj-full-premium-index"
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,29 +12,15 @@
 <!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <!-- FONT AWESOME -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
 <style>
 
-/* =========================================================
-GLOBAL
-========================================================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{
 font-family:'Poppins',sans-serif;
 background:#050816;
@@ -44,575 +28,105 @@ color:white;
 overflow-x:hidden;
 }
 
-/* =========================================================
-BACKGROUND
-========================================================= */
-
 body::before{
 content:'';
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;width:100%;height:100%;
 background:
 radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 25%),
 radial-gradient(circle at bottom right, rgba(212,175,55,0.10), transparent 30%);
 z-index:-2;
 }
 
-.hero-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop') center/cover;
-opacity:0.12;
-z-index:-3;
-}
-
-/* =========================================================
-NAVBAR
-========================================================= */
+.hero-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop') center/cover;opacity:0.12;z-index:-3;}
 
 .navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:10px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-z-index:1000;
-backdrop-filter:blur(20px);
-background:rgba(0,0,0,0.35);
-border-bottom:1px solid rgba(255,255,255,0.08);
+position:fixed;top:0;left:0;width:100%;padding:10px 5%;display:flex;align-items:center;justify-content:space-between;z-index:1000;backdrop-filter:blur(20px);background:rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.nav-left{
-width:220px;
-display:flex;
-align-items:center;
-}
-
-.logo{
-width:90px;
-height:90px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #d4af37;
-box-shadow:0 0 35px rgba(212,175,55,0.7);
-background:white;
-}
-
-.nav-center{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-text-align:center;
-}
-
-.nav-center h2{
-font-size:30px;
-font-weight:700;
-color:#d4af37;
-white-space:nowrap;
-}
-
-.nav-center p{
-font-size:12px;
-letter-spacing:5px;
-color:white;
-margin-top:4px;
-}
-
-.nav-links{
-display:flex;
-gap:28px;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-position:relative;
-transition:0.4s;
-}
-
-.nav-links a::after{
-content:'';
-position:absolute;
-left:0;
-bottom:-5px;
-width:0%;
-height:2px;
-background:#d4af37;
-transition:0.4s;
-}
-
-.nav-links a:hover{
-color:#d4af37;
-}
-
-.nav-links a:hover::after{
-width:100%;
-}
-
-/* =========================================================
-HERO
-========================================================= */
-
-.hero{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:90px 5% 30px;
-position:relative;
-overflow:hidden;
-}
-
-.hero-content{
-max-width:1000px;
-width:100%;
-margin:auto;
-z-index:2;
-animation:fadeUp 1.5s ease;
-}
-
-.hero-tag{
-display:inline-block;
-padding:18px 38px;
-border-radius:60px;
-background:rgba(212,175,55,0.12);
-border:1px solid rgba(212,175,55,0.4);
-color:#d4af37;
-font-size:24px;
-font-weight:700;
-letter-spacing:2px;
-margin-bottom:20px;
-text-align:center;
-box-shadow:0 10px 30px rgba(212,175,55,0.15);
-}
-
-.hero p{
-font-size:20px;
-line-height:1.9;
-color:#d1d5db;
-margin:0 auto 30px;
-max-width:850px;
-}
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:16px 35px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-transition:0.5s;
-display:inline-flex;
-align-items:center;
-gap:10px;
-font-size:15px;
-}
-
-.btn-gold{
-background:linear-gradient(135deg,#d4af37,#f7d774);
-color:black;
-box-shadow:0 10px 35px rgba(212,175,55,0.35);
-}
-
-.btn-gold:hover{
-transform:translateY(-5px);
-}
-
-.btn-dark{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-color:white;
-}
-
-.btn-dark:hover{
-background:rgba(255,255,255,0.1);
-}
-
-.hero-3d{
-position:absolute;
-right:0;
-top:120px;
-width:700px;
-opacity:0.15;
-animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{
-transform:translateY(0px);
-}
-50%{
-transform:translateY(-25px);
-}
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0px);
-}
-}
-
-/* =========================================================
-SECTION
-========================================================= */
-
-.section{
-padding:80px 5%;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:45px;
-}
-.section-title span{
-color:#d4af37;
-letter-spacing:2px;
-font-size:13px;
-}
-
-.section-title h2{
-font-size:52px;
-margin-top:10px;
-}
-
-/* =========================================================
-SERVICES
-========================================================= */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-gap:22px;
-}
-
-.service-card{
-background:rgba(255,255,255,0.05);
-padding:35px 30px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.5s;
-}
+.nav-left{width:220px;display:flex;align-items:center;}
+.logo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #d4af37;box-shadow:0 0 35px rgba(212,175,55,0.7);background:white;}
 
-.service-card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
-}
-
-.service-icon{
-font-size:45px;
-color:#d4af37;
-margin-bottom:20px;
-}
-
-.service-card h3{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.service-card p{
-color:#d1d5db;
-line-height:1.8;
-}
-
-/* =========================================================
-PROJECTS
-========================================================= */
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:22px;
-}
-
-.project-card{
-height:390px;
-border-radius:30px;
-overflow:hidden;
-position:relative;
-}
-
-.project-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:0.7s;
-}
-
-.project-card:hover img{
-transform:scale(1.1);
-}
-
-.project-overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:30px;
-background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);
-}
-
-.project-overlay h3{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.project-overlay p{
-color:#d1d5db;
-}
-
-/* =========================================================
-TEAM
-========================================================= */
-
-.team-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:22px;
-}
-
-.team-card{
-background:rgba(255,255,255,0.05);
-padding:28px;
-border-radius:30px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.5s;
-}
-
-.team-card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
-}
-
-.team-card img{
-width:140px;
-height:140px;
-object-fit:cover;
-border-radius:50%;
-border:3px solid #d4af37;
-margin-bottom:20px;
-}
+.nav-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center;}
+.nav-center h2{font-size:30px;font-weight:700;color:#d4af37;white-space:nowrap;}
+.nav-center p{font-size:12px;letter-spacing:5px;color:white;margin-top:4px;}
 
-.team-card h3{
-font-size:25px;
-margin-bottom:10px;
-}
-
-.team-card p{
-color:#d1d5db;
-line-height:1.7;
-margin-bottom:10px;
-}
-
-.team-card span{
-color:#d4af37;
-font-weight:600;
-}
-
-/* =========================================================
-LOCATION
-========================================================= */
-
-.location-box{
-background:rgba(255,255,255,0.05);
-padding:40px;
-border-radius:35px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.location-box i{
-font-size:60px;
-color:#d4af37;
-margin-bottom:20px;
-}
-
-.location-box h3{
-font-size:38px;
-margin-bottom:15px;
-}
-
-.location-box p{
-color:#d1d5db;
-font-size:18px;
-}
-
-.map-container{
-margin-top:35px;
-border-radius:25px;
-overflow:hidden;
-border:2px solid rgba(212,175,55,0.3);
-}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:white;text-decoration:none;font-size:14px;font-weight:500;position:relative;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:#d4af37;transition:0.4s;}
+.nav-links a:hover{color:#d4af37;}
+.nav-links a:hover::after{width:100%;}
 
-.map-container iframe{
-width:100%;
-display:block;
-}
-
-/* =========================================================
-CONTACT
-========================================================= */
-
-.contact-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-}
-
-.contact-box{
-background:rgba(255,255,255,0.05);
-padding:35px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.contact-box h3{
-font-size:38px;
-margin-bottom:20px;
-}
+.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:90px 5% 30px;position:relative;}
+.hero-content{max-width:1000px;margin:auto;}
+.hero-tag{display:inline-block;padding:18px 38px;border-radius:60px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.4);color:#d4af37;font-size:24px;font-weight:700;}
+.hero p{font-size:20px;line-height:1.9;color:#d1d5db;margin:0 auto 30px;max-width:850px;}
+.hero-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.btn{padding:16px 35px;border-radius:50px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px;}
+.btn-gold{background:linear-gradient(135deg,#d4af37,#f7d774);color:black;}
+.btn-dark{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:white;}
 
-.contact-box p{
-color:#d1d5db;
-margin-bottom:15px;
-line-height:1.8;
-}
-
-form{
-display:flex;
-flex-direction:column;
-gap:18px;
-}
+.section{padding:80px 5%;}
+.section-title{text-align:center;margin-bottom:45px;}
+.section-title span{color:#d4af37;font-size:13px;letter-spacing:2px;}
+.section-title h2{font-size:52px;margin-top:10px;}
 
-input,
-textarea{
-padding:16px;
-border:none;
-outline:none;
-border-radius:14px;
-background:#111827;
-color:white;
-font-family:'Poppins',sans-serif;
-}
+.services-grid,.projects-grid,.team-grid{display:grid;gap:22px;}
+.services-grid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr));}
+.projects-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
+.team-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
 
-textarea{
-height:140px;
-resize:none;
-}
+.service-card,.team-card{background:rgba(255,255,255,0.05);padding:30px;border-radius:30px;border:1px solid rgba(255,255,255,0.08);transition:0.5s;}
+.service-card:hover,.team-card:hover{transform:translateY(-10px);border-color:#d4af37;}
 
-/* =========================================================
-FOOTER
-========================================================= */
+.project-card{height:390px;border-radius:30px;overflow:hidden;position:relative;}
+.project-card img{width:100%;height:100%;object-fit:cover;transition:0.7s;}
+.project-card:hover img{transform:scale(1.1);}
+.project-overlay{position:absolute;bottom:0;width:100%;padding:30px;background:linear-gradient(to top,rgba(0,0,0,0.95),transparent);}
 
-footer{
-padding:20px 5%;
-border-top:1px solid rgba(255,255,255,0.08);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:10px;
-}
+.team-card img{width:140px;height:140px;border-radius:50%;border:3px solid #d4af37;margin-bottom:20px;object-fit:cover;}
 
-footer p{
-color:#94a3b8;
-}
+.location-box,.contact-box{background:rgba(255,255,255,0.05);padding:35px;border-radius:30px;border:1px solid rgba(255,255,255,0.08);}
 
-/* =========================================================
-WHATSAPP
-========================================================= */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;}
 
-.whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-width:70px;
-height:70px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#25D366;
-color:white;
-font-size:30px;
-text-decoration:none;
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-z-index:999;
-}
+input,textarea{width:100%;padding:16px;border-radius:14px;border:none;outline:none;background:#111827;color:white;}
+textarea{height:140px;resize:none;}
 
-/* =========================================================
-RESPONSIVE
-========================================================= */
+footer{padding:20px 5%;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;}
 
-/* =========================================================
-PREMIUM MOBILE RESPONSIVE
-========================================================= */
+.whatsapp{position:fixed;bottom:25px;right:25px;width:70px;height:70px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:30px;}
 
+/* PREMIUM MOBILE RESPONSIVE */
 @media(max-width:1000px){
-
-/* NAVBAR */
-.navbar{
-padding:12px 4%;
-height:85px;
+.navbar{padding:12px 4%;height:85px;}
+.logo{width:58px;height:58px;}
+.nav-center h2{font-size:20px;white-space:normal;max-width:280px;}
+.nav-center p{font-size:9px;}
+.nav-links{display:none;}
+.hero{padding:95px 5% 40px;}
+.section-title h2{font-size:34px;}
+.projects-grid,.team-grid{grid-template-columns:1fr;}
+.hero p{font-size:16px;}
+.hero-tag{font-size:18px;}
 }
 
-.logo{
-width:58px;
-height:58px;
+@media(max-width:600px){
+.logo{width:52px;height:52px;}
+.nav-center h2{font-size:16px;}
+.hero-tag{font-size:15px;}
+.section-title h2{font-size:28px;}
+.project-card{height:280px;}
 }
 
-/* COMPANY NAME */
-.nav-center h2{
-font-size:20px;
-line-height:1.2;
-white-space:normal;
-max-width:280px;
-margin:auto;
-}
+</style>
+</head>
 
-.nav-center p{
-font-size:9px;
-letter-spacing:4px;
-margin-top:3px;
-}
+<body>
 
-.nav-links{
-display:none;
-}
-
-/* HERO SECTION */
-.hero{
-padding:95px 5% 40px;
-min-height:auto;
-}
-
-/* (rest remains same...) */
-
-<!-- NAVBAR -->
+<div class="hero-bg"></div>
 
 <nav class="navbar">
-
 <div class="nav-left">
 <img src="logo.png" class="logo">
 </div>
@@ -629,366 +143,88 @@ min-height:auto;
 <a href="#location">Location</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
-
 <div class="hero-content">
-
-<div class="hero-tag">
-Reliable Construction Company In Lahore
-</div>
-
-<p>
-K&J Chesti Builders & Contractors delivers elite construction,
-luxury residential villas, hotels, commercial projects,
-renovations and premium interiors with timeless elegance,
-modern innovation and unmatched quality standards.
-</p>
+<div class="hero-tag">Reliable Construction Company In Lahore</div>
+<p>K&J Chesti Builders delivers luxury construction, villas, hotels, commercial projects and interiors.</p>
 
 <div class="hero-buttons">
-
-<a href="https://wa.me/923299922200" class="btn btn-gold">
-<i class="fa-brands fa-whatsapp"></i>
-Get Free Consultation
-</a>
-
-<a href="#projects" class="btn btn-dark">
-View Projects
-</a>
-
+<a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i>Get Free Consultation</a>
+<a href="#projects" class="btn btn-dark">View Projects</a>
 </div>
-
 </div>
-
-<img src="logo.png" class="hero-3d">
-
 </section>
 
 <!-- SERVICES -->
-
 <section id="services" class="section">
-
-<div class="section-title">
-<span>OUR SERVICES</span>
-<h2>Reliable Construction Solutions</h2>
-</div>
-
+<div class="section-title"><span>OUR SERVICES</span><h2>Reliable Construction Solutions</h2></div>
 <div class="services-grid">
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-building"></i>
+<div class="service-card"><h3>Commercial Construction</h3><p>Luxury offices, plazas and hotels.</p></div>
+<div class="service-card"><h3>Luxury Villas</h3><p>Modern residential architecture.</p></div>
+<div class="service-card"><h3>Interior Design</h3><p>Premium finishing and renovation.</p></div>
+<div class="service-card"><h3>Renovation</h3><p>Transforming old spaces.</p></div>
 </div>
-<h3>Commercial Construction</h3>
-<p>High-end offices, plazas, hotels and commercial projects with luxury standards.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-house"></i>
-</div>
-<h3>Luxury Villas</h3>
-<p>Modern houses and premium residential developments with elegant architecture.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-paint-roller"></i>
-</div>
-<h3>International Projects</h3>
-<p>Luxury interior solutions with premium aesthetics and elegant finishes.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-</div>
-<h3>Interior Design & Renovation</h3>
-<p>Transforming ordinary spaces into modern premium environments.</p>
-</div>
-
-</div>
-
 </section>
 
 <!-- PROJECTS -->
-
-<!-- =====================================================
-PROJECTS
-===================================================== -->
-
 <section id="projects" class="section">
-
-<div class="section-title">
-<span>OUR PORTFOLIO</span>
-<h2>Signature Projects in Lahore</h2>
-</div>
-
+<div class="section-title"><span>PORTFOLIO</span><h2>Our Projects</h2></div>
 <div class="projects-grid">
-
-<!-- PROJECT 1 -->
-<div class="project-card">
-<img src="project1.jpg">
-<div class="project-overlay">
-<h3>L33 DHA Phase 8</h3>
-<p>Luxury Commercial Construction</p>
+<div class="project-card"><img src="project1.jpg"><div class="project-overlay"><h3>DHA Phase 8</h3></div></div>
+<div class="project-card"><img src="project2.jpg"><div class="project-overlay"><h3>Town Houses</h3></div></div>
+<div class="project-card"><img src="project3.jpg"><div class="project-overlay"><h3>Hotel Project</h3></div></div>
+<div class="project-card"><img src="project4.jpg"><div class="project-overlay"><h3>Modern House</h3></div></div>
+<div class="project-card"><img src="project5.jpg"><div class="project-overlay"><h3>Spanish House</h3></div></div>
+<div class="project-card"><img src="project6.jpg"><div class="project-overlay"><h3>Social Project</h3></div></div>
+<div class="project-card"><img src="project7.jpg"><div class="project-overlay"><h3>Renovation</h3></div></div>
+<div class="project-card"><img src="project8.jpg"><div class="project-overlay"><h3>Apartments</h3></div></div>
 </div>
-</div>
-
-<!-- PROJECT 2 -->
-<div class="project-card">
-<img src="project2.jpg">
-<div class="project-overlay">
-<h3>Shalamar Town Houses</h3>
-<p>Premium Town House Development</p>
-</div>
-</div>
-
-<!-- PROJECT 3 -->
-<div class="project-card">
-<img src="project3.jpg">
-<div class="project-overlay">
-<h3>Falettis Express Hotel</h3>
-<p>Luxury Hospitality Project</p>
-</div>
-</div>
-
-<!-- PROJECT 4 -->
-<div class="project-card">
-<img src="project4.jpg">
-<div class="project-overlay">
-<h3>Modern House Eden City</h3>
-<p>Modern Luxury Residential House</p>
-</div>
-</div>
-
-<!-- PROJECT 5 -->
-<div class="project-card">
-<img src="project5.jpg">
-<div class="project-overlay">
-<h3>Spanish House DHA Phase 8</h3>
-<p>Contemporary Residential Project</p>
-</div>
-</div>
-
-<!-- PROJECT 6 -->
-<div class="project-card">
-<img src="project6.jpg">
-<div class="project-overlay">
-<h3>Subh-e-Noor Social Initiative</h3>
-<p>Community Development Project</p>
-</div>
-</div>
-
-<!-- PROJECT 7 -->
-<div class="project-card">
-<img src="project7.jpg">
-<div class="project-overlay">
-<h3>Barkat Market Renovation</h3>
-<p>Commercial Renovation Project</p>
-</div>
-</div>
-
-<!-- PROJECT 8 -->
-<div class="project-card">
-<img src="project8.jpg">
-<div class="project-overlay">
-<h3>Golding Road Luxury Apartments</h3>
-<p>Luxury Apartments Construction (Ongoing)</p>
-</div>
-</div>
-
-</div>
-
-</section>
 </section>
 
 <!-- TEAM -->
-
-<!-- =====================================================
-TEAM
-===================================================== -->
-
 <section id="team" class="section">
-
-<div class="section-title">
-<span>OUR TEAM</span>
-<h2>Meet Our Leadership</h2>
-</div>
-
+<div class="section-title"><span>TEAM</span><h2>Leadership</h2></div>
 <div class="team-grid">
-
-<!-- MEMBER 1 -->
-<div class="team-card">
-<img src="ceo.jpg">
-<h3>Khurram Majeed</h3>
-<p>Payment & Procurement Manager / CEO</p>
-<span>0322-2334488</span>
+<div class="team-card"><img src="ceo.jpg"><h3>Khurram Majeed</h3><span>CEO</span></div>
+<div class="team-card"><img src="usman.jpg"><h3>Usman Saboor</h3><span>Manager</span></div>
+<div class="team-card"><img src="abubakar.jpg"><h3>Abubakar Khan</h3><span>Design</span></div>
+<div class="team-card"><img src="zia.jpg"><h3>Zia Shah</h3><span>Agent</span></div>
+<div class="team-card"><img src="raza.jpg"><h3>Muhammad Raza</h3><span>Legal</span></div>
+<div class="team-card"><img src="arslan.jpg"><h3>Muhammad Arslan</h3><span>Architect</span></div>
 </div>
-
-<!-- MEMBER 2 -->
-<div class="team-card">
-<img src="usman.jpg">
-<h3>Usman Saboor</h3>
-<p>Cost & Project Management Manager</p>
-<span>0323-8400999</span>
-</div>
-
-<!-- MEMBER 3 -->
-<div class="team-card">
-<img src="abubakar.jpg">
-<h3>Abubakar Khan</h3>
-<p>Design & Innovation Manager</p>
-<span>0323-4540454</span>
-</div>
-
-<!-- MEMBER 4 -->
-<div class="team-card">
-<img src="zia.jpg">
-<h3>Zia Shah</h3>
-<p>Real Estate Agent (Residential & Commercial)</p>
-<span>0322-6962272</span>
-</div>
-
-<!-- MEMBER 5 -->
-<div class="team-card">
-<img src="raza.jpg">
-<h3>Muhammad Raza Advocate</h3>
-<p>Legal & Account Manager</p>
-<span>0322-5121222</span>
-</div>
-
-<!-- MEMBER 6 -->
-<div class="team-card">
-<img src="arslan.jpg">
-<h3>Muhammad Arslan</h3>
-<p>Architect</p>
-<span>0320-4319470</span>
-</div>
-
-</div>
-
-</section>
 </section>
 
 <!-- LOCATION -->
-
 <section id="location" class="section">
-
-<div class="section-title">
-<span>OUR OFFICE</span>
-<h2>Company Location</h2>
-</div>
-
+<div class="section-title"><span>LOCATION</span><h2>Office</h2></div>
 <div class="location-box">
-
-<i class="fa-solid fa-location-dot"></i>
-
-<h3>K&J Chesti Builders & Contractors</h3>
-
-<p>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-<div class="map-container">
-
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4070.1879657240615!2d74.4373508261268!3d31.512641197522914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190f17430ab2f3%3A0x3999aa76713a392!2sBlock%20L%20Air%20Avenue%2C%20Lahore%2C%20Pakistan!5e1!3m2!1sen!2s!4v1778572817459!5m2!1sen!2s"
-height="450"
-style="border:0;"
-allowfullscreen=""
-loading="lazy">
-</iframe>
-
+<p>DHA Phase 8 Lahore Cantt</p>
 </div>
-
-</div>
-
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact" class="section">
-
-<div class="section-title">
-<span>CONTACT US</span>
-<h2>Let’s Build Your Dream Project</h2>
-</div>
-
+<div class="section-title"><span>CONTACT</span><h2>Get in Touch</h2></div>
 <div class="contact-grid">
-
+<div class="contact-box"><p>Email: kjchestibuilders@gmail.com</p><p>Phone: 0322-2334488</p></div>
 <div class="contact-box">
-
-<h3>Get In Touch</h3>
-
-<p>
-We specialize in luxury homes, commercial buildings,
-hotels, interiors and premium real estate solutions.
-</p>
-
-<p>
-<i class="fa-solid fa-envelope"></i>
-kjchestibuilders@gmail.com
-</p>
-
-<p>
-<i class="fa-solid fa-phone"></i>
-0322-2334488
-</p>
-
-<p>
-<i class="fa-solid fa-location-dot"></i>
-DHA Phase 8 Lahore Cantt
-</p>
-
-</div>
-
-<div class="contact-box">
-
 <form>
-
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Your Email">
-
-<textarea placeholder="Tell us about your project"></textarea>
-
-<button class="btn btn-gold">
-Send Message
-</button>
-
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Message"></textarea>
 </form>
-
 </div>
-
 </div>
-
 </section>
 
-<!-- FOOTER -->
-
 <footer>
-
-<p>
-© 2026 K&J Chesti Builders & Contractors
-</p>
-
-<p>
-Luxury Construction • Real Estate • Interior Design
-</p>
-
+<p>© 2026 K&J Chesti Builders</p>
+<p>Luxury Construction</p>
 </footer>
 
-<!-- WHATSAPP -->
-
-<a href="https://wa.me/923299922200" class="whatsapp">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
+<a class="whatsapp" href="https://wa.me/923299922200"><i class="fa-brands fa-whatsapp"></i></a>
 
 </body>
 </html>
-```
