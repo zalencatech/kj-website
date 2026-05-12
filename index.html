@@ -31,13 +31,15 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ================= LUXURY LOADER ================= */
+/* LOADER */
 #loader{
 position:fixed;
 width:100%;height:100%;
 background:#050816;
 z-index:9999;
-display:flex;\align-items:center;\justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 flex-direction:column;
 }
 .loader-circle{
@@ -49,7 +51,7 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-/* ================= GLASS NAVBAR ================= */
+/* NAVBAR GLASS */
 .navbar{
 position:fixed;
 top:0;left:0;
@@ -64,16 +66,16 @@ backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.logo{width:85px;height:85px;border-radius:50%;border:3px solid #d4af37;box-shadow:0 0 25px rgba(212,175,55,0.5);}
+.logo{width:85px;height:85px;border-radius:50%;border:3px solid #d4af37;box-shadow:0 0 25px rgba(212,175,55,0.5);background:white;}
 
 .nav-center{position:absolute;left:50%;transform:translateX(-50%);text-align:center;}
 .nav-center h2{color:#d4af37;font-size:28px;}
 .nav-center p{font-size:12px;letter-spacing:4px;}
 
-.nav-links a{color:white;margin:0 12px;text-decoration:none;transition:0.3s;}
+.nav-links a{color:white;margin:0 12px;text-decoration:none;}
 .nav-links a:hover{color:#d4af37;}
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -81,7 +83,6 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:120px 5% 50px;
-position:relative;
 }
 .hero-tag{
 display:inline-block;
@@ -95,81 +96,59 @@ margin-bottom:20px;
 }
 .hero p{color:#d1d5db;font-size:18px;max-width:850px;margin:auto;line-height:1.9;}
 
-/* ================= BUTTONS ================= */
 .btn{padding:15px 32px;border-radius:50px;text-decoration:none;font-weight:600;transition:0.4s;}
 .btn-gold{background:linear-gradient(135deg,#d4af37,#f7d774);color:black;}
 .btn-dark{border:1px solid rgba(255,255,255,0.1);color:white;}
 .btn:hover{transform:translateY(-5px);}
 
-/* ================= 3D CARD EFFECT ================= */
+/* 3D PROJECT CARD */
 .project-card{
 height:380px;
 border-radius:25px;
 overflow:hidden;
 position:relative;
-transform-style:preserve-3d;
 transition:0.5s;
 }
 .project-card:hover{
-transform:rotateY(8deg) rotateX(8deg) scale(1.05);
+transform:scale(1.05) rotateY(6deg) rotateX(6deg);
 box-shadow:0 25px 50px rgba(0,0,0,0.6);
 }
 .project-card img{width:100%;height:100%;object-fit:cover;}
 .project-overlay{
-position:absolute;bottom:0;width:100%;padding:25px;
+position:absolute;
+bottom:0;
+width:100%;
+padding:25px;
 background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
 }
 
-/* ================= SECTIONS ================= */
 .section{padding:80px 5%;}
 .section-title{text-align:center;margin-bottom:40px;}
 .section-title span{color:#d4af37;letter-spacing:2px;}
 .section-title h2{font-size:48px;}
 
-/* ================= GRIDS ================= */
-.services-grid,.projects-grid,.team-grid{
-display:grid;gap:22px;
-}
+.services-grid,.projects-grid,.team-grid{display:grid;gap:22px;}
 .services-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
 .projects-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
 .team-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
 
-/* ================= CARDS ================= */
 .service-card,.team-card,.contact-box,.location-box{
 background:rgba(255,255,255,0.05);
 padding:30px;border-radius:25px;
 border:1px solid rgba(255,255,255,0.08);
-transition:0.4s;
 }
-.service-card:hover,.team-card:hover{transform:translateY(-10px);border-color:#d4af37;}
 
-.team-card img{width:120px;height:120px;border-radius:50%;border:3px solid #d4af37;margin-bottom:15px;}
+.team-card img{width:120px;height:120px;border-radius:50%;border:3px solid #d4af37;margin-bottom:15px;object-fit:cover;}
 
-/* ================= MAP FRAME ================= */
-.map-frame{
-padding:15px;
-border-radius:25px;
-background:linear-gradient(135deg,#d4af37,#111);
-}
-.map-frame iframe{width:100%;border-radius:18px;}
-
-/* ================= CONTACT ================= */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;}
 input,textarea{width:100%;padding:14px;border-radius:12px;border:none;background:#111827;color:white;margin-bottom:10px;}
-textarea{height:130px;}
+textarea{height:130px;resize:none;}
 
-/* ================= FOOTER ================= */
 footer{padding:20px 5%;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.1);}
 
-/* ================= WHATSAPP ================= */
-.whatsapp{
-position:fixed;bottom:25px;right:25px;width:70px;height:70px;
-border-radius:50%;background:#25D366;
-display:flex;align-items:center;justify-content:center;
-font-size:30px;color:white;
-}
+.whatsapp{position:fixed;bottom:25px;right:25px;width:70px;height:70px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:30px;color:white;}
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media(max-width:1000px){
 .nav-links{display:none;}
 .section-title h2{font-size:34px;}
@@ -214,40 +193,58 @@ font-size:30px;color:white;
 <section class="hero" data-aos="fade-up">
 <div>
 <div class="hero-tag">Reliable Construction Company In Lahore</div>
-<p>Luxury construction, villas, hotels, commercial projects and interiors with premium modern design.</p>
+<p>K&J Chesti Builders & Contractors delivers luxury construction, villas, hotels, commercial projects and interiors with premium quality and modern design.</p>
 <a href="https://wa.me/923299922200" class="btn btn-gold">Get Consultation</a>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section" data-aos="fade-up">
+<div class="section-title"><span>SERVICES</span><h2>What We Do</h2></div>
+<div class="services-grid">
+<div class="service-card">Commercial Construction</div>
+<div class="service-card">Luxury Villas</div>
+<div class="service-card">Interior Design</div>
+<div class="service-card">Renovation</div>
 </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-<div class="section-title" data-aos="fade-up"><span>PROJECTS</span><h2>Our Work</h2></div>
+<div class="section-title"><span>PROJECTS</span><h2>Our Work</h2></div>
 <div class="projects-grid">
-<div class="project-card" data-aos="zoom-in"><img src="project1.jpg"><div class="project-overlay"><h3>DHA Phase 8</h3></div></div>
-<div class="project-card" data-aos="zoom-in"><img src="project2.jpg"><div class="project-overlay"><h3>Town Houses</h3></div></div>
-<div class="project-card" data-aos="zoom-in"><img src="project3.jpg"><div class="project-overlay"><h3>Hotel</h3></div></div>
-<div class="project-card" data-aos="zoom-in"><img src="project4.jpg"><div class="project-overlay"><h3>Modern House</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project1.jpg"><div class="project-overlay"><h3>L33 DHA Phase 8</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project2.jpg"><div class="project-overlay"><h3>Shalamar Town Houses</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project3.jpg"><div class="project-overlay"><h3>Falettis Express Hotel</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project4.jpg"><div class="project-overlay"><h3>Modern House Eden City</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project5.jpg"><div class="project-overlay"><h3>Spanish House DHA Phase 8</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project6.jpg"><div class="project-overlay"><h3>Subh-e-Noor Social Initiative</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project7.jpg"><div class="project-overlay"><h3>Barkat Market Renovation</h3></div></div>
+<div class="project-card" data-aos="zoom-in"><img src="project8.jpg"><div class="project-overlay"><h3>Golding Road Apartments (Ongoing)</h3></div></div>
 </div>
 </section>
 
 <!-- TEAM -->
 <section id="team" class="section">
-<div class="section-title" data-aos="fade-up"><span>TEAM</span><h2>Leadership</h2></div>
+<div class="section-title"><span>TEAM</span><h2>Leadership</h2></div>
 <div class="team-grid">
 <div class="team-card" data-aos="flip-left"><img src="ceo.jpg"><h3>Khurram Majeed</h3><p>CEO</p><span>0322-2334488</span></div>
 <div class="team-card" data-aos="flip-left"><img src="usman.jpg"><h3>Usman Saboor</h3><p>Manager</p><span>0323-8400999</span></div>
 <div class="team-card" data-aos="flip-left"><img src="abubakar.jpg"><h3>Abubakar Khan</h3><p>Design</p><span>0323-4540454</span></div>
+<div class="team-card" data-aos="flip-left"><img src="zia.jpg"><h3>Zia Shah</h3><p>Agent</p><span>0322-6962272</span></div>
+<div class="team-card" data-aos="flip-left"><img src="raza.jpg"><h3>Muhammad Raza</h3><p>Legal</p><span>0322-5121222</span></div>
+<div class="team-card" data-aos="flip-left"><img src="arslan.jpg"><h3>Muhammad Arslan</h3><p>Architect</p><span>0320-4319470</span></div>
 </div>
 </section>
 
 <!-- LOCATION -->
 <section id="location" class="section">
 <div class="section-title"><span>LOCATION</span><h2>Office</h2></div>
-<div class="location-box" data-aos="fade-up">
-<p>L33 2nd Floor, DHA Phase 8 Lahore Cantt</p>
+<div class="location-box">
+<p>L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT</p>
 
 <div class="map-frame">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!" height="350"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4070.1879657240615!2d74.4373508261268!3d31.512641197522914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190f17430ab2f3%3A0x3999aa76713a392!2sBlock%20L%20Air%20Avenue%2C%20Lahore%2C%20Pakistan!5e1!3m2!1sen!2s!4v1778572817459!5m2!1sen!2s" height="350"></iframe>
 </div>
 </div>
 </section>
@@ -256,12 +253,12 @@ font-size:30px;color:white;
 <section id="contact" class="section">
 <div class="section-title"><span>CONTACT</span><h2>Get in Touch</h2></div>
 <div class="contact-grid">
-<div class="contact-box" data-aos="fade-right">
+<div class="contact-box">
 <p>Email: kjchestibuilders@gmail.com</p>
 <p>Phone: 0322-2334488</p>
 <p>WhatsApp: 0329-9922200</p>
 </div>
-<div class="contact-box" data-aos="fade-left">
+<div class="contact-box">
 <input placeholder="Name">
 <input placeholder="Email">
 <textarea placeholder="Message"></textarea>
@@ -277,10 +274,9 @@ font-size:30px;color:white;
 <a class="whatsapp" href="https://wa.me/923299922200"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();
-
-// loader
-window.addEventListener("load",function(){document.getElementById("loader").style.display="none";});
+<script>
+AOS.init();
+window.addEventListener("load",()=>document.getElementById("loader").style.display="none");
 </script>
 
 </body>
