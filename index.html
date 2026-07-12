@@ -1,1139 +1,950 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>K&J Chesti Builders & Contractors</title>
+<title>K&J Chesti Builders & Contractors | Lahore</title>
 <link rel="icon" type="image/png" href="favicon.png">
-</head>
-<!-- GOOGLE FONT -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- FONT AWESOME -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
 <style>
-
 /* =========================================================
-GLOBAL
+   TOKENS
 ========================================================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+:root{
+  --navy:#080b14;
+  --navy-2:#0d1220;
+  --navy-3:#121a2c;
+  --panel:rgba(255,255,255,0.04);
+  --panel-border:rgba(255,255,255,0.09);
+  --gold:#d4af37;
+  --gold-light:#f3d576;
+  --gold-deep:#a5791f;
+  --silver:#c7cdd8;
+  --silver-dim:#8b93a3;
+  --ink:#f3f1ea;
+  --ink-dim:#aab0bd;
+  --serif:'Playfair Display',serif;
+  --sans:'Poppins',sans-serif;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-color:white;
-overflow-x:hidden;
+  font-family:var(--sans);
+  background:var(--navy);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+::selection{background:var(--gold);color:#0a0e1a;}
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--gold-deep));border-radius:10px;}
 
 /* =========================================================
-BACKGROUND EFFECTS
+   BACKDROP
 ========================================================= */
-
 body::before{
-content:'';
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-background:
-radial-gradient(circle at top left, rgba(212,175,55,0.18), transparent 25%),
-radial-gradient(circle at bottom right, rgba(212,175,55,0.10), transparent 30%);
-z-index:-2;
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 8% -5%, rgba(212,175,55,0.16), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 95% 15%, rgba(199,205,216,0.08), transparent 55%),
+    radial-gradient(ellipse 900px 600px at 50% 100%, rgba(212,175,55,0.08), transparent 60%);
+  z-index:-3;
 }
-
-.hero-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1974&auto=format&fit=crop') center/cover;
-opacity:0.12;
-z-index:-3;
+.grain{
+  position:fixed;inset:0;z-index:-2;opacity:0.035;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.skyline-bg{
+  position:fixed;left:0;right:0;bottom:0;height:38vh;z-index:-1;opacity:0.5;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to top, black, transparent);
+  mask-image:linear-gradient(to top, black, transparent);
 }
 
 /* =========================================================
-NAVBAR
+   NAVBAR
 ========================================================= */
-
 .navbar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:18px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-z-index:1000;
-backdrop-filter:blur(20px);
-background:rgba(0,0,0,0.35);
-border-bottom:1px solid rgba(255,255,255,0.08);
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:16px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(18px);
+  background:rgba(8,11,20,0.55);
+  border-bottom:1px solid rgba(212,175,55,0.12);
+  transition:0.4s;
 }
-
-/* LEFT LOGO */
-.nav-left{
-width:220px;
-display:flex;
-align-items:center;
+.navbar.scrolled{
+  padding:10px 5%;
+  background:rgba(8,11,20,0.86);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
-
+.nav-left{display:flex;align-items:center;gap:14px;}
 .logo{
-width:60px;
-height:60px;
-border-radius:50%;
-object-fit:cover;
-border:2px solid #d4af37;
-box-shadow:0 0 25px rgba(212,175,55,0.5);
-background:white;
+  width:54px;height:54px;border-radius:50%;object-fit:cover;
+  background:radial-gradient(circle,#fff 55%,transparent 56%);
+  padding:3px;
+  border:1.5px solid var(--gold);
+  box-shadow:0 0 22px rgba(212,175,55,0.45);
+  transition:0.5s;
 }
-
-/* CENTER TEXT */
-.nav-center{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-text-align:center;
+.navbar.scrolled .logo{width:44px;height:44px;}
+.brandtext h2{
+  font-family:var(--serif);
+  font-size:20px;font-weight:700;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--silver));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1.15;
 }
+.brandtext p{font-size:9px;letter-spacing:4px;color:var(--silver-dim);margin-top:2px;}
 
-.nav-center h2{
-font-size:28px;
-font-weight:700;
-color:#d4af37;
-line-height:1.2;
-white-space:nowrap;
-}
-
-.nav-center p{
-font-size:12px;
-letter-spacing:5px;
-color:white;
-margin-top:4px;
-}
-
-/* RIGHT MENU */
-.nav-links{
-display:flex;
-gap:30px;
-align-items:center;
-}
-
+.nav-links{display:flex;gap:34px;align-items:center;}
 .nav-links a{
-color:white;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-transition:0.4s;
-position:relative;
+  color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:500;
+  letter-spacing:0.4px;position:relative;padding:4px 0;
 }
-
 .nav-links a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
-background:#d4af37;
-transition:0.4s;
+  content:'';position:absolute;bottom:-4px;left:0;width:0%;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--silver));
+  transition:0.35s;
+}
+.nav-links a:hover{color:var(--gold-light);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  padding:10px 22px;border-radius:50px;font-size:13px;font-weight:600;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:#0a0e1a;text-decoration:none;display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 22px rgba(212,175,55,0.28);transition:0.4s;
+}
+.nav-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(212,175,55,0.4);}
+
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1200;}
+.burger span{width:26px;height:2px;background:var(--gold);transition:0.35s;}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+@media(max-width:960px){
+  .nav-links{
+    position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);
+    background:rgba(8,11,20,0.97);backdrop-filter:blur(20px);
+    flex-direction:column;justify-content:center;gap:30px;
+    transform:translateX(100%);transition:0.5s cubic-bezier(.6,0,.2,1);
+    border-left:1px solid rgba(212,175,55,0.2);
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-links a{font-size:17px;}
+  .nav-cta{display:none;}
+  .burger{display:flex;}
+  .brandtext h2{font-size:15px;}
+  .brandtext p{font-size:7px;letter-spacing:2px;}
 }
 
-.nav-links a:hover{
-color:#d4af37;
-}
-
-.nav-links a:hover::after{
-width:100%;
-}
-
-/* MOBILE */
-@media(max-width:1000px){
-
-.nav-center h2{
-font-size:18px;
-}
-
-.nav-center p{
-font-size:10px;
-letter-spacing:2px;
-}
-
-.nav-links{
-display:none;
-}
-
-.logo{
-width:50px;
-height:50px;
-}
-
-}
-
-@media(max-width:600px){
-
-.nav-center h2{
-font-size:14px;
-}
-
-.nav-center p{
-font-size:8px;
-}
-
-}
 /* =========================================================
-HERO SECTION
+   HERO
 ========================================================= */
-
 .hero{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;   /* Horizontal center */
-    align-items: center;       /* Vertical center */
-    padding: 140px 7% 80px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+  min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
+  padding:150px 6% 100px;overflow:hidden;text-align:center;
 }
-
-.hero-content{
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;       /* Center all child elements */
-    justify-content: center;
-    text-align: center;
-    z-index: 2;
+.hero-photo{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(8,11,20,0.55), rgba(8,11,20,0.88) 70%, var(--navy) 100%),
+    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop') center/cover;
+  z-index:-1;
 }
-
-.hero-tag{
-    display: inline-block;
-    margin: 0 auto 30px;
-    padding: 20px 40px;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    border-radius: 50px;
-    background: rgba(212,175,55,0.15);
-    border: 1px solid rgba(212,175,55,0.4);
-    color: #d4af37;
-    text-transform: uppercase;
-    box-shadow: 0 10px 30px rgba(212,175,55,0.15);
-    text-align: center;
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;
+  padding:10px 22px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:3px;
+  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-light);
+  text-transform:uppercase;animation:fadeUp 1s ease both;
 }
-
+.hero-eyebrow i{color:var(--gold);}
+.hero h1{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(38px,6vw,76px);line-height:1.08;max-width:980px;
+  animation:fadeUp 1s 0.15s ease both;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold) 45%,var(--silver));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
 .hero p{
-    font-size: 24px;
-    line-height: 1.9;
-    color: #d1d5db;
-    margin: 0 auto 35px;
-    max-width: 650px;
-    text-align: center;
+  font-size:18px;line-height:1.9;color:var(--ink-dim);
+  max-width:640px;margin:26px auto 40px;
+  animation:fadeUp 1s 0.3s ease both;
 }
-
-.hero-buttons{
-    display: flex;
-    justify-content: center;   /* Center buttons */
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
-}
+.hero-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 0.45s ease both;}
 .btn{
-padding:16px 35px;
-border-radius:50px;
-font-weight:600;
-text-decoration:none;
-transition:0.5s;
-display:inline-flex;
-align-items:center;
-gap:10px;
-font-size:15px;
+  padding:16px 34px;border-radius:50px;font-weight:600;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;font-size:14.5px;transition:0.45s;
 }
-
 .btn-gold{
-background:linear-gradient(135deg,#d4af37,#f7d774);
-color:black;
-box-shadow:0 10px 35px rgba(212,175,55,0.35);
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#0a0e1a;
+  box-shadow:0 12px 34px rgba(212,175,55,0.32);
 }
+.btn-gold:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 18px 44px rgba(212,175,55,0.45);}
+.btn-outline{
+  background:transparent;border:1.5px solid rgba(199,205,216,0.4);color:var(--silver);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-5px);}
 
-.btn-gold:hover{
-transform:translateY(-6px) scale(1.03);
+/* animated skyline rising in hero */
+.hero-skyline{
+  position:absolute;bottom:0;left:0;width:100%;height:220px;z-index:0;pointer-events:none;
 }
+.hero-skyline svg{width:100%;height:100%;display:block;}
+.hero-skyline .bld{transform-origin:bottom;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both;}
+.crane{animation:swing 7s ease-in-out infinite;transform-origin:60px 40px;}
+@keyframes rise{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+@keyframes swing{0%,100%{transform:rotate(0deg);}50%{transform:rotate(3deg);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
 
-.btn-dark{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-color:white;
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--silver-dim);font-size:11px;letter-spacing:2px;
 }
-
-.btn-dark:hover{
-background:rgba(255,255,255,0.1);
-transform:translateY(-5px);
-}
-
-/* =========================================================
-3D FLOATING EFFECT
-========================================================= */
-
-.hero-3d{
-position:absolute;
-right:0;
-top:120px;
-width:700px;
-opacity:0.20;
-animation:float 6s ease-in-out infinite;
-filter:drop-shadow(0 0 40px rgba(212,175,55,0.35));
-}
-
-@keyframes float{
-0%,100%{
-transform:translateY(0px) rotate(0deg);
-}
-50%{
-transform:translateY(-25px) rotate(2deg);
-}
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0px);
-}
-}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 
 /* =========================================================
-STATS
+   REVEAL UTILITY
 ========================================================= */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.show{opacity:1;transform:translateY(0);}
+.stagger.show > *{animation:fadeUp 0.7s ease both;}
+.stagger.show > *:nth-child(1){animation-delay:0.05s;}
+.stagger.show > *:nth-child(2){animation-delay:0.15s;}
+.stagger.show > *:nth-child(3){animation-delay:0.25s;}
+.stagger.show > *:nth-child(4){animation-delay:0.35s;}
+.stagger.show > *:nth-child(5){animation-delay:0.45s;}
+.stagger.show > *:nth-child(6){animation-delay:0.55s;}
+.stagger.show > *:nth-child(7){animation-delay:0.65s;}
+.stagger.show > *:nth-child(8){animation-delay:0.75s;}
 
+/* =========================================================
+   STATS
+========================================================= */
 .stats{
-padding:60px 7%;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
+  padding:70px 6%;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;
+  position:relative;
 }
-
 .stat-card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,0.08);
-padding:40px;
-border-radius:30px;
-transition:0.5s;
+  background:var(--panel);backdrop-filter:blur(14px);border:1px solid var(--panel-border);
+  padding:36px 28px;border-radius:22px;text-align:center;transition:0.5s;position:relative;overflow:hidden;
 }
-
-.stat-card:hover{
-transform:translateY(-10px);
-border-color:#d4af37;
+.stat-card::before{
+  content:'';position:absolute;top:-40%;left:-20%;width:80%;height:180%;
+  background:linear-gradient(120deg,transparent,rgba(212,175,55,0.08),transparent);
+  transform:rotate(20deg);transition:0.6s;
 }
-
-.stat-card h2{
-font-size:55px;
-color:#d4af37;
-margin-bottom:10px;
-}
-
-.stat-card p{
-color:#cbd5e1;
-}
+.stat-card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,0.5);}
+.stat-card:hover::before{left:120%;}
+.stat-card i{font-size:26px;color:var(--gold);margin-bottom:14px;}
+.stat-card h2{font-family:var(--serif);font-size:44px;color:var(--gold-light);}
+.stat-card p{color:var(--ink-dim);font-size:13.5px;margin-top:6px;letter-spacing:0.5px;}
 
 /* =========================================================
-SECTION
+   SECTION SHELL
 ========================================================= */
-
-.section{
-padding:120px 7%;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:70px;
-}
-
+.section{padding:110px 6%;position:relative;}
+.section-title{text-align:center;margin-bottom:60px;}
 .section-title span{
-color:#d4af37;
-letter-spacing:2px;
-font-size:13px;
+  color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:600;text-transform:uppercase;
 }
-
-.section-title h2{
-font-size:58px;
-margin-top:10px;
+.section-title h2{font-family:var(--serif);font-size:clamp(32px,4.5vw,50px);margin-top:12px;font-weight:700;}
+.section-title p.sub{color:var(--ink-dim);max-width:560px;margin:16px auto 0;font-size:15px;line-height:1.8;}
+.divider{
+  width:70px;height:3px;margin:18px auto 0;
+  background:linear-gradient(90deg,var(--gold),var(--silver));border-radius:3px;
 }
 
 /* =========================================================
-SERVICES
+   SERVICES
 ========================================================= */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-gap:28px;
-}
-
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px;}
 .service-card{
-background:rgba(255,255,255,0.05);
-padding:40px 35px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.5s;
-position:relative;
-overflow:hidden;
+  background:var(--panel);padding:38px 32px;border-radius:24px;border:1px solid var(--panel-border);
+  transition:0.5s;position:relative;overflow:hidden;
 }
-
-.service-card::before{
-content:'';
-position:absolute;
-top:-60px;
-right:-60px;
-width:180px;
-height:180px;
-background:rgba(212,175,55,0.08);
-border-radius:50%;
+.service-card::after{
+  content:'';position:absolute;top:-60px;right:-60px;width:170px;height:170px;
+  background:radial-gradient(circle,rgba(212,175,55,0.12),transparent 70%);border-radius:50%;
+  transition:0.6s;
 }
-
-.service-card:hover{
-transform:translateY(-12px);
-border-color:#d4af37;
-}
-
+.service-card:hover{transform:translateY(-10px);border-color:rgba(212,175,55,0.45);}
+.service-card:hover::after{transform:scale(1.3);}
 .service-icon{
-font-size:45px;
-color:#d4af37;
-margin-bottom:22px;
+  width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(212,175,55,0.18),rgba(199,205,216,0.08));
+  font-size:26px;color:var(--gold);margin-bottom:20px;transition:0.5s;
 }
-
-.service-card h3{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.service-card p{
-color:#d1d5db;
-line-height:1.8;
-}
+.service-card:hover .service-icon{transform:rotate(-8deg) scale(1.08);}
+.service-card h3{font-family:var(--serif);font-size:21px;margin-bottom:12px;}
+.service-card p{color:var(--ink-dim);line-height:1.8;font-size:14.5px;}
 
 /* =========================================================
-PROJECTS
+   PROJECTS
 ========================================================= */
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
-}
-
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;}
 .project-card{
-height:430px;
-border-radius:30px;
-overflow:hidden;
-position:relative;
-transition:0.5s;
+  height:420px;border-radius:24px;overflow:hidden;position:relative;transition:0.6s;
+  border:1px solid var(--panel-border);
 }
-
-.project-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:0.7s;
+.project-card img{width:100%;height:100%;object-fit:cover;transition:0.8s cubic-bezier(.2,.7,.2,1);}
+.project-card:hover img{transform:scale(1.1);}
+.project-card:hover{border-color:rgba(212,175,55,0.5);}
+.project-tag{
+  position:absolute;top:20px;left:20px;padding:6px 14px;border-radius:50px;font-size:11px;font-weight:600;
+  letter-spacing:1px;background:rgba(8,11,20,0.65);border:1px solid rgba(212,175,55,0.4);color:var(--gold-light);
+  backdrop-filter:blur(6px);
 }
-
-.project-card:hover img{
-transform:scale(1.12);
-}
-
 .project-overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:35px;
-background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);
+  position:absolute;bottom:0;left:0;width:100%;padding:30px;
+  background:linear-gradient(to top,rgba(4,6,12,0.95),transparent);
 }
-
-.project-overlay h3{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.project-overlay p{
-color:#d1d5db;
-}
+.project-overlay h3{font-family:var(--serif);font-size:22px;margin-bottom:6px;}
+.project-overlay p{color:var(--ink-dim);font-size:13.5px;line-height:1.7;}
 
 /* =========================================================
-TEAM
+   TEAM
 ========================================================= */
-
-.team-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
-}
-
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:26px;}
 .team-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-padding:35px;
-border-radius:30px;
-text-align:center;
-transition:0.5s;
+  background:var(--panel);border:1px solid var(--panel-border);padding:34px 28px;border-radius:24px;
+  text-align:center;transition:0.5s;
 }
-
-.team-card:hover{
-transform:translateY(-12px);
-border-color:#d4af37;
+.team-card:hover{transform:translateY(-10px);border-color:rgba(212,175,55,0.45);}
+.team-photo{
+  width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 20px;
+  border:2.5px solid var(--gold);padding:3px;position:relative;
 }
-
-.team-card img{
-width:140px;
-height:140px;
-object-fit:cover;
-border-radius:50%;
-border:3px solid #d4af37;
-margin-bottom:20px;
+.team-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;}
+.team-card h3{font-family:var(--serif);font-size:20px;margin-bottom:6px;}
+.team-role{color:var(--gold-light);font-size:12.5px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;display:block;}
+.team-bio{color:var(--ink-dim);font-size:13px;line-height:1.7;margin-bottom:14px;}
+.team-contact{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--silver);
+  border-top:1px solid var(--panel-border);padding-top:12px;width:100%;justify-content:center;
 }
-
-.team-card h3{
-font-size:26px;
-margin-bottom:10px;
-}
-
-.team-card p{
-color:#d1d5db;
-line-height:1.7;
-margin-bottom:10px;
-}
-
-.team-card span{
-color:#d4af37;
-font-weight:600;
-}
+.team-contact i{color:var(--gold);}
 
 /* =========================================================
-LOCATION
+   TESTIMONIALS
 ========================================================= */
+.testimonials-wrap{overflow:hidden;position:relative;}
+.testi-track{display:flex;gap:26px;width:max-content;animation:marquee 38s linear infinite;}
+.testi-track:hover{animation-play-state:paused;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.testi-card{
+  width:340px;flex:0 0 auto;background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:22px;padding:32px;
+}
+.testi-stars{color:var(--gold);font-size:13px;margin-bottom:14px;letter-spacing:2px;}
+.testi-card p{color:var(--ink-dim);font-size:14px;line-height:1.85;font-style:italic;margin-bottom:20px;}
+.testi-person{display:flex;align-items:center;gap:12px;}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--silver));
+  display:flex;align-items:center;justify-content:center;color:#0a0e1a;font-weight:700;font-family:var(--serif);
+}
+.testi-person h4{font-size:14px;}
+.testi-person span{font-size:11.5px;color:var(--silver-dim);}
 
+/* =========================================================
+   LOCATION
+========================================================= */
 .location-box{
-background:rgba(255,255,255,0.05);
-padding:60px;
-border-radius:35px;
-text-align:center;
-border:1px solid rgba(255,255,255,0.08);
+  background:var(--panel);padding:56px;border-radius:30px;text-align:center;border:1px solid var(--panel-border);
 }
-
-.location-box i{
-font-size:60px;
-color:#d4af37;
-margin-bottom:25px;
-}
-
-.location-box h3{
-font-size:38px;
-margin-bottom:15px;
-}
-
-.location-box p{
-color:#d1d5db;
-font-size:18px;
-}
-
+.location-box i.pin{font-size:50px;color:var(--gold);margin-bottom:22px;}
+.location-box h3{font-family:var(--serif);font-size:32px;margin-bottom:12px;}
+.location-box p{color:var(--ink-dim);font-size:16px;}
 .map-container{
-margin-top:35px;
-border-radius:25px;
-overflow:hidden;
-border:2px solid rgba(212,175,55,0.3);
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  margin-top:32px;border-radius:22px;overflow:hidden;border:2px solid rgba(212,175,55,0.28);
+  box-shadow:0 20px 50px rgba(0,0,0,0.45);filter:grayscale(0.25) contrast(1.05);
 }
-
-.map-container iframe{
-display:block;
-width:100%;
-}
+.map-container iframe{display:block;width:100%;}
 
 /* =========================================================
-CONTACT
+   CONTACT
 ========================================================= */
-
-.contact-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:35px;
-}
-
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
 .contact-box{
-background:rgba(255,255,255,0.05);
-padding:45px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.08);
+  background:var(--panel);padding:44px;border-radius:26px;border:1px solid var(--panel-border);
 }
-
-.contact-box h3{
-font-size:38px;
-margin-bottom:20px;
+.contact-box h3{font-family:var(--serif);font-size:30px;margin-bottom:18px;}
+.contact-box > p{color:var(--ink-dim);line-height:1.8;margin-bottom:22px;font-size:14.5px;}
+.contact-line{
+  display:flex;align-items:center;gap:14px;color:var(--silver);font-size:14.5px;margin-bottom:16px;text-decoration:none;
 }
-
-.contact-box p{
-color:#d1d5db;
-line-height:1.8;
-margin-bottom:15px;
+.contact-line i{
+  width:38px;height:38px;border-radius:10px;background:rgba(212,175,55,0.12);
+  display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;
 }
-
-form{
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-
+form{display:flex;flex-direction:column;gap:16px;}
 input,textarea{
-padding:16px;
-border:none;
-outline:none;
-border-radius:14px;
-background:#111827;
-color:white;
-font-family:'Poppins',sans-serif;
+  padding:15px 18px;border:1px solid var(--panel-border);outline:none;border-radius:14px;
+  background:rgba(255,255,255,0.03);color:white;font-family:var(--sans);font-size:14px;transition:0.35s;
 }
-
-textarea{
-height:140px;
-resize:none;
-}
+input:focus,textarea:focus{border-color:var(--gold);background:rgba(212,175,55,0.05);}
+textarea{height:130px;resize:none;}
+form .btn{border:none;cursor:pointer;justify-content:center;}
 
 /* =========================================================
-FOOTER
+   FOOTER
 ========================================================= */
-
 footer{
-padding:35px 7%;
-border-top:1px solid rgba(255,255,255,0.08);
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:20px;
+  padding:36px 6%;border-top:1px solid var(--panel-border);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 }
-
-footer p{
-color:#94a3b8;
-}
+footer p{color:var(--silver-dim);font-size:13px;}
 
 /* =========================================================
-WHATSAPP
+   WHATSAPP
 ========================================================= */
-
 .whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-width:70px;
-height:70px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#25D366;
-color:white;
-font-size:30px;
-text-decoration:none;
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-z-index:999;
+  position:fixed;bottom:24px;right:24px;width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:#25D366;color:white;
+  font-size:28px;text-decoration:none;box-shadow:0 14px 34px rgba(0,0,0,0.45);z-index:999;
+  animation:pulse 2.6s ease-in-out infinite;
 }
+@keyframes pulse{0%,100%{box-shadow:0 14px 34px rgba(0,0,0,0.45),0 0 0 0 rgba(37,211,102,0.5);}50%{box-shadow:0 14px 34px rgba(0,0,0,0.45),0 0 0 14px rgba(37,211,102,0);}}
 
 /* =========================================================
-RESPONSIVE
+   RESPONSIVE
 ========================================================= */
-
 @media(max-width:1000px){
-
-.hero h1{
-font-size:58px;
+  .contact-grid{grid-template-columns:1fr;}
+  .stats{padding:50px 6%;}
 }
-
-.hero-3d{
-display:none;
-}
-
-.contact-grid{
-grid-template-columns:1fr;
-}
-
-.nav-links{
-display:none;
-}
-
-}
-
 @media(max-width:600px){
-
-.hero{
-padding-top:120px;
+  .hero{padding-top:130px;}
+  .section{padding:80px 6%;}
+  .location-box{padding:34px 22px;}
+  .contact-box{padding:30px;}
 }
-
-.hero h1{
-font-size:42px;
-}
-
-.section-title h2{
-font-size:38px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
-<div class="hero-bg"></div>
+<div class="grain"></div>
+
+<!-- animated background skyline -->
+<div class="skyline-bg">
+<svg viewBox="0 0 1200 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#d4af37" opacity="0.5">
+    <rect x="20" y="140" width="60" height="120"/>
+    <rect x="100" y="90" width="50" height="170"/>
+    <rect x="170" y="160" width="70" height="100"/>
+    <rect x="260" y="60" width="45" height="200"/>
+    <rect x="330" y="120" width="55" height="140"/>
+  </g>
+  <g fill="#c7cdd8" opacity="0.35">
+    <rect x="420" y="100" width="60" height="160"/>
+    <rect x="500" y="150" width="45" height="110"/>
+    <rect x="570" y="70" width="55" height="190"/>
+    <rect x="650" y="130" width="65" height="130"/>
+    <rect x="740" y="95" width="48" height="165"/>
+  </g>
+  <g fill="#d4af37" opacity="0.45">
+    <rect x="810" y="150" width="58" height="110"/>
+    <rect x="890" y="80" width="50" height="180"/>
+    <rect x="960" y="140" width="65" height="120"/>
+    <rect x="1050" y="100" width="52" height="160"/>
+    <rect x="1120" y="160" width="60" height="100"/>
+  </g>
+</svg>
+</div>
 
 <!-- =====================================================
 NAVBAR
 ===================================================== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <img src="logo.png" class="logo" alt="K&J Logo">
+    <div class="brandtext">
+      <h2>K&amp;J Chesti</h2>
+      <p>BUILDERS &amp; CONTRACTORS</p>
+    </div>
+  </div>
 
-<nav class="navbar">
+  <div class="nav-links" id="navLinks">
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#team">Team</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#location">Location</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-<!-- LEFT LOGO -->
-<div class="nav-left">
-<img src="logo.png" class="logo">
-</div>
+  <a href="https://wa.me/923299922200" class="nav-cta">
+    <i class="fa-brands fa-whatsapp"></i> Free Consultation
+  </a>
 
-<!-- CENTER COMPANY NAME -->
-<div class="nav-center">
-<h2>K&J Chesti Builders & Contractors</h2>
-<p>INTERNATIONAL</p>
-</div>
-
-<!-- RIGHT MENU -->
-<div class="nav-links">
-<a href="#services">Services</a>
-<a href="#projects">Projects</a>
-<a href="#team">Team</a>
-<a href="#location">Location</a>
-<a href="#contact">Contact</a>
-</div>
-
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- =====================================================
 HERO
 ===================================================== -->
-
 <section class="hero">
+  <div class="hero-photo"></div>
 
-<div class="hero-content">
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i class="fa-solid fa-star"></i> LAHORE'S TRUSTED BUILDERS SINCE DAY ONE</div>
+    <h1>We Build <em>Trust</em>,<br>We Build <em>Tomorrow</em></h1>
+    <p>
+      K&amp;J Chesti Builders &amp; Contractors delivers elite construction, luxury
+      residential villas, hotels, commercial projects, renovations and premium
+      interiors — engineered with precision, finished with elegance.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/923299922200" class="btn btn-gold">
+        <i class="fa-brands fa-whatsapp"></i> Get Free Consultation
+      </a>
+      <a href="#projects" class="btn btn-outline">
+        <i class="fa-solid fa-arrow-right"></i> View Our Projects
+      </a>
+    </div>
+  </div>
 
-<div class="hero-tag">
-RELIABLE CONSTRUCTION COMPANY IN LAHORE
-</div>
-<p>
-K&J Chesti Builders & Contractors delivers elite construction,
-luxury residential villas, hotels, commercial projects,
-renovations and premium interiors with timeless elegance,
-modern innovation and unmatched quality standards.
-</p>
+  <!-- signature: rising skyline + swinging crane -->
+  <div class="hero-skyline">
+    <svg viewBox="0 0 1200 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <rect class="bld" x="40" y="90" width="70" height="130" fill="url(#g1)" style="animation-delay:0.1s"/>
+      <rect class="bld" x="130" y="50" width="55" height="170" fill="url(#g1)" style="animation-delay:0.2s"/>
+      <rect class="bld" x="205" y="110" width="80" height="110" fill="url(#g2)" style="animation-delay:0.3s"/>
+      <rect class="bld" x="310" y="70" width="50" height="150" fill="url(#g1)" style="animation-delay:0.4s"/>
+      <rect class="bld" x="900" y="70" width="55" height="150" fill="url(#g2)" style="animation-delay:0.35s"/>
+      <rect class="bld" x="970" y="110" width="75" height="110" fill="url(#g1)" style="animation-delay:0.25s"/>
+      <rect class="bld" x="1060" y="55" width="50" height="165" fill="url(#g2)" style="animation-delay:0.15s"/>
+      <rect class="bld" x="1120" y="95" width="60" height="125" fill="url(#g1)" style="animation-delay:0.45s"/>
+      <g class="crane" transform="translate(560,10)">
+        <rect x="0" y="20" width="6" height="130" fill="#c7cdd8"/>
+        <rect x="-70" y="18" width="140" height="5" fill="#c7cdd8"/>
+        <line x1="3" y1="20" x2="-60" y2="45" stroke="#c7cdd8" stroke-width="2"/>
+        <line x1="3" y1="20" x2="55" y2="45" stroke="#c7cdd8" stroke-width="2"/>
+        <line x1="3" y1="45" x2="0" y2="90" stroke="#d4af37" stroke-width="2"/>
+      </g>
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#8a6a1c"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#c7cdd8"/><stop offset="1" stop-color="#6b7280"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
 
-<div class="hero-buttons">
+  <div class="scroll-cue"><span>SCROLL</span><div class="line"></div></div>
+</section>
 
-<a href="https://wa.me/923299922200" class="btn btn-gold">
-<i class="fa-brands fa-whatsapp"></i>
-Get Free Consultation
-</a>
-
-<a href="#projects" class="btn btn-dark">
-View Projects
-</a>
-
-</div>
-
-</div>
-
-<img src="logo.png" class="hero-3d">
-
+<!-- =====================================================
+STATS
+===================================================== -->
+<section class="stats reveal stagger">
+  <div class="stat-card"><i class="fa-solid fa-building"></i><h2>120+</h2><p>Projects Delivered</p></div>
+  <div class="stat-card"><i class="fa-solid fa-users"></i><h2>15+</h2><p>Years Combined Expertise</p></div>
+  <div class="stat-card"><i class="fa-solid fa-city"></i><h2>40+</h2><p>Commercial &amp; Residential Sites</p></div>
+  <div class="stat-card"><i class="fa-solid fa-handshake"></i><h2>98%</h2><p>Client Satisfaction</p></div>
 </section>
 
 <!-- =====================================================
 SERVICES
 ===================================================== -->
-
 <section id="services" class="section">
+  <div class="section-title reveal">
+    <span>OUR SERVICES</span>
+    <h2>Reliable Construction Solutions</h2>
+    <div class="divider"></div>
+    <p class="sub">From foundation to finish — every service engineered to the same luxury standard.</p>
+  </div>
 
-<div class="section-title">
-<span>OUR SERVICES</span>
-<h2>Reliable Construction Solutions</h2>
-</div>
-
-<div class="services-grid">
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-building"></i>
-</div>
-<h3>Commercial Construction</h3>
-<p>High-end offices, plazas, hotels and commercial projects with luxury standards.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-house"></i>
-</div>
-<h3>Luxury Villas</h3>
-<p>Modern houses and premium residential developments with elegant architecture.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-paint-roller"></i>
-</div>
-<h3>International Projects</h3>
-<p>Luxury interior solutions with premium aesthetics and elegant finishes.</p>
-</div>
-
-<div class="service-card">
-<div class="service-icon">
-<i class="fa-solid fa-screwdriver-wrench"></i>
-</div>
-<h3>Interior Design & Renovation</h3>
-<p>Transforming ordinary spaces into modern premium environments.</p>
-</div>
-
-</div>
-
+  <div class="services-grid reveal stagger">
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+      <h3>Commercial Construction</h3>
+      <p>High-end offices, plazas, hotels and commercial projects built to luxury standards, on time and on budget.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-house"></i></div>
+      <h3>Luxury Villas</h3>
+      <p>Modern homes and premium residential developments with elegant architecture and lasting craftsmanship.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-paint-roller"></i></div>
+      <h3>International Projects</h3>
+      <p>Luxury interior solutions with premium aesthetics, elegant finishes and a global design standard.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <h3>Interior Design &amp; Renovation</h3>
+      <p>Transforming ordinary spaces into modern, premium environments tailored to how you live and work.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+      <h3>Architectural Design</h3>
+      <p>Concept-to-blueprint architectural planning that balances structural integrity with timeless aesthetics.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fa-solid fa-file-signature"></i></div>
+      <h3>Real Estate &amp; Legal Advisory</h3>
+      <p>End-to-end property consultancy — from land acquisition to legal documentation and handover.</p>
+    </div>
+  </div>
 </section>
 
 <!-- =====================================================
 PROJECTS
 ===================================================== -->
-
 <section id="projects" class="section">
+  <div class="section-title reveal">
+    <span>OUR PORTFOLIO</span>
+    <h2>Signature Projects in Lahore</h2>
+    <div class="divider"></div>
+    <p class="sub">A portfolio spanning residential luxury, commercial landmarks and community initiatives.</p>
+  </div>
 
-<div class="section-title">
-<span>OUR PORTFOLIO</span>
-<h2>Signature Projects in Lahore</h2>
-</div>
+  <div class="projects-grid reveal stagger">
 
-<div class="projects-grid">
+    <div class="project-card">
+      <img src="project4.jpg" alt="Modern house Eden City">
+      <div class="project-tag">RESIDENTIAL</div>
+      <div class="project-overlay">
+        <h3>Modern House, Eden City</h3>
+        <p>A contemporary family villa with clean lines, open-plan interiors and premium natural finishes.</p>
+      </div>
+    </div>
 
- 
-<div class="project-card">
-<img src="project4.jpg">
-<div class="project-overlay">
-<h3>Modern house Eden City</h3>
-<p>Modern Luxury House</p>
-</div>
-</div> 
+    <div class="project-card">
+      <img src="project5.jpg" alt="Spanish House DHA Phase 8">
+      <div class="project-tag">RESIDENTIAL</div>
+      <div class="project-overlay">
+        <h3>Spanish House, DHA Phase 8</h3>
+        <p>Mediterranean-inspired architecture reimagined for Lahore's climate, with warm textures throughout.</p>
+      </div>
+    </div>
 
-<div class="project-card">
-<img src="project5.jpg">
-<div class="project-overlay">
-<h3>Spanish House DHA Phase 8</h3>
-<p>Contemporary Residential Project</p>
-</div>
-</div>
+    <div class="project-card">
+      <img src="project2.jpg" alt="Shalamar Town Houses">
+      <div class="project-tag">DEVELOPMENT</div>
+      <div class="project-overlay">
+        <h3>Shalamar Town Houses</h3>
+        <p>A premium town house development combining efficient layouts with elevated shared amenities.</p>
+      </div>
+    </div>
 
-<div class="project-card">
-<img src="project2.jpg">
-<div class="project-overlay">
-<h3>Shalamar Town Houses</h3>
-<p>Premium Town House Development</p>
-</div>
-</div>
-  
-<div class="project-card">
-<img src="project1.jpg">
-<div class="project-overlay">
-<h3>L33 DHA Phase 8</h3>
-<p>Luxury commercial Construction</p>
-</div>
-</div>
-  
-<div class="project-card">
-<img src="project3.jpg">
-<div class="project-overlay">
-<h3>Falettis Express Hotel</h3>
-<p>Luxury Hospitality Project</p>
-</div>
-</div>
+    <div class="project-card">
+      <img src="project1.jpg" alt="L33 DHA Phase 8">
+      <div class="project-tag">COMMERCIAL</div>
+      <div class="project-overlay">
+        <h3>L33, DHA Phase 8</h3>
+        <p>A luxury commercial construction delivering a landmark facade and premium leasable interiors.</p>
+      </div>
+    </div>
 
-<div class="project-card">
-<img src="project7.jpg">
-<div class="project-overlay">
-<h3>Barkat Market Renovation</h3>
-<p>Commercial Renovation Project</p>
-</div>
-</div>  
+    <div class="project-card">
+      <img src="project3.jpg" alt="Falettis Express Hotel">
+      <div class="project-tag">HOSPITALITY</div>
+      <div class="project-overlay">
+        <h3>Falettis Express Hotel</h3>
+        <p>A full hospitality build-out balancing guest comfort with an unmistakably elegant identity.</p>
+      </div>
+    </div>
 
-<div class="project-card">
-<img src="project8.jpg">
-<div class="project-overlay">
-<h3>Golding Road Luxury Apartments</h3>
-<p>Luxury Apartments Construction (Ongoing)</p>
-</div>
-</div>
-   
-<div class="project-card">
-<img src="project6.jpg">
-<div class="project-overlay">
-<h3>Subh-e-Noor Social Initiative</h3>
-<p>Community Development Project</p>
-</div>
-</div>
+    <div class="project-card">
+      <img src="project7.jpg" alt="Barkat Market Renovation">
+      <div class="project-tag">RENOVATION</div>
+      <div class="project-overlay">
+        <h3>Barkat Market Renovation</h3>
+        <p>A full commercial renovation modernising infrastructure while preserving the market's character.</p>
+      </div>
+    </div>
 
-</div>
+    <div class="project-card">
+      <img src="project8.jpg" alt="Golding Road Luxury Apartments">
+      <div class="project-tag">ONGOING</div>
+      <div class="project-overlay">
+        <h3>Golding Road Luxury Apartments</h3>
+        <p>An ongoing luxury apartment construction featuring premium amenities and skyline views.</p>
+      </div>
+    </div>
 
+    <div class="project-card">
+      <img src="project6.jpg" alt="Subh-e-Noor Social Initiative">
+      <div class="project-tag">COMMUNITY</div>
+      <div class="project-overlay">
+        <h3>Subh-e-Noor Social Initiative</h3>
+        <p>A community development project reflecting our commitment to giving back through good building.</p>
+      </div>
+    </div>
+
+  </div>
 </section>
+
 <!-- =====================================================
 TEAM
 ===================================================== -->
-
 <section id="team" class="section">
+  <div class="section-title reveal">
+    <span>OUR TEAM</span>
+    <h2>Meet Our Leadership</h2>
+    <div class="divider"></div>
+    <p class="sub">The people behind every foundation poured and every project delivered.</p>
+  </div>
 
-<div class="section-title">
-<span>OUR TEAM</span>
-<h2>Meet Our Leadership</h2>
-</div>
+  <div class="team-grid reveal stagger">
 
-<div class="team-grid">
+    <div class="team-card">
+      <div class="team-photo"><img src="ceo.jpg" alt="Khurram Majeed"></div>
+      <h3>Khurram Majeed</h3>
+      <span class="team-role">Payment &amp; Procurement Manager / CEO</span>
+      <p class="team-bio">Leads company-wide procurement and financial operations, keeping every project funded and on schedule.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0322-2334488</div>
+    </div>
 
-<div class="team-card">
-<img src="ceo.jpg">
-<h3>Khurram Majeed</h3>
-<p>Payment & Procurement Manager / CEO</p>
-<span>0322-2334488</span>
-</div>
+    <div class="team-card">
+      <div class="team-photo"><img src="usman.jpg" alt="Usman Saboor"></div>
+      <h3>Usman Saboor</h3>
+      <span class="team-role">Cost &amp; Project Management Manager</span>
+      <p class="team-bio">Oversees budgeting and on-site project management to keep builds efficient, safe and on target.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0323-8400999</div>
+    </div>
 
-<div class="team-card">
-<img src="usman.jpg">
-<h3>Usman Saboor</h3>
-<p>Cost & Project Management Manager</p>
-<span>0323-8400999</span>
-</div>
+    <div class="team-card">
+      <div class="team-photo"><img src="abubakar.jpg" alt="Abubakar Khan"></div>
+      <h3>Abubakar Khan</h3>
+      <span class="team-role">Design &amp; Innovation Manager</span>
+      <p class="team-bio">Drives the creative direction of every project, pairing modern design language with practical build.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0323-4540454</div>
+    </div>
 
-<div class="team-card">
-<img src="abubakar.jpg">
-<h3>Abubakar Khan</h3>
-<p>Design & Innovation Manager</p>
-<span>0323-4540454</span>
-</div>
+    <div class="team-card">
+      <div class="team-photo"><img src="zia.jpg" alt="Zia Shah"></div>
+      <h3>Zia Shah</h3>
+      <span class="team-role">Real Estate Agent (Residential &amp; Commercial)</span>
+      <p class="team-bio">Connects clients with the right property opportunities across Lahore's residential and commercial markets.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0322-6962272</div>
+    </div>
 
-<div class="team-card">
-<img src="zia.jpg">
-<h3>Zia Shah</h3>
-<p>Real Estate Agent (Residential & Commercial)</p>
-<span>0322-6962272</span>
-</div>
+    <div class="team-card">
+      <div class="team-photo"><img src="raza.jpg" alt="Muhammad Raza Advocate"></div>
+      <h3>Muhammad Raza Advocate</h3>
+      <span class="team-role">Legal &amp; Account Manager</span>
+      <p class="team-bio">Manages legal documentation and account compliance, ensuring every deal is secure and transparent.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0322-5121222</div>
+    </div>
 
-<div class="team-card">
-<img src="raza.jpg">
-<h3>Muhammad Raza Advocate</h3>
-<p>Legal & Account Manager</p>
-<span>0322-5121222</span>
-</div>
+    <div class="team-card">
+      <div class="team-photo"><img src="arslan.jpg" alt="Muhammad Arslan"></div>
+      <h3>Muhammad Arslan</h3>
+      <span class="team-role">Architect</span>
+      <p class="team-bio">Turns concepts into structurally sound blueprints, balancing form and function on every build.</p>
+      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0320-4319470</div>
+    </div>
 
-  <div class="team-card">
-<img src="arslan.jpg">
-<h3>Muhammad Arslan</h3>
-<p>Architect</p>
-<span>0320-4319470</span>
-</div>
-  
-</div>
+  </div>
+</section>
 
+<!-- =====================================================
+TESTIMONIALS
+===================================================== -->
+<section id="testimonials" class="section">
+  <div class="section-title reveal">
+    <span>TESTIMONIALS</span>
+    <h2>Trusted Across Borders</h2>
+    <div class="divider"></div>
+    <p class="sub">Clients from Pakistan and abroad on working with K&amp;J Chesti Builders.</p>
+  </div>
+
+  <div class="testimonials-wrap reveal">
+    <div class="testi-track">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Managing a build from London felt impossible until K&J took over. Weekly updates, honest costs, no surprises."</p>
+        <div class="testi-person"><div class="testi-avatar">JH</div><div><h4>James Harrington</h4><span>London, UK</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Our villa in DHA came out exactly as rendered, sometimes better. The finishing team has a real eye for detail."</p>
+        <div class="testi-person"><div class="testi-avatar">SA</div><div><h4>Sara Al-Farsi</h4><span>Dubai, UAE</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"We invested from overseas and were nervous about oversight. K&J's transparency changed our minds completely."</p>
+        <div class="testi-person"><div class="testi-avatar">DK</div><div><h4>David Klein</h4><span>Berlin, Germany</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Our hotel renovation stayed on schedule through every phase. Professional crew, clear communication throughout."</p>
+        <div class="testi-person"><div class="testi-avatar">MC</div><div><h4>Mei Chen</h4><span>Singapore</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Excellent legal handling alongside construction. Muhammad Raza made our documentation completely painless."</p>
+        <div class="testi-person"><div class="testi-avatar">OA</div><div><h4>Omar Al-Sayed</h4><span>Doha, Qatar</span></div></div>
+      </div>
+      <!-- duplicate set for seamless marquee -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Managing a build from London felt impossible until K&J took over. Weekly updates, honest costs, no surprises."</p>
+        <div class="testi-person"><div class="testi-avatar">JH</div><div><h4>James Harrington</h4><span>London, UK</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Our villa in DHA came out exactly as rendered, sometimes better. The finishing team has a real eye for detail."</p>
+        <div class="testi-person"><div class="testi-avatar">SA</div><div><h4>Sara Al-Farsi</h4><span>Dubai, UAE</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"We invested from overseas and were nervous about oversight. K&J's transparency changed our minds completely."</p>
+        <div class="testi-person"><div class="testi-avatar">DK</div><div><h4>David Klein</h4><span>Berlin, Germany</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Our hotel renovation stayed on schedule through every phase. Professional crew, clear communication throughout."</p>
+        <div class="testi-person"><div class="testi-avatar">MC</div><div><h4>Mei Chen</h4><span>Singapore</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Excellent legal handling alongside construction. Muhammad Raza made our documentation completely painless."</p>
+        <div class="testi-person"><div class="testi-avatar">OA</div><div><h4>Omar Al-Sayed</h4><span>Doha, Qatar</span></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- =====================================================
 LOCATION
 ===================================================== -->
 <section id="location" class="section">
+  <div class="section-title reveal">
+    <span>OUR OFFICE</span>
+    <h2>Company Location</h2>
+    <div class="divider"></div>
+  </div>
 
-<div class="section-title">
-<span>OUR OFFICE</span>
-<h2>Company Location</h2>
-</div>
+  <div class="location-box reveal">
+    <i class="fa-solid fa-location-dot pin"></i>
+    <h3>K&amp;J Chesti Builders &amp; Contractors</h3>
+    <p>L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT</p>
 
-<div class="location-box">
-
-<i class="fa-solid fa-location-dot"></i>
-
-<h3>K&J Chesti Builders & Contractors</h3>
-
-<p>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-<!-- GOOGLE MAP -->
-<div class="map-container">
-
-<iframe
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4070.1879657240615!2d74.4373508261268!3d31.512641197522914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190f17430ab2f3%3A0x3999aa76713a392!2sBlock%20L%20Air%20Avenue%2C%20Lahore%2C%20Pakistan!5e1!3m2!1sen!2s!4v1778572817459!5m2!1sen!2s"
-width="100%"
-height="450"
-style="border:0;"
-allowfullscreen=""
-loading="lazy"
-referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-</div>
-
-</div>
-
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4070.1879657240615!2d74.4373508261268!3d31.512641197522914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190f17430ab2f3%3A0x3999aa76713a392!2sBlock%20L%20Air%20Avenue%2C%20Lahore%2C%20Pakistan!5e1!3m2!1sen!2s!4v1778572817459!5m2!1sen!2s"
+        width="100%" height="450" style="border:0;" allowfullscreen=""
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
 </section>
 
 <!-- =====================================================
 CONTACT
 ===================================================== -->
-
 <section id="contact" class="section">
+  <div class="section-title reveal">
+    <span>CONTACT US</span>
+    <h2>Let's Build Your Dream Project</h2>
+    <div class="divider"></div>
+  </div>
 
-<div class="section-title">
-<span>CONTACT US</span>
-<h2>Let’s Build Your Dream Project</h2>
-</div>
+  <div class="contact-grid reveal">
 
-<div class="contact-grid">
+    <div class="contact-box">
+      <h3>Get In Touch</h3>
+      <p>We specialize in luxury homes, commercial buildings, hotels, interiors and premium real estate solutions.</p>
 
-<div class="contact-box">
+      <a href="mailto:kjchestibuilders@gmail.com" class="contact-line">
+        <i class="fa-solid fa-envelope"></i> kjchestibuilders@gmail.com
+      </a>
+      <a href="tel:03222334488" class="contact-line"><i class="fa-solid fa-phone"></i> 0322-2334488</a>
+      <a href="tel:03299922200" class="contact-line"><i class="fa-solid fa-phone"></i> 0329-9922200</a>
+      <a href="tel:04234557034" class="contact-line"><i class="fa-solid fa-phone"></i> 042-34557034</a>
+      <div class="contact-line"><i class="fa-solid fa-location-dot"></i> L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT</div>
+    </div>
 
-<h3>Get In Touch</h3>
+    <div class="contact-box">
+      <form onsubmit="return false;">
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea placeholder="Tell us about your project"></textarea>
+        <button class="btn btn-gold" type="submit">
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
 
-<p>
-We specialize in luxury homes, commercial buildings,
-hotels, interiors and premium real estate solutions.
-</p>
-
-  <p>
-<i class="fa-solid fa-envelope"></i>
-
-<a href="mailto:"kjchestibuilders@gmail.com" style="color:#d4af37;text-decoration:none;">
-kjchestibuilders@gmail.com
-</a>
-</p>
-  
-<p>
-<i class="fa-solid fa-phone"></i>
-0322-2334488
-</p>
-
-<p>
-<i class="fa-solid fa-phone"></i>
-0329-9922200
-</p>
-<p>
-<i class="fa-solid fa-phone"></i>
-042-34557034
-</p>
-<p>
-<i class="fa-solid fa-location-dot"></i>
-L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT
-</p>
-
-</div>
-
-<div class="contact-box">
-
-<form>
-
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Your Email">
-
-<textarea placeholder="Tell us about your project"></textarea>
-
-<button class="btn btn-gold">
-Send Message
-</button>
-
-</form>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
 <!-- =====================================================
 FOOTER
 ===================================================== -->
-
 <footer>
-
-<p>
-© 2026 K&J Chesti Builders & Contractors
-</p>
-
-<p>
-Luxury Construction • Real Estate • Interior Design
-</p>
-
+  <p>© 2026 K&amp;J Chesti Builders &amp; Contractors</p>
+  <p>Luxury Construction • Real Estate • Interior Design</p>
 </footer>
 
-<!-- =====================================================
-WHATSAPP
-===================================================== -->
-
-<a href="https://wa.me/923299922200" class="whatsapp">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<!-- =====================================================
-COUNTER
-===================================================== -->
+<a href="https://wa.me/923299922200" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-
-const counters=document.querySelectorAll('.counter');
-
-counters.forEach(counter=>{
-
-const updateCounter=()=>{
-
-const target=+counter.getAttribute('data-target');
-const count=+counter.innerText;
-
-const increment=target/80;
-
-if(count<target){
-
-counter.innerText=Math.ceil(count+increment);
-
-setTimeout(updateCounter,30);
-
-}else{
-
-counter.innerText=target;
-
-}
-
-};
-
-updateCounter();
-
+/* Navbar scroll state */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
 });
 
+/* Mobile menu */
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+/* Reveal on scroll */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
 </html>
-```
