@@ -152,42 +152,8 @@ body::before{
 }
 
 /* =========================================================
-   HERO
+   HERO — PROJECT SLIDESHOW
 ========================================================= */
-.hero{
-  min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
-  padding:150px 6% 100px;overflow:hidden;text-align:center;
-}
-.hero-photo{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg, rgba(8,11,20,0.55), rgba(8,11,20,0.88) 70%, var(--navy) 100%),
-    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop') center/cover;
-  z-index:-1;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;
-  padding:10px 22px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:3px;
-  background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.35);color:var(--gold-light);
-  text-transform:uppercase;animation:fadeUp 1s ease both;
-}
-.hero-eyebrow i{color:var(--gold);}
-.hero h1{
-  font-family:var(--serif);font-weight:800;
-  font-size:clamp(38px,6vw,76px);line-height:1.08;max-width:980px;
-  animation:fadeUp 1s 0.15s ease both;
-}
-.hero h1 em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--gold-light),var(--gold) 45%,var(--silver));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.hero p{
-  font-size:18px;line-height:1.9;color:var(--ink-dim);
-  max-width:640px;margin:26px auto 40px;
-  animation:fadeUp 1s 0.3s ease both;
-}
-.hero-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 0.45s ease both;}
 .btn{
   padding:16px 34px;border-radius:50px;font-weight:600;text-decoration:none;
   display:inline-flex;align-items:center;gap:10px;font-size:14.5px;transition:0.45s;
@@ -201,24 +167,104 @@ body::before{
   background:transparent;border:1.5px solid rgba(199,205,216,0.4);color:var(--silver);
 }
 .btn-outline:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-5px);}
-
-/* animated skyline rising in hero */
-.hero-skyline{
-  position:absolute;bottom:0;left:0;width:100%;height:220px;z-index:0;pointer-events:none;
-}
-.hero-skyline svg{width:100%;height:100%;display:block;}
-.hero-skyline .bld{transform-origin:bottom;animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both;}
-.crane{animation:swing 7s ease-in-out infinite;transform-origin:60px 40px;}
-@keyframes rise{from{transform:scaleY(0);}to{transform:scaleY(1);}}
-@keyframes swing{0%,100%{transform:rotate(0deg);}50%{transform:rotate(3deg);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
 
+.hero-slider{
+  position:relative;min-height:100vh;overflow:hidden;
+  scroll-snap-type:x mandatory;display:flex;
+}
+.hero-slider::-webkit-scrollbar{display:none;}
+.slide{
+  position:relative;min-width:100%;min-height:100vh;
+  scroll-snap-align:start;flex-shrink:0;
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:150px 7% 110px;
+}
+.slide-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transform:scale(1.08);transition:transform 8s ease;
+}
+.slide.is-active .slide-bg{transform:scale(1);}
+.slide-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(8,11,20,0.35) 0%, rgba(8,11,20,0.55) 55%, rgba(6,8,14,0.94) 100%),
+    linear-gradient(90deg, rgba(6,8,14,0.75) 0%, rgba(6,8,14,0.15) 55%);
+}
+.slide-content{position:relative;z-index:2;max-width:640px;}
+.slide-rank{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+  padding:9px 20px;border-radius:50px;font-size:11.5px;font-weight:600;letter-spacing:3px;
+  background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.4);color:var(--gold-light);
+  text-transform:uppercase;
+}
+.slide-rank i{color:var(--gold);}
+.slide-content h1{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(32px,5.2vw,60px);line-height:1.1;margin-bottom:16px;
+  background:linear-gradient(90deg,#fff,var(--silver) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.slide-content .cat{color:var(--gold-light);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:block;}
+.slide-content p{font-size:16px;line-height:1.85;color:var(--ink-dim);max-width:520px;margin-bottom:30px;}
+.slide-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+
+/* slide reveal animation */
+.slide-content .slide-rank,
+.slide-content h1,
+.slide-content p,
+.slide-content .slide-buttons{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.slide.is-active .slide-content .slide-rank{opacity:1;transform:translateY(0);transition-delay:0.15s;}
+.slide.is-active .slide-content h1{opacity:1;transform:translateY(0);transition-delay:0.28s;}
+.slide.is-active .slide-content p{opacity:1;transform:translateY(0);transition-delay:0.4s;}
+.slide.is-active .slide-content .slide-buttons{opacity:1;transform:translateY(0);transition-delay:0.52s;}
+
+/* nav arrows */
+.slide-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(8,11,20,0.5);border:1px solid rgba(212,175,55,0.35);color:var(--gold-light);
+  backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:17px;transition:0.4s;
+}
+.slide-arrow:hover{background:rgba(212,175,55,0.18);border-color:var(--gold);transform:translateY(-50%) scale(1.08);}
+.slide-arrow.prev{left:24px;}
+.slide-arrow.next{right:24px;}
+
+/* dots + counter */
+.slide-controls{
+  position:absolute;bottom:34px;left:0;right:0;z-index:5;
+  display:flex;align-items:center;justify-content:center;gap:22px;
+}
+.slide-dots{display:flex;gap:10px;}
+.slide-dot{
+  width:34px;height:4px;border-radius:4px;background:rgba(255,255,255,0.2);
+  cursor:pointer;transition:0.4s;position:relative;overflow:hidden;
+}
+.slide-dot.active{background:rgba(255,255,255,0.15);}
+.slide-dot.active::after{
+  content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  animation:dotfill 6s linear;
+}
+@keyframes dotfill{from{width:0%;}to{width:100%;}}
+.slide-counter{font-family:var(--serif);color:var(--silver-dim);font-size:13px;letter-spacing:1px;}
+.slide-counter b{color:var(--gold-light);font-size:16px;}
+
 .scroll-cue{
-  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:90px;right:7%;z-index:5;
   display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--silver-dim);font-size:11px;letter-spacing:2px;
 }
 .scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
 @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+@media(max-width:700px){
+  .slide{padding:130px 6% 150px;align-items:flex-end;}
+  .slide-arrow{width:42px;height:42px;font-size:14px;}
+  .slide-arrow.prev{left:12px;}
+  .slide-arrow.next{right:12px;}
+  .scroll-cue{display:none;}
+}
 
 /* =========================================================
    REVEAL UTILITY
@@ -256,6 +302,40 @@ body::before{
 .stat-card i{font-size:26px;color:var(--gold);margin-bottom:14px;}
 .stat-card h2{font-family:var(--serif);font-size:44px;color:var(--gold-light);}
 .stat-card p{color:var(--ink-dim);font-size:13.5px;margin-top:6px;letter-spacing:0.5px;}
+
+/* =========================================================
+   CLIENT SATISFACTION — 3D TILT CARDS
+========================================================= */
+.satisfaction-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;
+  perspective:1400px;
+}
+.tilt-card{
+  background:linear-gradient(160deg,rgba(212,175,55,0.08),rgba(255,255,255,0.03));
+  border:1px solid var(--panel-border);border-radius:24px;padding:38px 26px;text-align:center;
+  transform-style:preserve-3d;transition:transform 0.25s ease,border-color 0.4s;
+  position:relative;
+}
+.tilt-card:hover{border-color:rgba(212,175,55,0.55);}
+.tilt-card .ring{
+  width:88px;height:88px;margin:0 auto 20px;position:relative;
+  transform:translateZ(30px);
+}
+.tilt-card svg{width:100%;height:100%;transform:rotate(-90deg);}
+.tilt-card svg circle{fill:none;stroke-width:7;}
+.tilt-card svg .track{stroke:rgba(255,255,255,0.08);}
+.tilt-card svg .fill{
+  stroke:url(#ringGrad);stroke-linecap:round;
+  stroke-dasharray:251;stroke-dashoffset:251;
+  transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1);
+}
+.tilt-card.show svg .fill{stroke-dashoffset:var(--offset);}
+.ring-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;font-size:20px;color:var(--gold-light);
+}
+.tilt-card h4{font-size:15px;font-weight:600;transform:translateZ(20px);letter-spacing:0.3px;}
+.tilt-card p{font-size:12.5px;color:var(--ink-dim);margin-top:6px;transform:translateZ(15px);}
 
 /* =========================================================
    SECTION SHELL
@@ -499,56 +579,77 @@ NAVBAR
 </nav>
 
 <!-- =====================================================
-HERO
+HERO — PROJECT SLIDESHOW
 ===================================================== -->
-<section class="hero">
-  <div class="hero-photo"></div>
+<section class="hero-slider" id="heroSlider">
 
-  <div class="hero-content">
-    <div class="hero-eyebrow"><i class="fa-solid fa-star"></i> LAHORE'S TRUSTED BUILDERS SINCE DAY ONE</div>
-    <h1>We Build <em>Trust</em>,<br>We Build <em>Tomorrow</em></h1>
-    <p>
-      K&amp;J Chesti Builders &amp; Contractors delivers elite construction, luxury
-      residential villas, hotels, commercial projects, renovations and premium
-      interiors — engineered with precision, finished with elegance.
-    </p>
-    <div class="hero-buttons">
-      <a href="https://wa.me/923299922200" class="btn btn-gold">
-        <i class="fa-brands fa-whatsapp"></i> Get Free Consultation
-      </a>
-      <a href="#projects" class="btn btn-outline">
-        <i class="fa-solid fa-arrow-right"></i> View Our Projects
-      </a>
+  <div class="slide is-active" data-bg="project3.jpg">
+    <div class="slide-bg" style="background-image:url('project3.jpg')"></div>
+    <div class="slide-content">
+      <div class="slide-rank"><i class="fa-solid fa-trophy"></i> Flagship Project — Hospitality</div>
+      <span class="cat">Falettis Express Hotel</span>
+      <h1>Luxury Hospitality, Built to Last</h1>
+      <p>Our largest hospitality build to date — full guest-floor construction, MEP, and premium interior fit-out delivered without a single missed milestone.</p>
+      <div class="slide-buttons">
+        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
+        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      </div>
     </div>
   </div>
 
-  <!-- signature: rising skyline + swinging crane -->
-  <div class="hero-skyline">
-    <svg viewBox="0 0 1200 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <rect class="bld" x="40" y="90" width="70" height="130" fill="url(#g1)" style="animation-delay:0.1s"/>
-      <rect class="bld" x="130" y="50" width="55" height="170" fill="url(#g1)" style="animation-delay:0.2s"/>
-      <rect class="bld" x="205" y="110" width="80" height="110" fill="url(#g2)" style="animation-delay:0.3s"/>
-      <rect class="bld" x="310" y="70" width="50" height="150" fill="url(#g1)" style="animation-delay:0.4s"/>
-      <rect class="bld" x="900" y="70" width="55" height="150" fill="url(#g2)" style="animation-delay:0.35s"/>
-      <rect class="bld" x="970" y="110" width="75" height="110" fill="url(#g1)" style="animation-delay:0.25s"/>
-      <rect class="bld" x="1060" y="55" width="50" height="165" fill="url(#g2)" style="animation-delay:0.15s"/>
-      <rect class="bld" x="1120" y="95" width="60" height="125" fill="url(#g1)" style="animation-delay:0.45s"/>
-      <g class="crane" transform="translate(560,10)">
-        <rect x="0" y="20" width="6" height="130" fill="#c7cdd8"/>
-        <rect x="-70" y="18" width="140" height="5" fill="#c7cdd8"/>
-        <line x1="3" y1="20" x2="-60" y2="45" stroke="#c7cdd8" stroke-width="2"/>
-        <line x1="3" y1="20" x2="55" y2="45" stroke="#c7cdd8" stroke-width="2"/>
-        <line x1="3" y1="45" x2="0" y2="90" stroke="#d4af37" stroke-width="2"/>
-      </g>
-      <defs>
-        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#8a6a1c"/>
-        </linearGradient>
-        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#c7cdd8"/><stop offset="1" stop-color="#6b7280"/>
-        </linearGradient>
-      </defs>
-    </svg>
+  <div class="slide" data-bg="project1.jpg">
+    <div class="slide-bg" style="background-image:url('project1.jpg')"></div>
+    <div class="slide-content">
+      <div class="slide-rank"><i class="fa-solid fa-building"></i> Landmark Commercial Build</div>
+      <span class="cat">L33, DHA Phase 8</span>
+      <h1>A Commercial Landmark on DHA Phase 8</h1>
+      <p>Structural steel, glass facade and premium leasable interiors — engineered for a demanding commercial timeline.</p>
+      <div class="slide-buttons">
+        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
+        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" data-bg="project8.jpg">
+    <div class="slide-bg" style="background-image:url('project8.jpg')"></div>
+    <div class="slide-content">
+      <div class="slide-rank"><i class="fa-solid fa-city"></i> Ongoing Large-Scale Development</div>
+      <span class="cat">Golding Road Luxury Apartments</span>
+      <h1>Skyline Living, Under Construction</h1>
+      <p>A multi-floor luxury apartment complex currently underway, featuring premium amenities and panoramic city views.</p>
+      <div class="slide-buttons">
+        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
+        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" data-bg="project5.jpg">
+    <div class="slide-bg" style="background-image:url('project5.jpg')"></div>
+    <div class="slide-content">
+      <div class="slide-rank"><i class="fa-solid fa-house"></i> Signature Residential Villa</div>
+      <span class="cat">Spanish House, DHA Phase 8</span>
+      <h1>Mediterranean Elegance, Locally Built</h1>
+      <p>A statement residential villa blending Spanish-inspired architecture with premium local craftsmanship.</p>
+      <div class="slide-buttons">
+        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
+        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="slide-arrow prev" id="prevBtn" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="slide-arrow next" id="nextBtn" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+  <div class="slide-controls">
+    <div class="slide-counter"><b id="slideNum">01</b> / 04</div>
+    <div class="slide-dots" id="slideDots">
+      <div class="slide-dot active" data-i="0"></div>
+      <div class="slide-dot" data-i="1"></div>
+      <div class="slide-dot" data-i="2"></div>
+      <div class="slide-dot" data-i="3"></div>
+    </div>
   </div>
 
   <div class="scroll-cue"><span>SCROLL</span><div class="line"></div></div>
@@ -562,6 +663,60 @@ STATS
   <div class="stat-card"><i class="fa-solid fa-users"></i><h2>15+</h2><p>Years Combined Expertise</p></div>
   <div class="stat-card"><i class="fa-solid fa-city"></i><h2>40+</h2><p>Commercial &amp; Residential Sites</p></div>
   <div class="stat-card"><i class="fa-solid fa-handshake"></i><h2>98%</h2><p>Client Satisfaction</p></div>
+</section>
+
+<!-- =====================================================
+CLIENT SATISFACTION — 3D RINGS
+===================================================== -->
+<section class="section" style="padding-top:20px;">
+  <div class="section-title reveal">
+    <span>WHY CLIENTS STAY</span>
+    <h2>Client Satisfaction, By The Numbers</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="satisfaction-grid reveal stagger" id="satisfactionGrid">
+    <div class="tilt-card" data-tilt style="--offset:8">
+      <div class="ring">
+        <svg viewBox="0 0 90 90"><circle class="track" cx="45" cy="45" r="40"/><circle class="fill" cx="45" cy="45" r="40"/></svg>
+        <div class="ring-label">98%</div>
+      </div>
+      <h4>On-Time Delivery</h4>
+      <p>Projects handed over on schedule</p>
+    </div>
+    <div class="tilt-card" data-tilt style="--offset:13">
+      <div class="ring">
+        <svg viewBox="0 0 90 90"><circle class="track" cx="45" cy="45" r="40"/><circle class="fill" cx="45" cy="45" r="40"/></svg>
+        <div class="ring-label">95%</div>
+      </div>
+      <h4>Repeat &amp; Referral Clients</h4>
+      <p>Clients who return or refer us</p>
+    </div>
+    <div class="tilt-card" data-tilt style="--offset:23">
+      <div class="ring">
+        <svg viewBox="0 0 90 90"><circle class="track" cx="45" cy="45" r="40"/><circle class="fill" cx="45" cy="45" r="40"/></svg>
+        <div class="ring-label">91%</div>
+      </div>
+      <h4>Budget Accuracy</h4>
+      <p>Delivered within quoted budget</p>
+    </div>
+    <div class="tilt-card" data-tilt style="--offset:3">
+      <div class="ring">
+        <svg viewBox="0 0 90 90"><circle class="track" cx="45" cy="45" r="40"/><circle class="fill" cx="45" cy="45" r="40"/></svg>
+        <div class="ring-label">99%</div>
+      </div>
+      <h4>Quality Rating</h4>
+      <p>Average post-handover client score</p>
+    </div>
+  </div>
+
+  <svg width="0" height="0">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#c7cdd8"/>
+      </linearGradient>
+    </defs>
+  </svg>
 </section>
 
 <!-- =====================================================
@@ -904,6 +1059,56 @@ FOOTER
 <a href="https://wa.me/923299922200" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
+/* ===== Hero project slideshow ===== */
+const slider = document.getElementById('heroSlider');
+const slides = Array.from(slider.querySelectorAll('.slide'));
+const dots = Array.from(document.querySelectorAll('.slide-dot'));
+const slideNum = document.getElementById('slideNum');
+let current = 0;
+let autoTimer;
+
+function goTo(i, fromScroll){
+  current = (i + slides.length) % slides.length;
+  slides.forEach((s,idx) => s.classList.toggle('is-active', idx === current));
+  dots.forEach((d,idx) => d.classList.toggle('active', idx === current));
+  slideNum.textContent = String(current+1).padStart(2,'0');
+  if(!fromScroll){
+    slider.scrollTo({left: slider.clientWidth * current, behavior:'smooth'});
+  }
+  restartAuto();
+}
+
+function restartAuto(){
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => goTo(current+1), 6000);
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => goTo(current+1));
+document.getElementById('prevBtn').addEventListener('click', () => goTo(current-1));
+dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+
+/* sync active state when user scrolls/swipes manually */
+let scrollDebounce;
+slider.addEventListener('scroll', () => {
+  clearTimeout(scrollDebounce);
+  scrollDebounce = setTimeout(() => {
+    const idx = Math.round(slider.scrollLeft / slider.clientWidth);
+    if(idx !== current){
+      current = idx;
+      slides.forEach((s,i) => s.classList.toggle('is-active', i === current));
+      dots.forEach((d,i) => d.classList.toggle('active', i === current));
+      slideNum.textContent = String(current+1).padStart(2,'0');
+      restartAuto();
+    }
+  }, 120);
+});
+
+window.addEventListener('resize', () => {
+  slider.scrollTo({left: slider.clientWidth * current});
+});
+
+restartAuto();
+
 /* Navbar scroll state */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -944,6 +1149,30 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Ring fill reveal for satisfaction cards */
+const ringObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      ringObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.tilt-card').forEach(el => ringObserver.observe(el));
+
+/* 3D tilt interaction on satisfaction cards */
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `rotateY(${x*14}deg) rotateX(${-y*14}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0)';
+  });
+});
 </script>
 
 </body>
