@@ -157,7 +157,7 @@ body::before{
 }
 
 /* =========================================================
-   HERO — PROJECT SLIDESHOW
+   BUTTONS
 ========================================================= */
 .btn{
   padding:16px 34px;border-radius:50px;font-weight:600;text-decoration:none;
@@ -174,128 +174,215 @@ body::before{
 .btn-outline:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-5px);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
 
-.hero-slider{
-  position:relative;height:100vh;height:100svh;overflow:hidden;
-  scroll-snap-type:x mandatory;display:flex;width:100%;
+/* =========================================================
+   HOME — SINGLE SCREEN LAYOUT
+========================================================= */
+.home-screen{
+  height:100vh;height:100svh;min-height:560px;
+  display:flex;flex-direction:column;
+  padding-top:var(--navh,82px);
 }
-.hero-slider::-webkit-scrollbar{display:none;}
-.slide{
-  position:relative;min-width:100%;width:100%;height:100vh;height:100svh;
-  scroll-snap-align:start;flex-shrink:0;
-  display:flex;align-items:flex-end;justify-content:flex-start;
-  padding:clamp(110px,18vh,150px) 7% clamp(90px,14vh,110px);
-  overflow:hidden;
+.home-top{
+  flex:1 1 auto;display:flex;min-height:0;
 }
-.slide-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  transform:scale(1.08);transition:transform 8s ease;
+
+/* ---------- LEFT 30% : ONGOING PROJECT ---------- */
+.ongoing-panel{
+  width:30%;flex-shrink:0;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  border-right:1px solid rgba(212,175,55,0.18);
 }
-.slide.is-active .slide-bg{transform:scale(1);}
-.slide-bg::after{
+.ongoing-bg{
+  position:absolute;inset:0;background:url('project7.jpg') center/cover;
+  transform:scale(1.05);animation:slowZoom 14s ease-in-out infinite alternate;
+}
+@keyframes slowZoom{from{transform:scale(1.0);}to{transform:scale(1.12);}}
+.ongoing-bg::after{
   content:'';position:absolute;inset:0;
-  background:
-    linear-gradient(180deg, rgba(8,11,20,0.35) 0%, rgba(8,11,20,0.55) 55%, rgba(6,8,14,0.94) 100%),
-    linear-gradient(90deg, rgba(6,8,14,0.75) 0%, rgba(6,8,14,0.15) 55%);
+  background:linear-gradient(190deg, rgba(8,11,20,0.35) 0%, rgba(6,8,14,0.92) 78%);
 }
-.slide-content{position:relative;z-index:2;max-width:640px;width:100%;}
-.slide-brand{
-  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+.ongoing-content{position:relative;z-index:2;padding:22px 18px;width:100%;}
+.ongoing-flag{
+  display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
+  padding:6px 13px;border-radius:50px;font-size:9.5px;font-weight:700;letter-spacing:2px;
+  background:rgba(212,175,55,0.16);border:1px solid rgba(212,175,55,0.45);color:var(--gold-light);
+  text-transform:uppercase;animation:flagPulse 2.4s ease-in-out infinite;
 }
-.slide-brand img{
-  width:30px;height:30px;border-radius:50%;object-fit:cover;background:#fff;padding:2px;
-  border:1px solid var(--gold);flex-shrink:0;
+@keyframes flagPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.35);}50%{box-shadow:0 0 0 7px rgba(212,175,55,0);}}
+.ongoing-flag i{color:var(--gold);font-size:8px;}
+.ongoing-content h3{
+  font-family:var(--serif);font-weight:800;font-size:clamp(16px,1.7vw,22px);
+  line-height:1.18;margin-bottom:8px;color:#fff;
 }
-.slide-brand span{
-  font-family:var(--serif);font-weight:700;font-size:clamp(12px,2.4vw,15px);
-  letter-spacing:1px;color:var(--silver);white-space:nowrap;
+.ongoing-content .tagline{
+  color:var(--gold-light);font-size:clamp(10px,1vw,11.5px);font-weight:600;
+  letter-spacing:0.5px;margin-bottom:10px;display:block;
 }
-.slide-rank{
-  display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
-  padding:9px 20px;border-radius:50px;font-size:11.5px;font-weight:600;letter-spacing:3px;
-  background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.4);color:var(--gold-light);
-  text-transform:uppercase;max-width:100%;
+.ongoing-facts{list-style:none;margin-bottom:14px;display:flex;flex-direction:column;gap:5px;}
+.ongoing-facts li{
+  display:flex;align-items:center;gap:7px;font-size:clamp(10px,1vw,11.5px);color:var(--ink-dim);line-height:1.3;
 }
-.slide-rank i{color:var(--gold);}
-.slide-rank span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.slide-content h1{
-  font-family:var(--serif);font-weight:800;
-  font-size:clamp(28px,5.2vw,60px);line-height:1.12;margin-bottom:14px;
-  background:linear-gradient(90deg,#fff,var(--silver) 70%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
+.ongoing-facts li i{color:var(--gold);font-size:9px;width:12px;flex-shrink:0;}
+.ongoing-content .btn{
+  padding:11px 18px;font-size:11.5px;width:100%;justify-content:center;gap:7px;
 }
-.slide-content .cat{color:var(--gold-light);font-weight:600;font-size:clamp(11px,2vw,13px);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:block;}
-.slide-content p{font-size:clamp(13.5px,2vw,16px);line-height:1.8;color:var(--ink-dim);max-width:520px;margin-bottom:26px;}
-.slide-buttons{display:flex;gap:14px;flex-wrap:wrap;}
-.slide-buttons .btn{white-space:nowrap;}
 
-/* slide reveal animation */
-.slide-content .slide-brand,
-.slide-content .slide-rank,
-.slide-content h1,
-.slide-content p,
-.slide-content .slide-buttons{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
-.slide.is-active .slide-content .slide-brand{opacity:1;transform:translateY(0);transition-delay:0.05s;}
-.slide.is-active .slide-content .slide-rank{opacity:1;transform:translateY(0);transition-delay:0.15s;}
-.slide.is-active .slide-content h1{opacity:1;transform:translateY(0);transition-delay:0.28s;}
-.slide.is-active .slide-content p{opacity:1;transform:translateY(0);transition-delay:0.4s;}
-.slide.is-active .slide-content .slide-buttons{opacity:1;transform:translateY(0);transition-delay:0.52s;}
+/* ---------- RIGHT 70% : PROJECT SLIDESHOW ---------- */
+.home-slider{
+  width:70%;position:relative;overflow:hidden;
+}
+.hslide{
+  position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.1s ease;
+  display:flex;align-items:flex-end;
+}
+.hslide.active{opacity:1;visibility:visible;z-index:2;}
+.hslide-bg{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.06);transition:transform 7s ease;
+}
+.hslide.active .hslide-bg{transform:scale(1);}
+.hslide-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(8,11,20,0.15) 0%, rgba(6,8,14,0.5) 55%, rgba(6,8,14,0.92) 100%);
+}
+.hslide-content{position:relative;z-index:2;padding:clamp(18px,3vh,34px) clamp(20px,4vw,48px);width:100%;}
+.hslide-content .cat{
+  color:var(--gold-light);font-weight:700;font-size:clamp(10px,1.2vw,12.5px);letter-spacing:2.5px;
+  text-transform:uppercase;margin-bottom:8px;display:inline-block;
+  opacity:0;transform:translateY(16px);transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.hslide-content h2{
+  font-family:var(--serif);font-weight:800;font-size:clamp(20px,3vw,38px);line-height:1.14;margin-bottom:8px;
+  background:linear-gradient(90deg,#fff,var(--silver) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:0;transform:translateY(20px);transition:opacity 0.75s ease 0.08s,transform 0.75s ease 0.08s;
+}
+.hslide-content p{
+  color:var(--ink-dim);font-size:clamp(11.5px,1.2vw,14.5px);line-height:1.65;max-width:520px;
+  opacity:0;transform:translateY(20px);transition:opacity 0.75s ease 0.16s,transform 0.75s ease 0.16s;
+}
+.hslide.active .hslide-content .cat,
+.hslide.active .hslide-content h2,
+.hslide.active .hslide-content p{opacity:1;transform:translateY(0);}
 
-/* nav arrows */
-.slide-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-  width:52px;height:52px;border-radius:50%;
+.hslide-progress{
+  position:absolute;bottom:0;left:0;right:0;height:3px;z-index:6;
+  display:flex;gap:4px;padding:0 clamp(14px,3vw,32px) 10px;
+}
+.hprog-bar{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,0.18);overflow:hidden;}
+.hprog-fill{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;}
+.hprog-bar.done .hprog-fill{width:100%;transition:none;}
+.hprog-bar.running .hprog-fill{width:100%;transition:width linear;}
+
+.hslide-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:7;
+  width:36px;height:36px;border-radius:50%;
   background:rgba(8,11,20,0.5);border:1px solid rgba(212,175,55,0.35);color:var(--gold-light);
   backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:17px;transition:0.4s;
+  cursor:pointer;font-size:13px;transition:0.4s;
 }
-.slide-arrow:hover{background:rgba(212,175,55,0.18);border-color:var(--gold);transform:translateY(-50%) scale(1.08);}
-.slide-arrow.prev{left:16px;}
-.slide-arrow.next{right:16px;}
+.hslide-arrow:hover{background:rgba(212,175,55,0.2);border-color:var(--gold);}
+.hslide-arrow.prev{left:12px;}
+.hslide-arrow.next{right:12px;}
 
-/* dots + counter */
-.slide-controls{
-  position:absolute;bottom:20px;left:0;right:0;z-index:5;
-  display:flex;align-items:center;justify-content:center;gap:18px;
-  padding:0 12px;
+/* ---------- BOTTOM BAR : 100% WIDTH ---------- */
+.home-bottom{
+  flex-shrink:0;width:100%;
+  background:linear-gradient(180deg, rgba(10,13,22,0.7), rgba(6,8,14,0.96));
+  border-top:1px solid rgba(212,175,55,0.18);
+  display:flex;align-items:center;justify-content:center;position:relative;
+  padding:clamp(10px,1.8vh,20px) clamp(16px,4vw,48px);
 }
-.slide-dots{display:flex;gap:8px;}
-.slide-dot{
-  width:28px;height:4px;border-radius:4px;background:rgba(255,255,255,0.2);
-  cursor:pointer;transition:0.4s;position:relative;overflow:hidden;flex-shrink:0;
+.home-bottom-inner{
+  width:100%;max-width:1300px;display:flex;align-items:center;gap:clamp(16px,3vw,40px);
+  flex-wrap:nowrap;
 }
-.slide-dot.active{background:rgba(255,255,255,0.15);}
-.slide-dot.active::after{
-  content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));
-  animation:dotfill 2s linear;
+.hb-tagline{flex:0 0 auto;max-width:240px;}
+.hb-tagline h3{
+  font-family:var(--serif);font-weight:800;font-size:clamp(13px,1.5vw,19px);line-height:1.2;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--silver));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-@keyframes dotfill{from{width:0%;}to{width:100%;}}
-.slide-counter{font-family:var(--serif);color:var(--silver-dim);font-size:12px;letter-spacing:1px;white-space:nowrap;}
-.slide-counter b{color:var(--gold-light);font-size:15px;}
+.hb-divider{width:1px;align-self:stretch;background:rgba(212,175,55,0.2);flex-shrink:0;}
+.hb-quotes{flex:1 1 auto;min-width:0;display:flex;gap:22px;overflow:hidden;}
+.hb-quote{flex:1 1 0;min-width:0;}
+.hb-quote p{
+  font-size:clamp(10.5px,1vw,12.5px);color:var(--ink-dim);line-height:1.5;font-style:italic;
+  overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.hb-quote span{
+  display:block;margin-top:5px;font-size:10px;color:var(--gold-light);font-weight:600;letter-spacing:0.4px;
+}
+.hb-deals{flex:0 0 auto;max-width:210px;}
+.hb-deals p{font-size:clamp(10px,1vw,11.5px);color:var(--silver);line-height:1.5;}
+.hb-deals b{color:var(--gold-light);}
+.hb-contact{flex:0 0 auto;max-width:210px;}
+.hb-contact p{font-size:clamp(10px,1vw,11.5px);color:var(--silver);line-height:1.6;}
+.hb-contact a{color:var(--gold-light);text-decoration:none;font-weight:600;}
+.hb-contact a:hover{text-decoration:underline;}
+.hb-cta{flex-shrink:0;}
+.hb-cta .btn{padding:12px 22px;font-size:12.5px;white-space:nowrap;}
 
-.scroll-cue{
-  position:absolute;bottom:90px;right:7%;z-index:5;
-  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--silver-dim);font-size:11px;letter-spacing:2px;
+/* ---------- RESERVE / PROJECT MODALS ---------- */
+.modal-overlay{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(4,6,12,0.86);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;transition:0.4s;
 }
-.scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+.modal-overlay.open{opacity:1;visibility:visible;}
+.modal-box{
+  background:linear-gradient(160deg,var(--navy-3),var(--navy-2));
+  border:1px solid rgba(212,175,55,0.35);border-radius:26px;
+  max-width:460px;width:100%;padding:40px 34px;text-align:center;position:relative;
+  transform:translateY(24px) scale(0.97);transition:0.45s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1);}
+.modal-close{
+  position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid var(--panel-border);color:var(--silver);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:0.3s;
+}
+.modal-close:hover{background:rgba(212,175,55,0.15);color:var(--gold-light);}
+.modal-box i.modal-icon{font-size:44px;color:var(--gold);margin-bottom:16px;}
+.modal-box h3{font-family:var(--serif);font-size:24px;margin-bottom:10px;}
+.modal-box p{color:var(--ink-dim);font-size:14px;line-height:1.7;margin-bottom:24px;}
+.modal-actions{display:flex;flex-direction:column;gap:12px;}
+.modal-actions .btn{justify-content:center;width:100%;}
+.modal-phone{
+  font-family:var(--serif);font-size:20px;color:var(--gold-light);letter-spacing:1px;margin-bottom:20px;
+}
 
-@media(max-width:700px){
-  .slide{padding:100px 6% 130px;align-items:flex-end;}
-  .slide-content{max-width:100%;}
-  .slide-arrow{width:38px;height:38px;font-size:13px;}
-  .slide-arrow.prev{left:10px;}
-  .slide-arrow.next{right:10px;}
-  .scroll-cue{display:none;}
-  .slide-rank{font-size:10px;padding:7px 14px;gap:7px;}
-  .slide-buttons{gap:10px;}
-  .slide-buttons .btn{padding:13px 22px;font-size:13px;}
+/* project detail modal */
+.pmodal-box{max-width:640px;text-align:left;padding:0;overflow:hidden;}
+.pmodal-img{width:100%;height:260px;object-fit:cover;}
+.pmodal-body{padding:32px 34px 34px;}
+.pmodal-body .project-tag{position:static;display:inline-block;margin-bottom:14px;}
+.pmodal-body h3{font-family:var(--serif);font-size:28px;margin-bottom:14px;}
+.pmodal-body p{color:var(--ink-dim);font-size:14.5px;line-height:1.85;margin-bottom:16px;}
+.pmodal-body ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:6px;}
+.pmodal-body ul li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--silver);}
+.pmodal-body ul li i{color:var(--gold);width:16px;}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .home-screen{height:auto;min-height:100vh;min-height:100svh;}
+  .home-top{flex-direction:column;}
+  .ongoing-panel{width:100%;height:38vh;min-height:280px;border-right:none;border-bottom:1px solid rgba(212,175,55,0.18);}
+  .home-slider{width:100%;height:34vh;min-height:260px;}
+  .home-bottom-inner{flex-wrap:wrap;justify-content:center;text-align:center;}
+  .hb-divider{display:none;}
+  .hb-quotes{flex-wrap:wrap;justify-content:center;}
+  .hb-quote{flex:1 1 220px;}
+  .hb-tagline,.hb-deals,.hb-contact{max-width:100%;}
 }
-@media(max-width:380px){
-  .slide{padding:92px 5% 124px;}
-  .slide-brand span{font-size:11px;}
-  .slide-counter{font-size:10.5px;}
-  .slide-dot{width:20px;}
+@media(max-width:600px){
+  .home-screen{padding-top:76px;}
+  .ongoing-content{padding:16px 14px;}
+  .ongoing-facts li{font-size:10.5px;}
+  .hslide-content{padding:14px 16px;}
+  .hb-quote p{-webkit-line-clamp:3;}
 }
 
 /* =========================================================
@@ -414,7 +501,7 @@ body::before{
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;}
 .project-card{
   height:420px;border-radius:24px;overflow:hidden;position:relative;transition:0.6s;
-  border:1px solid var(--panel-border);
+  border:1px solid var(--panel-border);cursor:pointer;
 }
 .project-card img{width:100%;height:100%;object-fit:cover;transition:0.8s cubic-bezier(.2,.7,.2,1);}
 .project-card:hover img{transform:scale(1.1);}
@@ -598,9 +685,7 @@ NAVBAR
     <a href="#services">Services</a>
     <a href="#projects">Projects</a>
     <a href="#team">Team</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#location">Location</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact">Contact Us</a>
   </div>
 
   <a href="https://wa.me/923299922200" class="nav-cta">
@@ -611,158 +696,151 @@ NAVBAR
 </nav>
 
 <!-- =====================================================
-HERO — PROJECT SLIDESHOW
+HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
 ===================================================== -->
-<section class="hero-slider" id="heroSlider">
+<section class="home-screen">
 
-  <div class="slide is-active" data-bg="project3.jpg">
-    <div class="slide-bg" style="background-image:url('project3.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-trophy"></i> Flagship Project — Hospitality</div>
-      <span class="cat">Falettis Express Hotel</span>
-      <h1>Luxury Hospitality, Built to Last</h1>
-      <p>Our largest hospitality build to date — full guest-floor construction, MEP, and premium interior fit-out delivered without a single missed milestone.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+  <div class="home-top">
+
+    <!-- LEFT 30% — ONGOING PROJECT -->
+    <div class="ongoing-panel">
+      <div class="ongoing-bg"></div>
+      <div class="ongoing-content">
+        <div class="ongoing-flag"><i class="fa-solid fa-circle"></i> Our Ongoing Project</div>
+        <h3>Barkat Market Residence</h3>
+        <span class="tagline">Lahore's Only 5-Star Luxury Girls Hostel</span>
+        <ul class="ongoing-facts">
+          <li><i class="fa-solid fa-shield-halved"></i> 24/7 Fully Secure Premises</li>
+          <li><i class="fa-solid fa-bed"></i> Premium Rooms &amp; Penthouses</li>
+          <li><i class="fa-solid fa-user-shield"></i> Female Staff Only</li>
+          <li><i class="fa-solid fa-briefcase"></i> Ideal for Professionals &amp; Students</li>
+          <li><i class="fa-solid fa-location-dot"></i> Heart of Lahore</li>
+        </ul>
+        <button class="btn btn-gold" id="reserveBtn"><i class="fa-solid fa-key"></i> Reserve Your Slot Now</button>
       </div>
     </div>
-  </div>
 
-  <div class="slide" data-bg="project1.jpg">
-    <div class="slide-bg" style="background-image:url('project1.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-building"></i> Landmark Commercial Build</div>
-      <span class="cat">L33, DHA Phase 8</span>
-      <h1>A Commercial Landmark on DHA Phase 8</h1>
-      <p>Structural steel, glass facade and premium leasable interiors — engineered for a demanding commercial timeline.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+    <!-- RIGHT 70% — PROJECT SLIDESHOW -->
+    <div class="home-slider" id="homeSlider">
+
+      <div class="hslide active" data-duration="5000">
+        <div class="hslide-bg" style="background-image:url('project3.jpg')"></div>
+        <div class="hslide-content">
+          <span class="cat">Falettis Express Hotel</span>
+          <h2>Luxury Hospitality, Built to Last</h2>
+          <p>Our flagship hospitality build — full guest-floor construction and premium interior fit-out.</p>
+        </div>
+      </div>
+
+      <div class="hslide" data-duration="5000">
+        <div class="hslide-bg" style="background-image:url('project1.jpg')"></div>
+        <div class="hslide-content">
+          <span class="cat">L33, DHA Phase 8</span>
+          <h2>A Commercial Landmark on DHA Phase 8</h2>
+          <p>Structural steel, glass facade and premium leasable interiors for a demanding commercial timeline.</p>
+        </div>
+      </div>
+
+      <div class="hslide" data-duration="5000">
+        <div class="hslide-bg" style="background-image:url('project6.jpg')"></div>
+        <div class="hslide-content">
+          <span class="cat">Subh-e-Noor Social Initiative</span>
+          <h2>Building for Community, Not Just Clients</h2>
+          <p>A community development project reflecting our commitment to giving back through good building.</p>
+        </div>
+      </div>
+
+      <div class="hslide" data-duration="60000">
+        <div class="hslide-bg" style="background-image:url('project7.jpg')"></div>
+        <div class="hslide-content">
+          <span class="cat">Barkat Market Residence</span>
+          <h2>Lahore's Only 5-Star Luxury Girls Hostel</h2>
+          <p>Fully secure premium rooms and penthouses, female staff, in the heart of Lahore — built for professionals and students.</p>
+        </div>
+      </div>
+
+      <button class="hslide-arrow prev" id="hPrevBtn" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="hslide-arrow next" id="hNextBtn" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+      <div class="hslide-progress" id="hProgress">
+        <div class="hprog-bar"><span class="hprog-fill"></span></div>
+        <div class="hprog-bar"><span class="hprog-fill"></span></div>
+        <div class="hprog-bar"><span class="hprog-fill"></span></div>
+        <div class="hprog-bar"><span class="hprog-fill"></span></div>
       </div>
     </div>
+
   </div>
 
-  <div class="slide" data-bg="project8.jpg">
-    <div class="slide-bg" style="background-image:url('project8.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-city"></i> Ongoing Large-Scale Development</div>
-      <span class="cat">Golding Road Luxury Apartments</span>
-      <h1>Skyline Living, Under Construction</h1>
-      <p>A multi-floor luxury apartment complex currently underway, featuring premium amenities and panoramic city views.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+  <!-- BOTTOM — 100% WIDTH -->
+  <div class="home-bottom">
+    <div class="home-bottom-inner">
+
+      <div class="hb-tagline">
+        <h3>We Don't Just Construct Buildings — We Construct Trust.</h3>
       </div>
-    </div>
-  </div>
 
-  <div class="slide" data-bg="project5.jpg">
-    <div class="slide-bg" style="background-image:url('project5.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-house"></i> Signature Residential Villa</div>
-      <span class="cat">Spanish House, DHA Phase 8</span>
-      <h1>Mediterranean Elegance, Locally Built</h1>
-      <p>A statement residential villa blending Spanish-inspired architecture with premium local craftsmanship.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      <div class="hb-divider"></div>
+
+      <div class="hb-quotes">
+        <div class="hb-quote">
+          <p>"Every brick we lay carries our name — that's why we never cut corners, no matter the deadline."</p>
+          <span>— Khurram Majeed, CEO</span>
+        </div>
+        <div class="hb-quote">
+          <p>"Our clients trust us with their biggest investments. We repay that trust with transparency, every single day."</p>
+          <span>— Khurram Majeed, CEO</span>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="slide" data-bg="project4.jpg">
-    <div class="slide-bg" style="background-image:url('project4.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-house-chimney"></i> Residential Villa</div>
-      <span class="cat">Modern House, Eden City</span>
-      <h1>Contemporary Living, Timeless Design</h1>
-      <p>Clean lines, open-plan interiors and premium natural finishes throughout a modern family villa.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      <div class="hb-divider"></div>
+
+      <div class="hb-deals">
+        <p><b>Projects We Deal In:</b><br>Residential, Commercial &amp; Hotels</p>
       </div>
-    </div>
-  </div>
 
-  <div class="slide" data-bg="project2.jpg">
-    <div class="slide-bg" style="background-image:url('project2.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-city"></i> Residential Development</div>
-      <span class="cat">Shalamar Town Houses</span>
-      <h1>Premium Town Houses, Efficient Living</h1>
-      <p>A premium town house development combining efficient layouts with elevated shared amenities.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      <div class="hb-divider"></div>
+
+      <div class="hb-contact">
+        <p><b>First Consultation:</b><br>
+          <a href="tel:03222334488">+92 322 2334488</a> &nbsp;/&nbsp;
+          <a href="tel:+447738243315">+44 7738 243315</a>
+        </p>
       </div>
-    </div>
-  </div>
 
-  <div class="slide" data-bg="project7.jpg">
-    <div class="slide-bg" style="background-image:url('project7.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-store"></i> Commercial Renovation</div>
-      <span class="cat">Barkat Market Renovation</span>
-      <h1>Modern Infrastructure, Preserved Character</h1>
-      <p>A full commercial renovation modernising infrastructure while preserving the market's character.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
+      <div class="hb-cta">
+        <a href="#contact" class="btn btn-gold"><i class="fa-solid fa-headset"></i> Contact Office</a>
       </div>
+
     </div>
   </div>
 
-  <div class="slide" data-bg="project6.jpg">
-    <div class="slide-bg" style="background-image:url('project6.jpg')"></div>
-    <div class="slide-content">
-      <div class="slide-brand"><img src="logo.png" alt="K&J logo"><span>K&amp;J Chesti Builders &amp; Contractors</span></div>
-      <div class="slide-rank"><i class="fa-solid fa-hand-holding-heart"></i> Community Development</div>
-      <span class="cat">Subh-e-Noor Social Initiative</span>
-      <h1>Building for Community, Not Just Clients</h1>
-      <p>A community development project reflecting our commitment to giving back through good building.</p>
-      <div class="slide-buttons">
-        <a href="https://wa.me/923299922200" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Get Free Consultation</a>
-        <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> View All Projects</a>
-      </div>
-    </div>
-  </div>
-
-  <button class="slide-arrow prev" id="prevBtn" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-  <button class="slide-arrow next" id="nextBtn" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-
-  <div class="slide-controls">
-    <div class="slide-counter"><b id="slideNum">01</b> / 08</div>
-    <div class="slide-dots" id="slideDots">
-      <div class="slide-dot active" data-i="0"></div>
-      <div class="slide-dot" data-i="1"></div>
-      <div class="slide-dot" data-i="2"></div>
-      <div class="slide-dot" data-i="3"></div>
-      <div class="slide-dot" data-i="4"></div>
-      <div class="slide-dot" data-i="5"></div>
-      <div class="slide-dot" data-i="6"></div>
-      <div class="slide-dot" data-i="7"></div>
-    </div>
-  </div>
-
-  <div class="scroll-cue"><span>SCROLL</span><div class="line"></div></div>
 </section>
+
+<!-- =====================================================
+RESERVE SLOT MODAL (HOSTEL ONLY — NOT LINKED ELSEWHERE)
+===================================================== -->
+<div class="modal-overlay" id="reserveModal">
+  <div class="modal-box">
+    <div class="modal-close" id="reserveClose"><i class="fa-solid fa-xmark"></i></div>
+    <i class="fa-solid fa-key modal-icon"></i>
+    <h3>Reserve Your Slot</h3>
+    <p>Barkat Market Residence — Lahore's only 5-star luxury girls hostel. For booking or reservation, contact us directly:</p>
+    <div class="modal-phone">+92 323 4540454</div>
+    <div class="modal-actions">
+      <a href="https://wa.me/923234540454" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Message on WhatsApp</a>
+      <a href="tel:03234540454" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
+    </div>
+  </div>
+</div>
 
 <!-- =====================================================
 STATS
 ===================================================== -->
 <section class="stats reveal stagger">
-  <div class="stat-card"><i class="fa-solid fa-building"></i><h2>120+</h2><p>Projects Delivered</p></div>
-  <div class="stat-card"><i class="fa-solid fa-users"></i><h2>15+</h2><p>Years Combined Expertise</p></div>
-  <div class="stat-card"><i class="fa-solid fa-city"></i><h2>40+</h2><p>Commercial &amp; Residential Sites</p></div>
-  <div class="stat-card"><i class="fa-solid fa-handshake"></i><h2>98%</h2><p>Client Satisfaction</p></div>
+  <div class="stat-card"><i class="fa-solid fa-city"></i><h2>7</h2><p>Projects Ongoing</p></div>
+  <div class="stat-card"><i class="fa-solid fa-users"></i><h2>35+</h2><p>Years of Experience</p></div>
+  <div class="stat-card"><i class="fa-solid fa-handshake"></i><h2>99%</h2><p>Client Satisfaction Rate</p></div>
 </section>
 
 <!-- =====================================================
@@ -877,7 +955,9 @@ PROJECTS
 
   <div class="projects-grid reveal stagger">
 
-    <div class="project-card">
+    <div class="project-card" data-title="Modern House, Eden City" data-tag="RESIDENTIAL" data-img="project4.jpg"
+      data-desc="A contemporary family villa designed around light, airflow and clean geometry. Every room opens onto shared living space, with premium natural stone and timber finishes used throughout."
+      data-f1="Open-plan living &amp; dining" data-f2="Premium natural stone finishes" data-f3="Landscaped private garden" data-f4="Smart-home wiring throughout">
       <img src="project4.jpg" alt="Modern house Eden City">
       <div class="project-tag">RESIDENTIAL</div>
       <div class="project-overlay">
@@ -886,7 +966,9 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="Spanish House, DHA Phase 8" data-tag="RESIDENTIAL" data-img="project5.jpg"
+      data-desc="A statement residential villa blending Mediterranean-inspired architecture — arches, warm terracotta tones and wrought-iron detailing — with materials and craftsmanship suited to Lahore's climate."
+      data-f1="Spanish-arch facade &amp; courtyards" data-f2="Terracotta &amp; wrought-iron detailing" data-f3="Climate-adapted insulation" data-f4="Private rooftop terrace">
       <img src="project5.jpg" alt="Spanish House DHA Phase 8">
       <div class="project-tag">RESIDENTIAL</div>
       <div class="project-overlay">
@@ -895,7 +977,9 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="Shalamar Town Houses" data-tag="DEVELOPMENT" data-img="project2.jpg"
+      data-desc="A premium multi-unit town house development built for efficient, modern family living, with shared amenities and consistent architectural language across every unit."
+      data-f1="Multi-unit efficient layouts" data-f2="Shared premium amenities" data-f3="Consistent facade design" data-f4="Dedicated parking per unit">
       <img src="project2.jpg" alt="Shalamar Town Houses">
       <div class="project-tag">DEVELOPMENT</div>
       <div class="project-overlay">
@@ -904,7 +988,9 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="L33, DHA Phase 8" data-tag="COMMERCIAL" data-img="project1.jpg"
+      data-desc="A landmark commercial construction on DHA Phase 8 — structural steel frame, full glass facade, and premium leasable interiors delivered on an aggressive commercial timeline."
+      data-f1="Structural steel frame" data-f2="Full glass curtain facade" data-f3="Premium leasable interiors" data-f4="High-speed elevators &amp; MEP">
       <img src="project1.jpg" alt="L33 DHA Phase 8">
       <div class="project-tag">COMMERCIAL</div>
       <div class="project-overlay">
@@ -913,7 +999,9 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="Falettis Express Hotel" data-tag="HOSPITALITY" data-img="project3.jpg"
+      data-desc="A full hospitality build-out balancing guest comfort with an unmistakably elegant identity — from guest-floor construction to MEP and premium interior fit-out."
+      data-f1="Full guest-floor construction" data-f2="Complete MEP installation" data-f3="Premium interior fit-out" data-f4="Delivered on schedule, zero delays">
       <img src="project3.jpg" alt="Falettis Express Hotel">
       <div class="project-tag">HOSPITALITY</div>
       <div class="project-overlay">
@@ -922,16 +1010,20 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
-      <img src="project7.jpg" alt="Barkat Market Renovation">
-      <div class="project-tag">RENOVATION</div>
+    <div class="project-card" data-title="Barkat Market Residence" data-tag="LUXURY HOSTEL" data-img="project7.jpg"
+      data-desc="Lahore's only 5-star luxury girls hostel, located in the heart of the city. Fully secure around the clock with an all-female staff, premium rooms and penthouses — purpose-built for working women, professionals and students."
+      data-f1="24/7 fully secure premises" data-f2="Female staff only" data-f3="Premium rooms &amp; penthouses" data-f4="Heart of Lahore location">
+      <img src="project7.jpg" alt="Barkat Market Residence">
+      <div class="project-tag">LUXURY HOSTEL</div>
       <div class="project-overlay">
-        <h3>Barkat Market Renovation</h3>
-        <p>A full commercial renovation modernising infrastructure while preserving the market's character.</p>
+        <h3>Barkat Market Residence</h3>
+        <p>Lahore's only 5-star luxury girls hostel — fully secure, premium rooms, in the heart of the city.</p>
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="Golding Road Luxury Apartments" data-tag="ONGOING" data-img="project8.jpg"
+      data-desc="An ongoing luxury apartment construction featuring premium shared amenities, panoramic skyline views and finishes consistent with our flagship residential standard."
+      data-f1="Multi-floor luxury apartments" data-f2="Panoramic skyline views" data-f3="Premium shared amenities" data-f4="Currently under construction">
       <img src="project8.jpg" alt="Golding Road Luxury Apartments">
       <div class="project-tag">ONGOING</div>
       <div class="project-overlay">
@@ -940,7 +1032,9 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" data-title="Subh-e-Noor Social Initiative" data-tag="COMMUNITY" data-img="project6.jpg"
+      data-desc="A community development project reflecting our commitment to giving back through good building — designed and delivered in service of the wider Lahore community."
+      data-f1="Community-focused design" data-f2="Delivered at reduced cost" data-f3="Local labour partnership" data-f4="Ongoing maintenance support">
       <img src="project6.jpg" alt="Subh-e-Noor Social Initiative">
       <div class="project-tag">COMMUNITY</div>
       <div class="project-overlay">
@@ -951,6 +1045,27 @@ PROJECTS
 
   </div>
 </section>
+
+<!-- =====================================================
+PROJECT DETAIL MODAL
+===================================================== -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal-box pmodal-box">
+    <div class="modal-close" id="projectClose"><i class="fa-solid fa-xmark"></i></div>
+    <img src="" alt="" class="pmodal-img" id="pmImg">
+    <div class="pmodal-body">
+      <div class="project-tag" id="pmTag">TAG</div>
+      <h3 id="pmTitle">Project Title</h3>
+      <p id="pmDesc">Description</p>
+      <ul>
+        <li><i class="fa-solid fa-check"></i> <span id="pmF1"></span></li>
+        <li><i class="fa-solid fa-check"></i> <span id="pmF2"></span></li>
+        <li><i class="fa-solid fa-check"></i> <span id="pmF3"></span></li>
+        <li><i class="fa-solid fa-check"></i> <span id="pmF4"></span></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- =====================================================
 TEAM
@@ -1017,84 +1132,16 @@ TEAM
 </section>
 
 <!-- =====================================================
-TESTIMONIALS
+CONTACT (includes office location + map)
 ===================================================== -->
-<section id="testimonials" class="section">
+<section id="contact" class="section">
   <div class="section-title reveal">
-    <span>TESTIMONIALS</span>
-    <h2>Trusted Across Borders</h2>
-    <div class="divider"></div>
-    <p class="sub">Clients from Pakistan and abroad on working with K&amp;J Chesti Builders.</p>
-  </div>
-
-  <div class="testimonials-wrap reveal">
-    <div class="testi-track">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Managing a build from London felt impossible until K&J took over. Weekly updates, honest costs, no surprises."</p>
-        <div class="testi-person"><div class="testi-avatar">JH</div><div><h4>James Harrington</h4><span>London, UK</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Our villa in DHA came out exactly as rendered, sometimes better. The finishing team has a real eye for detail."</p>
-        <div class="testi-person"><div class="testi-avatar">SA</div><div><h4>Sara Al-Farsi</h4><span>Dubai, UAE</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"We invested from overseas and were nervous about oversight. K&J's transparency changed our minds completely."</p>
-        <div class="testi-person"><div class="testi-avatar">DK</div><div><h4>David Klein</h4><span>Berlin, Germany</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Our hotel renovation stayed on schedule through every phase. Professional crew, clear communication throughout."</p>
-        <div class="testi-person"><div class="testi-avatar">MC</div><div><h4>Mei Chen</h4><span>Singapore</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Excellent legal handling alongside construction. Muhammad Raza made our documentation completely painless."</p>
-        <div class="testi-person"><div class="testi-avatar">OA</div><div><h4>Omar Al-Sayed</h4><span>Doha, Qatar</span></div></div>
-      </div>
-      <!-- duplicate set for seamless marquee -->
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Managing a build from London felt impossible until K&J took over. Weekly updates, honest costs, no surprises."</p>
-        <div class="testi-person"><div class="testi-avatar">JH</div><div><h4>James Harrington</h4><span>London, UK</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Our villa in DHA came out exactly as rendered, sometimes better. The finishing team has a real eye for detail."</p>
-        <div class="testi-person"><div class="testi-avatar">SA</div><div><h4>Sara Al-Farsi</h4><span>Dubai, UAE</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"We invested from overseas and were nervous about oversight. K&J's transparency changed our minds completely."</p>
-        <div class="testi-person"><div class="testi-avatar">DK</div><div><h4>David Klein</h4><span>Berlin, Germany</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Our hotel renovation stayed on schedule through every phase. Professional crew, clear communication throughout."</p>
-        <div class="testi-person"><div class="testi-avatar">MC</div><div><h4>Mei Chen</h4><span>Singapore</span></div></div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Excellent legal handling alongside construction. Muhammad Raza made our documentation completely painless."</p>
-        <div class="testi-person"><div class="testi-avatar">OA</div><div><h4>Omar Al-Sayed</h4><span>Doha, Qatar</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =====================================================
-LOCATION
-===================================================== -->
-<section id="location" class="section">
-  <div class="section-title reveal">
-    <span>OUR OFFICE</span>
-    <h2>Company Location</h2>
+    <span>CONTACT US</span>
+    <h2>Let's Build Your Dream Project</h2>
     <div class="divider"></div>
   </div>
 
-  <div class="location-box reveal">
+  <div class="location-box reveal" style="margin-bottom:40px;">
     <i class="fa-solid fa-location-dot pin"></i>
     <h3>K&amp;J Chesti Builders &amp; Contractors</h3>
     <p>L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT</p>
@@ -1106,17 +1153,6 @@ LOCATION
         loading="lazy" referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
-  </div>
-</section>
-
-<!-- =====================================================
-CONTACT
-===================================================== -->
-<section id="contact" class="section">
-  <div class="section-title reveal">
-    <span>CONTACT US</span>
-    <h2>Let's Build Your Dream Project</h2>
-    <div class="divider"></div>
   </div>
 
   <div class="contact-grid reveal">
@@ -1159,61 +1195,98 @@ FOOTER
 <a href="https://wa.me/923299922200" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-/* ===== Hero project slideshow ===== */
-const slider = document.getElementById('heroSlider');
-const slides = Array.from(slider.querySelectorAll('.slide'));
-const dots = Array.from(document.querySelectorAll('.slide-dot'));
-const slideNum = document.getElementById('slideNum');
-let current = 0;
-let autoTimer;
+/* ===== Home right-panel project slideshow (variable durations) ===== */
+const hSlider = document.getElementById('homeSlider');
+const hSlides = Array.from(hSlider.querySelectorAll('.hslide'));
+const hBars = Array.from(document.querySelectorAll('.hprog-bar'));
+let hCurrent = 0;
+let hTimer;
 
-function goTo(i, fromScroll){
-  current = (i + slides.length) % slides.length;
-  slides.forEach((s,idx) => s.classList.toggle('is-active', idx === current));
-  dots.forEach((d,idx) => d.classList.toggle('active', idx === current));
-  slideNum.textContent = String(current+1).padStart(2,'0');
-  if(!fromScroll){
-    slider.scrollTo({left: slider.clientWidth * current, behavior:'smooth'});
-  }
-  restartAuto();
-}
-
-function restartAuto(){
-  clearInterval(autoTimer);
-  autoTimer = setInterval(() => goTo(current+1), 2000);
-}
-
-document.getElementById('nextBtn').addEventListener('click', () => goTo(current+1));
-document.getElementById('prevBtn').addEventListener('click', () => goTo(current-1));
-dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
-
-/* sync active state when user scrolls/swipes manually */
-let scrollDebounce;
-slider.addEventListener('scroll', () => {
-  clearTimeout(scrollDebounce);
-  scrollDebounce = setTimeout(() => {
-    const idx = Math.round(slider.scrollLeft / slider.clientWidth);
-    if(idx !== current){
-      current = idx;
-      slides.forEach((s,i) => s.classList.toggle('is-active', i === current));
-      dots.forEach((d,i) => d.classList.toggle('active', i === current));
-      slideNum.textContent = String(current+1).padStart(2,'0');
-      restartAuto();
+function hGoTo(i){
+  hCurrent = (i + hSlides.length) % hSlides.length;
+  hSlides.forEach((s, idx) => s.classList.toggle('active', idx === hCurrent));
+  hBars.forEach((b, idx) => {
+    const fill = b.querySelector('.hprog-fill');
+    b.classList.remove('running');
+    if(idx < hCurrent){
+      b.classList.add('done');
+      fill.style.transition = 'none';
+      fill.style.width = '100%';
+    } else if(idx === hCurrent){
+      b.classList.remove('done');
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      // force reflow then animate
+      void fill.offsetWidth;
+      const dur = hSlides[hCurrent].dataset.duration || 5000;
+      fill.style.transition = `width ${dur}ms linear`;
+      b.classList.add('running');
+      requestAnimationFrame(() => { fill.style.width = '100%'; });
+    } else {
+      b.classList.remove('done');
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
     }
-  }, 120);
-});
+  });
+  hRestart();
+}
 
-window.addEventListener('resize', () => {
-  slider.scrollTo({left: slider.clientWidth * current});
-});
+function hRestart(){
+  clearTimeout(hTimer);
+  const dur = parseInt(hSlides[hCurrent].dataset.duration, 10) || 5000;
+  hTimer = setTimeout(() => hGoTo(hCurrent + 1), dur);
+}
 
-restartAuto();
+document.getElementById('hNextBtn').addEventListener('click', () => hGoTo(hCurrent + 1));
+document.getElementById('hPrevBtn').addEventListener('click', () => hGoTo(hCurrent - 1));
+
+hGoTo(0);
+
+/* ===== Reserve Slot Modal (hostel only) ===== */
+const reserveModal = document.getElementById('reserveModal');
+document.getElementById('reserveBtn').addEventListener('click', () => reserveModal.classList.add('open'));
+document.getElementById('reserveClose').addEventListener('click', () => reserveModal.classList.remove('open'));
+reserveModal.addEventListener('click', (e) => { if(e.target === reserveModal) reserveModal.classList.remove('open'); });
+
+/* ===== Project Detail Modal ===== */
+const projectModal = document.getElementById('projectModal');
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.getElementById('pmImg').src = card.dataset.img;
+    document.getElementById('pmImg').alt = card.dataset.title;
+    document.getElementById('pmTag').textContent = card.dataset.tag;
+    document.getElementById('pmTitle').textContent = card.dataset.title;
+    document.getElementById('pmDesc').textContent = card.dataset.desc;
+    document.getElementById('pmF1').innerHTML = card.dataset.f1;
+    document.getElementById('pmF2').innerHTML = card.dataset.f2;
+    document.getElementById('pmF3').innerHTML = card.dataset.f3;
+    document.getElementById('pmF4').innerHTML = card.dataset.f4;
+    projectModal.classList.add('open');
+  });
+});
+document.getElementById('projectClose').addEventListener('click', () => projectModal.classList.remove('open'));
+projectModal.addEventListener('click', (e) => { if(e.target === projectModal) projectModal.classList.remove('open'); });
+
+/* Close modals with Escape key */
+window.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape'){
+    reserveModal.classList.remove('open');
+    projectModal.classList.remove('open');
+  }
+});
 
 /* Navbar scroll state */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 });
+
+/* Set --navh CSS var to actual navbar height so home-screen fits exactly below it */
+function setNavHeight(){
+  document.documentElement.style.setProperty('--navh', navbar.offsetHeight + 'px');
+}
+setNavHeight();
+window.addEventListener('resize', setNavHeight);
 
 /* Mobile menu */
 const burger = document.getElementById('burger');
