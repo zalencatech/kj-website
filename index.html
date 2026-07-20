@@ -94,23 +94,23 @@ body::before{
 }
 .nav-left{display:flex;align-items:center;gap:14px;min-width:0;}
 .logo{
-  width:54px;height:54px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  width:66px;height:66px;border-radius:50%;object-fit:cover;flex-shrink:0;
   background:radial-gradient(circle,#fff 55%,transparent 56%);
   padding:3px;
   border:1.5px solid var(--gold);
   box-shadow:0 0 22px rgba(212,175,55,0.45);
   transition:0.5s;
 }
-.navbar.scrolled .logo{width:44px;height:44px;}
+.navbar.scrolled .logo{width:54px;height:54px;}
 .brandtext{min-width:0;}
 .brandtext h2{
   font-family:var(--serif);
-  font-size:clamp(14px,3.6vw,20px);font-weight:700;
+  font-size:clamp(17px,4vw,25px);font-weight:700;
   background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--silver));
   -webkit-background-clip:text;background-clip:text;color:transparent;
   line-height:1.15;white-space:nowrap;
 }
-.brandtext p{font-size:clamp(7px,1.6vw,9px);letter-spacing:3px;color:var(--silver-dim);margin-top:2px;white-space:nowrap;}
+.brandtext p{font-size:clamp(8px,1.8vw,10.5px);letter-spacing:3px;color:var(--silver-dim);margin-top:2px;white-space:nowrap;}
 
 .nav-links{display:flex;gap:34px;align-items:center;}
 .nav-links a{
@@ -152,7 +152,7 @@ body::before{
   .burger{display:flex;}
 }
 @media(max-width:380px){
-  .logo{width:42px;height:42px;}
+  .logo{width:50px;height:50px;}
   .navbar{padding:14px 4%;}
   .nav-left{gap:9px;}
 }
@@ -184,7 +184,7 @@ body::before{
   padding-top:var(--navh,82px);
 }
 .home-top{
-  flex:0 1 56%;display:flex;min-height:0;
+  flex:0 1 68%;display:flex;min-height:0;
 }
 
 /* ---------- LEFT 30% : ONGOING PROJECT ---------- */
@@ -299,7 +299,7 @@ body::before{
 
 /* ---------- BOTTOM BAR : 100% WIDTH ---------- */
 .home-bottom{
-  flex:1 1 44%;width:100%;
+  flex:1 1 32%;width:100%;
   background:linear-gradient(180deg, rgba(10,13,22,0.7), rgba(6,8,14,0.96));
   border-top:1px solid rgba(212,175,55,0.18);
   position:relative;
@@ -319,10 +319,12 @@ body::before{
   -webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 0 22px rgba(212,175,55,0.25));
 }
-.hb-deals p{font-size:clamp(12px,1.2vw,14.5px);color:var(--silver);line-height:1.5;}
+.hb-deals p{font-size:clamp(16px,2vw,22px);color:var(--silver);line-height:1.5;font-family:var(--serif);font-weight:600;}
 .hb-deals b{color:var(--gold-light);}
-.hb-contact p{font-size:clamp(12px,1.2vw,14.5px);color:var(--silver);line-height:1.5;}
-.hb-contact a{color:var(--gold-light);text-decoration:none;font-weight:600;}
+.hb-contact p{font-size:clamp(16px,2vw,22px);color:var(--silver);line-height:1.6;font-family:var(--serif);font-weight:600;}
+.hb-contact b{color:#fff;}
+.hb-contact i.fa-whatsapp{color:#25D366;margin:0 4px;}
+.hb-contact a{color:var(--gold-light);text-decoration:none;font-weight:700;}
 .hb-contact a:hover{text-decoration:underline;}
 .hb-cta{
   position:absolute;right:clamp(16px,4vw,48px);bottom:clamp(12px,1.6vh,18px);
@@ -706,7 +708,7 @@ HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
       <div class="ongoing-content">
         <div class="ongoing-flag"><i class="fa-solid fa-circle"></i> Our Ongoing Project</div>
         <h3>Barkat Market Residence</h3>
-        <span class="tagline">Lahore's Only 5-Star Luxury Girls Hostel</span>
+        <span class="tagline">Lahore's Only 5-Star Luxury Girls Residence</span>
         <ul class="ongoing-facts">
           <li><i class="fa-solid fa-shield-halved"></i> 24/7 Fully Secure Premises</li>
           <li><i class="fa-solid fa-bed"></i> Premium Rooms &amp; Penthouses</li>
@@ -724,32 +726,32 @@ HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
       <div class="hslide active" data-duration="5000">
         <div class="hslide-bg" style="background-image:url('project3.jpg')"></div>
         <div class="hslide-content">
-          <span class="cat">Falettis Express Hotel</span>
-          <h2>Luxury Hospitality</h2>
+          <span class="cat">Luxury Hospitality</span>
+          <h2>Falettis Express Hotel</h2>
         </div>
       </div>
 
       <div class="hslide" data-duration="5000">
-        <div class="hslide-bg" style="background-image:url('project1.jpg')"></div>
+        <div class="hslide-bg" style="background-image:url('project8.jpg')"></div>
         <div class="hslide-content">
-          <span class="cat">L33, DHA Phase 8</span>
-          <h2>Commercial Landmark</h2>
+          <span class="cat">Luxury Apartments</span>
+          <h2>Golding Road Luxury Apartments</h2>
         </div>
       </div>
 
       <div class="hslide" data-duration="5000">
         <div class="hslide-bg" style="background-image:url('project6.jpg')"></div>
         <div class="hslide-content">
-          <span class="cat">Subh-e-Noor Social Initiative</span>
-          <h2>Community Development</h2>
+          <span class="cat">Community Development</span>
+          <h2>Subh-e-Noor Social Initiative</h2>
         </div>
       </div>
 
       <div class="hslide" data-duration="60000">
         <div class="hslide-bg" style="background-image:url('project7.jpg')"></div>
         <div class="hslide-content">
-          <span class="cat">Barkat Market Residence</span>
-          <h2>Luxury Girls Hostel</h2>
+          <span class="cat">Luxury Girls Residence</span>
+          <h2>Barkat Market Residence</h2>
         </div>
       </div>
 
@@ -770,16 +772,12 @@ HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
   <div class="home-bottom">
     <div class="home-bottom-inner">
 
-      <div class="hb-tagline">
-        <h3>We Don't Just Construct Buildings — We Construct Trust.</h3>
-      </div>
-
       <div class="hb-deals">
         <p><b>Projects We Deal In:</b> Residential, Commercial &amp; Hotels</p>
       </div>
 
       <div class="hb-contact">
-        <p><b>First Consultation:</b>
+        <p><b>For First Consultation:</b> WhatsApp on <i class="fa-brands fa-whatsapp"></i>
           <a href="tel:03222334488">+92 322 2334488</a> &nbsp;/&nbsp;
           <a href="tel:+447738243315">+44 7738 243315</a>
         </p>
@@ -788,7 +786,7 @@ HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
     </div>
 
     <div class="hb-cta">
-      <a href="#contact" class="btn btn-gold"><i class="fa-solid fa-headset"></i> Contact Office</a>
+      <a href="#contactForm" class="btn btn-gold"><i class="fa-solid fa-headset"></i> Contact Office</a>
     </div>
   </div>
 
@@ -802,7 +800,7 @@ RESERVE SLOT MODAL (HOSTEL ONLY — NOT LINKED ELSEWHERE)
     <div class="modal-close" id="reserveClose"><i class="fa-solid fa-xmark"></i></div>
     <i class="fa-solid fa-key modal-icon"></i>
     <h3>Reserve Your Slot</h3>
-    <p>Barkat Market Residence — Lahore's only 5-star luxury girls hostel. For booking or reservation, contact us directly:</p>
+    <p>Barkat Market Residence — Lahore's only 5-star luxury girls residence. For booking or reservation, contact us directly:</p>
     <div class="modal-phone">+92 323 4540454</div>
     <div class="modal-actions">
       <a href="https://wa.me/923234540454" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Message on WhatsApp</a>
@@ -995,14 +993,14 @@ PROJECTS
       </div>
     </div>
 
-    <div class="project-card" data-title="Barkat Market Residence" data-tag="LUXURY HOSTEL" data-img="project7.jpg"
-      data-desc="Lahore's only 5-star luxury girls hostel, located in the heart of the city. Fully secure around the clock with an all-female staff, premium rooms and penthouses — purpose-built for working women, professionals and students."
+    <div class="project-card" data-title="Barkat Market Residence" data-tag="LUXURY RESIDENCE" data-img="project7.jpg"
+      data-desc="Lahore's only 5-star luxury girls residence, located in the heart of the city. Fully secure around the clock with an all-female staff, premium rooms and penthouses — purpose-built for working women, professionals and students."
       data-f1="24/7 fully secure premises" data-f2="Female staff only" data-f3="Premium rooms &amp; penthouses" data-f4="Heart of Lahore location">
       <img src="project7.jpg" alt="Barkat Market Residence">
-      <div class="project-tag">LUXURY HOSTEL</div>
+      <div class="project-tag">LUXURY RESIDENCE</div>
       <div class="project-overlay">
         <h3>Barkat Market Residence</h3>
-        <p>Lahore's only 5-star luxury girls hostel — fully secure, premium rooms, in the heart of the city.</p>
+        <p>Lahore's only 5-star luxury girls residence — fully secure, premium rooms, in the heart of the city.</p>
       </div>
     </div>
 
@@ -1159,7 +1157,7 @@ CONTACT (includes office location + map)
       <div class="contact-line"><i class="fa-solid fa-location-dot"></i> L33 2ND FLOOR, DHA PHASE 8 LAHORE CANT</div>
     </div>
 
-    <div class="contact-box">
+    <div class="contact-box" id="contactForm" style="scroll-margin-top:var(--navh,90px);">
       <form onsubmit="return false;">
         <input type="text" placeholder="Your Name">
         <input type="email" placeholder="Your Email">
@@ -1229,7 +1227,7 @@ document.getElementById('hPrevBtn').addEventListener('click', () => hGoTo(hCurre
 
 hGoTo(0);
 
-/* ===== Reserve Slot Modal (hostel only) ===== */
+/* ===== Reserve Slot Modal (girls residence only) ===== */
 const reserveModal = document.getElementById('reserveModal');
 document.getElementById('reserveBtn').addEventListener('click', () => reserveModal.classList.add('open'));
 document.getElementById('reserveClose').addEventListener('click', () => reserveModal.classList.remove('open'));
