@@ -105,12 +105,11 @@ body::before{
 .brandtext{min-width:0;}
 .brandtext h2{
   font-family:var(--serif);
-  font-size:clamp(17px,4vw,25px);font-weight:700;
+  font-size:clamp(21px,5vw,32px);font-weight:700;
   background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--silver));
   -webkit-background-clip:text;background-clip:text;color:transparent;
   line-height:1.15;white-space:nowrap;
 }
-.brandtext p{font-size:clamp(8px,1.8vw,10.5px);letter-spacing:3px;color:var(--silver-dim);margin-top:2px;white-space:nowrap;}
 
 .nav-links{display:flex;gap:34px;align-items:center;}
 .nav-links a{
@@ -207,30 +206,30 @@ body::before{
   content:'';position:absolute;inset:0;
   background:linear-gradient(190deg, rgba(8,11,20,0.1) 0%, rgba(6,8,14,0.55) 78%);
 }
-.ongoing-content{position:relative;z-index:2;padding:20px 26px;width:100%;box-sizing:border-box;}
+.ongoing-content{position:relative;z-index:2;padding:20px 30px;width:100%;box-sizing:border-box;}
 .ongoing-flag{
-  display:inline-flex;align-items:center;gap:7px;margin-bottom:12px;
-  padding:6px 13px;border-radius:50px;font-size:9.5px;font-weight:700;letter-spacing:2px;
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;
+  padding:8px 18px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:2.5px;
   background:rgba(212,175,55,0.16);border:1px solid rgba(212,175,55,0.45);color:var(--gold-light);
   text-transform:uppercase;animation:flagPulse 2.4s ease-in-out infinite;
 }
 @keyframes flagPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.35);}50%{box-shadow:0 0 0 7px rgba(212,175,55,0);}}
-.ongoing-flag i{color:var(--gold);font-size:8px;}
+.ongoing-flag i{color:var(--gold);font-size:9px;}
 .ongoing-content h3{
-  font-family:var(--serif);font-weight:800;font-size:clamp(17px,1.9vw,23px);
-  line-height:1.18;margin-bottom:8px;color:#fff;
+  font-family:var(--serif);font-weight:800;font-size:clamp(24px,2.8vw,32px);
+  line-height:1.18;margin-bottom:10px;color:#fff;
 }
 .ongoing-content .tagline{
-  color:var(--gold-light);font-size:clamp(10px,1vw,11.5px);font-weight:600;
-  letter-spacing:0.5px;margin-bottom:10px;display:block;
+  color:var(--gold-light);font-size:clamp(15px,1.7vw,19px);font-weight:600;
+  letter-spacing:0.3px;margin-bottom:16px;display:block;
 }
-.ongoing-facts{list-style:none;margin-bottom:14px;display:flex;flex-direction:column;gap:5px;}
+.ongoing-facts{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:9px;}
 .ongoing-facts li{
-  display:flex;align-items:center;gap:7px;font-size:clamp(10px,1vw,11.5px);color:var(--ink-dim);line-height:1.3;
+  display:flex;align-items:center;gap:10px;font-size:clamp(14.5px,1.5vw,17px);color:var(--ink-dim);line-height:1.3;
 }
-.ongoing-facts li i{color:var(--gold);font-size:9px;width:12px;flex-shrink:0;}
+.ongoing-facts li i{color:var(--gold);font-size:12px;width:14px;flex-shrink:0;}
 .ongoing-content .btn{
-  padding:11px 18px;font-size:11.5px;width:100%;justify-content:center;gap:7px;
+  padding:15px 22px;font-size:clamp(15px,1.8vw,19px);width:100%;justify-content:center;gap:9px;
 }
 
 /* ---------- RIGHT ~64% : PROJECT SLIDESHOW (framed, curved card) ---------- */
@@ -321,6 +320,10 @@ body::before{
 }
 .hb-deals p{font-size:clamp(16px,2vw,22px);color:var(--silver);line-height:1.5;font-family:var(--serif);font-weight:600;}
 .hb-deals b{color:var(--gold-light);}
+.hb-subtag{
+  display:block;margin-top:4px;font-size:clamp(10px,1vw,11.5px);letter-spacing:3px;
+  color:var(--silver-dim);text-transform:uppercase;font-family:var(--sans);
+}
 .hb-contact p{font-size:clamp(16px,2vw,22px);color:var(--silver);line-height:1.6;font-family:var(--serif);font-weight:600;}
 .hb-contact b{color:#fff;}
 .hb-contact i.fa-whatsapp{color:#25D366;margin:0 4px;}
@@ -677,7 +680,6 @@ NAVBAR
     <img src="logo.png" class="logo" alt="K&J Logo">
     <div class="brandtext">
       <h2>K&amp;J Chesti</h2>
-      <p>BUILDERS &amp; CONTRACTORS</p>
     </div>
   </div>
 
@@ -774,10 +776,11 @@ HOME — SINGLE SCREEN (ONGOING PROJECT | SLIDESHOW / TAGLINE BAR)
 
       <div class="hb-deals">
         <p><b>Projects We Deal In:</b> Residential, Commercial &amp; Hotels</p>
+        <span class="hb-subtag">Builders &amp; Contractors</span>
       </div>
 
       <div class="hb-contact">
-        <p><b>For First Consultation:</b> WhatsApp on <i class="fa-brands fa-whatsapp"></i>
+        <p><b>For First Consultation:</b> Mr. Khurram Majeed <i class="fa-brands fa-whatsapp"></i>
           <a href="tel:03222334488">+92 322 2334488</a> &nbsp;/&nbsp;
           <a href="tel:+447738243315">+44 7738 243315</a>
         </p>
@@ -1095,22 +1098,6 @@ TEAM
       <span class="team-role">Real Estate Agent (Residential &amp; Commercial)</span>
       <p class="team-bio">Connects clients with the right property opportunities across Lahore's residential and commercial markets.</p>
       <div class="team-contact"><i class="fa-solid fa-phone"></i> 0322-6962272</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-photo"><img src="raza.jpg" alt="Muhammad Raza Advocate"></div>
-      <h3>Muhammad Raza Advocate</h3>
-      <span class="team-role">Legal &amp; Account Manager</span>
-      <p class="team-bio">Manages legal documentation and account compliance, ensuring every deal is secure and transparent.</p>
-      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0322-5121222</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-photo"><img src="arslan.jpg" alt="Muhammad Arslan"></div>
-      <h3>Muhammad Arslan</h3>
-      <span class="team-role">Architect</span>
-      <p class="team-bio">Turns concepts into structurally sound blueprints, balancing form and function on every build.</p>
-      <div class="team-contact"><i class="fa-solid fa-phone"></i> 0320-4319470</div>
     </div>
 
   </div>
